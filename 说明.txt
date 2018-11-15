@@ -1,0 +1,2 @@
+将依赖文件复制到lib目录下
+mvn dependency:copy-dependencies -DoutputDirectory=lib -DskipTests
