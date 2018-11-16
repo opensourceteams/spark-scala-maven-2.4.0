@@ -1,20 +1,18 @@
-package com.opensource.bigdata.spark.local.rdd.operation.action
+package com.opensource.bigdata.spark.local.rdd.operation.transformation
 
 import org.apache.spark.{SparkConf, SparkContext}
 
-object GroupByKeyRun {
+object DistinctRun {
 
   var appName = "worldcount-3"
   var master = "local" //本地模式:local     standalone:spark://master:7077
 
   def main(args: Array[String]): Unit = {
     val sc = pre()
-    val r1 = sc.parallelize(Array(("A",1),("B",1),("A",1),("C",1)),2)
+    val r1 = sc.parallelize(Array("A","V","B","V","C","V","W"),2)
+    val r2 = r1.distinct().collect().mkString
 
-    val r3 = r1.groupByKey(  )
-
-    println("结果r3:"+ r3.collect().mkString)
-
+    println("结果:"+ r2)
 
 
 
