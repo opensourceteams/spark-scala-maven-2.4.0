@@ -10,7 +10,7 @@
         <!-- <scala.version>2.11.12</scala.version>-->
         <!--<scala.version>2.10.7</scala.version>-->
         <scala.version>2.10.7</scala.version>
-        <java.version>1.8.181</java.version>
+        <java.version>1.8.191</java.version>
         <cdh.spark.version>1.6.0-cdh5.15.0</cdh.spark.version>
         <cdh.hadoop.version>2.6.0-cdh5.15.0</cdh.hadoop.version>
         <spark.scala.version>2.10</spark.scala.version>
@@ -192,7 +192,7 @@
 
         </plugins>
     </build>
-    <reporting>
+   <!-- <reporting>
         <plugins>
             <plugin>
                 <groupId>org.scala-tools</groupId>
@@ -203,5 +203,7 @@
 
 
         </plugins>
-    </reporting>
+    </reporting>-->
+
+
 </project>
