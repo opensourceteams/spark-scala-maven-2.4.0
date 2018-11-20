@@ -4,8 +4,6 @@ import com.opensource.bigdata.spark.local.rdd.operation.base.BaseScalaSparkConte
 
 object FilterRun extends BaseScalaSparkContext{
 
-  var appName = "worldcount-4"
-  var master = "local" //本地模式:local     standalone:spark://master:7077
 
   def main(args: Array[String]): Unit = {
     val sc = pre()

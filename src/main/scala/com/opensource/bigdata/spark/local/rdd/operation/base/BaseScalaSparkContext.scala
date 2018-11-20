@@ -1,11 +1,14 @@
 package com.opensource.bigdata.spark.local.rdd.operation.base
 
-import com.opensource.bigdata.spark.local.rdd.operation.transformation.FilterRun.{appName, master}
 import org.apache.spark.{SparkConf, SparkContext}
 
 class BaseScalaSparkContext {
 
-  def pre(): SparkContext ={
+  var appName = "worldcount-3"
+  var master = "local[1]" //本地模式:local     standalone:spark://master:7077
+
+
+  def pre(): SparkContext = {
     val conf = new SparkConf().setAppName(appName).setMaster(master)
     conf.set("spark.eventLog.enabled","true")
    // conf.set("spark.ui.port","10002")
@@ -14,6 +17,8 @@ class BaseScalaSparkContext {
     conf.setJars(Array("/opt/n_001_workspaces/bigdata/spark-scala-maven/target/spark-scala-maven-1.0-SNAPSHOT.jar"))
 
     val sc = new SparkContext(conf)
+
+    //sc.setLogLevel("ERROR")
     sc
   }
 }
