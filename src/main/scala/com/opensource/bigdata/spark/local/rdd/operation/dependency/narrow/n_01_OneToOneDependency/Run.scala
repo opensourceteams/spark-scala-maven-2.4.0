@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.local.rdd.operation.dependency.narrow.n_01_一对一窄依赖
+package com.opensource.bigdata.spark.local.rdd.operation.dependency.narrow.n_01_OneToOneDependency
 
 import com.opensource.bigdata.spark.local.rdd.operation.base.BaseScalaSparkContext
 

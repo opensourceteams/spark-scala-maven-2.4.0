@@ -1,5 +1,6 @@
 package com.opensource.bigdata.spark.local.worldcount
 
+import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner
 import org.apache.spark.{SparkConf, SparkContext}
 
 //import org.apache.spark.{SparkConf, SparkContext}
@@ -26,6 +27,8 @@ object WorldCount {
     println(distFile)
 
     val result = distFile.flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _)
+
+
     println(s"结果:${result.collect().mkString}")
     val threadName = Thread.currentThread().getId + Thread.currentThread().getName
 
