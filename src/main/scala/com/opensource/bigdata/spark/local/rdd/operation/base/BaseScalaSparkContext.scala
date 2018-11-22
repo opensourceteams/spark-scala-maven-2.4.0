@@ -4,7 +4,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 class BaseScalaSparkContext {
 
-  var appName = "worldcount-3"
+  var appName = "local"
   var master = "local[1]" //本地模式:local     standalone:spark://master:7077
 
 

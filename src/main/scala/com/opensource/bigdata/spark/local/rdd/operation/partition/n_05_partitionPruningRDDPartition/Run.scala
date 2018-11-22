@@ -7,10 +7,12 @@ object Run  extends BaseScalaSparkContext{
   def main(args: Array[String]): Unit = {
 
     val sc = pre()
-    val rdd1 = sc.parallelize(List((1,2),(4,1),(2,8))).sortByKey()
-    val rdd2 =rdd1.filterByRange(1,2)
+    val rdd1 = sc.parallelize(List((1,2),(4,1),(2,8)))
+    val rdd1Sort = rdd1.sortByKey()
+    val rdd2 =rdd1Sort.filterByRange(1,2)
 
-    println(rdd2.collect().mkString(" "))
+    println("rdd1Sort \n" + rdd1Sort.collect().mkString("\n"))
+    println("rdd2 \n" + rdd2.collect().mkString("\n"))
 
     sc.stop()
   }
