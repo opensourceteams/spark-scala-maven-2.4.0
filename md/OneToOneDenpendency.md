@@ -1,4 +1,7 @@
-# OneToOneDependency
+# OneToOneDependency 一对一依赖关系
+
+-  Represents a one-to-one dependency between partitions of the parent and child RDDs.
+
 ## youtub视频演示
   - https://youtu.be/Tohv00GJ5AQ
   
