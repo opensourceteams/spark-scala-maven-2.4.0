@@ -4,6 +4,8 @@
 
 ## youtub视频演示
   - https://youtu.be/Tohv00GJ5AQ
+  - 更多spark相关视频：
+  https://github.com/opensourceteams/spark-scala-maven
   
 ## 输入数据
 
