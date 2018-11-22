@@ -21,7 +21,8 @@ spark-scala-maven
 - PruneDependency
 
 #### ShuffleDependency
-
+   - youtube 视频:  https://youtu.be/_4DeWWPQubc
+   - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
 
 
 #### 相关链接
