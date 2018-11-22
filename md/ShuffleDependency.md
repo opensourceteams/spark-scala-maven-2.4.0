@@ -3,7 +3,7 @@
 -    Represents a dependency on the output of a shuffle stage. Note that in the case of shuffle,the RDD is transient since we don't need it on the executor side.
 
 ## youtub视频演示
-  - https://youtu.be/_4DeWWPQubc
+  - https://youtu.be/8T6PyHuf_wQ
   - github: https://github.com/opensourceteams/spark-scala-maven
   
 ## 输入数据
