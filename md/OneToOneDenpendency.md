@@ -37,7 +37,7 @@ object Run1 extends BaseScalaSparkContext{
 ```
 
 ## 数据处理图
-[![一对一依赖关系](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/rdd.denpendency/oneToOneDenpendency.png "一对一依赖关系")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/rdd.denpendency/oneToOneDenpendency.png "一对一依赖关系")
+[![一对一依赖关系](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/rdd.denpendency/oneToOneDenpendency_2.png "一对一依赖关系")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/rdd.denpendency/oneToOneDenpendency_2.png "一对一依赖关系")
 
 
 

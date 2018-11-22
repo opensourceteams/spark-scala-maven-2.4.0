@@ -16,6 +16,8 @@ spark-scala-maven
    - youtube 视频:  https://youtu.be/Tohv00GJ5AQ
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
 - RangeDependency
+   - youtube 视频:  https://youtu.be/_4DeWWPQubc
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
 - PruneDependency
 
 #### ShuffleDependency

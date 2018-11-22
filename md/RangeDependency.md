@@ -3,7 +3,7 @@
 -  Represents a one-to-one dependency between ranges of partitions in the parent and child RDDs.
 
 ## youtub视频演示
-  - https://youtu.be/Tohv00GJ5AQ
+  - https://youtu.be/_4DeWWPQubc
   - github: https://github.com/opensourceteams/spark-scala-maven
   
 ## 输入数据
