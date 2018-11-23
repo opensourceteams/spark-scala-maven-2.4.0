@@ -1,4 +1,4 @@
-# PruneDependency 依赖关系
+# PruneDependency 依赖关系 Filter
 
 -   Represents a dependency between the PartitionPruningRDD and its parent. In this
   case, the child RDD contains a subset of partitions of the parents'.
