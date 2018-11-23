@@ -18,7 +18,9 @@ spark-scala-maven
 - RangeDependency
    - youtube 视频:  https://youtu.be/_4DeWWPQubc
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
-- PruneDependency
+- PruneDependency filter
+   - youtube 视频:  https://youtu.be/5ZCNiEhO_Qg
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
 
 #### ShuffleDependency
    - youtube 视频:  https://youtu.be/8T6PyHuf_wQ
