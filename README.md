@@ -1,5 +1,6 @@
 # SPARK 源码分析技术分享
-spark-scala-maven
+SPARK 1.6.0-cdh5.15.0
+spark-scala-maven 
 
 
 
