@@ -41,7 +41,24 @@ Main entry point for Spark functionality. A SparkContext represents the connecti
         UnifiedMemoryManager(conf, numUsableCores)
       }
 ```
-
+- spark.ui.showConsoleProgress=true      //展示控制台的进度信息
+- spark.ui.enabled=true      //是否开启SparkUI
+- spark.executor.memory=      //spark executor 的内存
+- SPARK_EXECUTOR_MEMORY=  //spark executor 的内存
+- SPARK_MEM=  //spark executor 的内存
+ ```scala
+ /**
+   *查找顺序，找到前面的就不找后面的了(配置文件中设置值单位为 byte)，默认值为1024MB
+ spark.executor.memory  >  SPARK_EXECUTOR_MEMORY >  SPARK_MEM
+   *
+   /
+  _executorMemory = _conf.getOption("spark.executor.memory")
+      .orElse(Option(System.getenv("SPARK_EXECUTOR_MEMORY")))
+      .orElse(Option(System.getenv("SPARK_MEM"))
+      .map(warnSparkMem))
+      .map(Utils.memoryStringToMb)
+      .getOrElse(1024)
+```
 
 
 ### Spark系统设置配置信息
@@ -270,6 +287,44 @@ def create(config: RpcEnvConfig): RpcEnv = {
 
     envInstance
 ```
+
+### 创建SparkUI
+ ```scala
+    _ui =
+      if (conf.getBoolean("spark.ui.enabled", true)) {
+        Some(SparkUI.createLiveUI(this, _conf, listenerBus, _jobProgressListener,
+          _env.securityManager, appName, startTime = startTime))
+      } else {
+        // For tests, do not enable the UI
+        None
+      }
+    // Bind the UI before starting the task scheduler to communicate
+    // the bound port to the cluster manager properly
+    _ui.foreach(_.bind())
+```
+
+### 注册心跳接收器
+ ```scala
+    // We need to register "HeartbeatReceiver" before "createTaskScheduler" because Executor will
+    // retrieve "HeartbeatReceiver" in the constructor. (SPARK-6640)
+    _heartbeatReceiver = env.rpcEnv.setupEndpoint(
+      HeartbeatReceiver.ENDPOINT_NAME, new HeartbeatReceiver(this))
+```
+
+### 创建和启动调度器(TaskScheduler,DAGScheduler)
+ ```scala
+    // Create and start the scheduler
+    val (sched, ts) = SparkContext.createTaskScheduler(this, master)
+    _schedulerBackend = sched
+    _taskScheduler = ts
+    _dagScheduler = new DAGScheduler(this)
+    _heartbeatReceiver.ask[Boolean](TaskSchedulerIsSet)
+
+    // start TaskScheduler after taskScheduler sets DAGScheduler reference in DAGScheduler's
+    // constructor
+    _taskScheduler.start()
+```
+
 
 
 
