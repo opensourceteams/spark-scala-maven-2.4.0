@@ -77,6 +77,15 @@ object SchedulingMode extends Enumeration {
 - spark.executor.extraClassPath=   //设置 executor 执行的classpath
 - spark.executor.extraLibraryPath= //设置 executor LibraryPath
 - spark.executor.cores=    //executor core 个数分配
+- spark.rpc.lookupTimeout="120s"   //设置 RPCTimeout超时时间
+- spark.network.timeout="120s"   //设置 RPCTimeout超时时间
+ ```scala
+  /** Returns the default Spark timeout to use for RPC remote endpoint lookup. */
+  private[spark] def lookupRpcTimeout(conf: SparkConf): RpcTimeout = {
+    RpcTimeout(conf, Seq("spark.rpc.lookupTimeout", "spark.network.timeout"), "120s")
+  }
+```
+
 
 ### Spark系统设置配置信息
 - spark.driver.host = Utils.localHostName()
