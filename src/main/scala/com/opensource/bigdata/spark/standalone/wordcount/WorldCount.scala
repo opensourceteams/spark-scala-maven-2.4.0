@@ -9,7 +9,7 @@ object WorldCount extends BaseScalaSparkContext{
 
     val startTime = System.currentTimeMillis()
 
-    appName = "HelloWorld-1"
+    appName = "HelloWorld-standalone"
     val sc = sparkContext
 
     //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.txt")
