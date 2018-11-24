@@ -73,6 +73,10 @@ object SchedulingMode extends Enumeration {
 }
 ```
 
+-  spark.executor.extraJavaOptions=   //设置executor启动执行的java参数
+- spark.executor.extraClassPath=   //设置 executor 执行的classpath
+- spark.executor.extraLibraryPath= //设置 executor LibraryPath
+- spark.executor.cores=    //executor core 个数分配
 
 ### Spark系统设置配置信息
 - spark.driver.host = Utils.localHostName()
@@ -361,6 +365,175 @@ def create(config: RpcEnvConfig): RpcEnv = {
  */
 ```
 
+- Standalone模式创建TaskSchedulerImpl并初使化中指定 backend为SparkDeploySchedulerBackend
+ ```scala
+      case SPARK_REGEX(sparkUrl) =>
+        val scheduler = new TaskSchedulerImpl(sc)
+        val masterUrls = sparkUrl.split(",").map("spark://" + _)
+        val backend = new SparkDeploySchedulerBackend(scheduler, sc, masterUrls)
+        scheduler.initialize(backend)
+        (backend, scheduler)
+```
+
+ ```scala
+  def initialize(backend: SchedulerBackend) {
+    this.backend = backend
+    // temporarily set rootPool name to empty
+    rootPool = new Pool("", schedulingMode, 0, 0)
+    schedulableBuilder = {
+      schedulingMode match {
+        case SchedulingMode.FIFO =>
+          new FIFOSchedulableBuilder(rootPool)
+        case SchedulingMode.FAIR =>
+          new FairSchedulableBuilder(rootPool, conf)
+      }
+    }
+    schedulableBuilder.buildPools()
+  }
+```
+
+
+
+###  任务调度器启动
+- 任务调度器启动_taskScheduler.start()
+
+ ```scala
+ // start TaskScheduler after taskScheduler sets DAGScheduler reference in DAGScheduler's
+    // constructor
+    _taskScheduler.start()
+```
+- 调用SparkDeploySchedulerBackend start方法
+```scala
+  override def start() {
+    backend.start()
+
+    if (!isLocal && conf.getBoolean("spark.speculation", false)) {
+      logInfo("Starting speculative execution thread")
+      speculationScheduler.scheduleAtFixedRate(new Runnable {
+        override def run(): Unit = Utils.tryOrStopSparkContext(sc) {
+          checkSpeculatableTasks()
+        }
+      }, SPECULATION_INTERVAL_MS, SPECULATION_INTERVAL_MS, TimeUnit.MILLISECONDS)
+    }
+  }
+```
+
+- 再调用CoarseGrainedSchedulerBackend 的start方法  registerRpcEndpoint 
+注册（通信用） [CoarseGrainedScheduler]
+- 实例化ApplicationDescription 包含 command (org.apache.spark.executor.CoarseGrainedExecutorBackend)
+- 启动 AppClient   registerRpcEndpoint 注册（通信用）[AppClient]
+```scala
+override def start() {
+    super.start()
+    launcherBackend.connect()
+
+    // The endpoint for executors to talk to us
+    val driverUrl = rpcEnv.uriOf(SparkEnv.driverActorSystemName,
+      RpcAddress(sc.conf.get("spark.driver.host"), sc.conf.get("spark.driver.port").toInt),
+      CoarseGrainedSchedulerBackend.ENDPOINT_NAME)
+    val args = Seq(
+      "--driver-url", driverUrl,
+      "--executor-id", "{{EXECUTOR_ID}}",
+      "--hostname", "{{HOSTNAME}}",
+      "--cores", "{{CORES}}",
+      "--app-id", "{{APP_ID}}",
+      "--worker-url", "{{WORKER_URL}}")
+    val extraJavaOpts = sc.conf.getOption("spark.executor.extraJavaOptions")
+      .map(Utils.splitCommandString).getOrElse(Seq.empty)
+    val classPathEntries = sc.conf.getOption("spark.executor.extraClassPath")
+      .map(_.split(java.io.File.pathSeparator).toSeq).getOrElse(Nil)
+    val libraryPathEntries = sc.conf.getOption("spark.executor.extraLibraryPath")
+      .map(_.split(java.io.File.pathSeparator).toSeq).getOrElse(Nil)
+
+    // When testing, expose the parent class path to the child. This is processed by
+    // compute-classpath.{cmd,sh} and makes all needed jars available to child processes
+    // when the assembly is built with the "*-provided" profiles enabled.
+    val testingClassPath =
+      if (sys.props.contains("spark.testing")) {
+        sys.props("java.class.path").split(java.io.File.pathSeparator).toSeq
+      } else {
+        Nil
+      }
+
+    // Start executors with a few necessary configs for registering with the scheduler
+    val sparkJavaOpts = Utils.sparkJavaOpts(conf, SparkConf.isExecutorStartupConf)
+    val javaOpts = sparkJavaOpts ++ extraJavaOpts
+    val command = Command("org.apache.spark.executor.CoarseGrainedExecutorBackend",
+      args, sc.executorEnvs, classPathEntries ++ testingClassPath, libraryPathEntries, javaOpts)
+    val appUIAddress = sc.ui.map(_.appUIAddress).getOrElse("")
+    val coresPerExecutor = conf.getOption("spark.executor.cores").map(_.toInt)
+    val appDesc = new ApplicationDescription(sc.appName, maxCores, sc.executorMemory,
+      command, appUIAddress, sc.eventLogDir, sc.eventLogCodec, coresPerExecutor)
+    client = new AppClient(sc.env.rpcEnv, masters, appDesc, this, conf)
+    client.start()
+    launcherBackend.setState(SparkAppHandle.State.SUBMITTED)
+    waitForRegistration()
+    launcherBackend.setState(SparkAppHandle.State.RUNNING)
+  }
+```
+
+- 调用ClientEndpoint 的 onStart方法 异步向所有master注册,向master发送消息： RegisterApplication
+ ```scala
+override def onStart(): Unit = {
+      try {
+        registerWithMaster(1)
+      } catch {
+        case e: Exception =>
+          logWarning("Failed to connect to master", e)
+          markDisconnected()
+          stop()
+      }
+    }
+```
+ ```scala
+  /**
+     * Register with all masters asynchronously. It will call `registerWithMaster` every
+     * REGISTRATION_TIMEOUT_SECONDS seconds until exceeding REGISTRATION_RETRIES times.
+     * Once we connect to a master successfully, all scheduling work and Futures will be cancelled.
+     *
+     * nthRetry means this is the nth attempt to register with master.
+     */
+    private def registerWithMaster(nthRetry: Int) {
+      registerMasterFutures.set(tryRegisterAllMasters())
+      registrationRetryTimer.set(registrationRetryThread.scheduleAtFixedRate(new Runnable {
+        override def run(): Unit = {
+          if (registered.get) {
+            registerMasterFutures.get.foreach(_.cancel(true))
+            registerMasterThreadPool.shutdownNow()
+          } else if (nthRetry >= REGISTRATION_RETRIES) {
+            markDead("All masters are unresponsive! Giving up.")
+          } else {
+            registerMasterFutures.get.foreach(_.cancel(true))
+            registerWithMaster(nthRetry + 1)
+          }
+        }
+      }, REGISTRATION_TIMEOUT_SECONDS, REGISTRATION_TIMEOUT_SECONDS, TimeUnit.SECONDS))
+    }
+```
+
+ ```scala
+    /**
+     *  Register with all masters asynchronously and returns an array `Future`s for cancellation.
+     */
+    private def tryRegisterAllMasters(): Array[JFuture[_]] = {
+      for (masterAddress <- masterRpcAddresses) yield {
+        registerMasterThreadPool.submit(new Runnable {
+          override def run(): Unit = try {
+            if (registered.get) {
+              return
+            }
+            logInfo("Connecting to master " + masterAddress.toSparkURL + "...")
+            val masterRef =
+              rpcEnv.setupEndpointRef(Master.SYSTEM_NAME, masterAddress, Master.ENDPOINT_NAME)
+            masterRef.send(RegisterApplication(appDescription, self))
+          } catch {
+            case ie: InterruptedException => // Cancelled
+            case NonFatal(e) => logWarning(s"Failed to connect to master $masterAddress", e)
+          }
+        })
+      }
+    }
+```
 
 
 
