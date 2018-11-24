@@ -566,7 +566,78 @@ override def onStart(): Unit = {
 ```
 
 
+### org.apache.spark.rpc.netty.Dispatcher
 
+#### 类文档说明
+ ```scala
+/**
+一个消息分配器，负责将RPC消息路由到适当的端点
+ * A message dispatcher, responsible for routing RPC messages to the appropriate endpoint(s).
+ */
+private[netty] class Dispatcher(nettyEnv: NettyRpcEnv) extends Logging {
+```
+
+#### 注册RPC端点 (关键通信及OnStart方法的调用)
+```scala
+/**
+ * new EndpointData(name, endpoint, endpointRef) 的时候会进行 
+ *  val inbox = new Inbox(ref, endpoint)的操作
+ * Inbox 实例化时会进行如下操作，当相于首先增加OnStart消息
+ // OnStart should be the first message to process
+  inbox.synchronized {
+    messages.add(OnStart)
+  }
+ */
+def registerRpcEndpoint(name: String, endpoint: RpcEndpoint): NettyRpcEndpointRef = {
+    val addr = RpcEndpointAddress(nettyEnv.address, name)
+    val endpointRef = new NettyRpcEndpointRef(nettyEnv.conf, addr, nettyEnv)
+    synchronized {
+      if (stopped) {
+        throw new IllegalStateException("RpcEnv has been stopped")
+      }
+      if (endpoints.putIfAbsent(name, new EndpointData(name, endpoint, endpointRef)) != null) {
+        throw new IllegalArgumentException(s"There is already an RpcEndpoint called $name")
+      }
+      val data = endpoints.get(name)
+      endpointRefs.put(data.endpoint, data.ref)
+      receivers.offer(data)  // for the OnStart message
+    }
+    endpointRef
+  }
+```
+
+#### Inbox
+A inbox that stores messages for an [[RpcEndpoint]] and posts messages to it thread-safely.
+
+ ```scala
+ /**
+ * Inbox 实例化时会进行如下操作，当相于首先增加OnStart消息给当前的对象
+ (也就是每个RpcEndpoint 子类进行注册时，首先增加OnStart消息)
+ * OnStart消息在 process方法中会进行 endpoint实现类的onStart() 方法回调
+ */
+  // OnStart should be the first message to process
+  inbox.synchronized {
+    messages.add(OnStart)
+  }
+
+```
+
+```scala
+  /**
+   * Process stored messages.
+   */
+  def process(dispatcher: Dispatcher): Unit = {
+	  ......
+case OnStart =>
+            endpoint.onStart()
+            if (!endpoint.isInstanceOf[ThreadSafeRpcEndpoint]) {
+              inbox.synchronized {
+                if (!stopped) {
+                  enableConcurrent = true
+                }
+              }
+            }
+```
 
 ### 入口代码块 400行
 
