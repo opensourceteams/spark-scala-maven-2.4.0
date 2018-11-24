@@ -471,6 +471,27 @@ override def start() {
     launcherBackend.setState(SparkAppHandle.State.RUNNING)
   }
 ```
+- CoarseGrainedSchedulerBackend 文档
+ ```scala
+/**
+). 一个后端调度器 等待粗粒度 executors 通过 Akka连接他
+).在Spark作业期间，这个后端调度接管着每个executor 比起交出executors给别人调度
+).无论何时完成任务，都要求调度器启动一个新的executor给每个每个新的任务
+).executors 可以以多种方式启动，例如 粗粒度 Mesos模式 Mesos任务
+).或Spark standalone 部署模式的 standalone 处理
+
+ * A scheduler backend that waits for coarse grained executors to connect to it through Akka.
+ * This backend holds onto each executor for the duration of the Spark job rather than relinquishing
+ * executors whenever a task is done and asking the scheduler to launch a new executor for
+ * each new task. Executors may be launched in a variety of ways, such as Mesos tasks for the
+ * coarse-grained Mesos mode or standalone processes for Spark's standalone deploy mode
+ * (spark.deploy.*).
+ */
+private[spark]
+class CoarseGrainedSchedulerBackend(scheduler: TaskSchedulerImpl, val rpcEnv: RpcEnv)
+  extends ExecutorAllocationClient with SchedulerBackend with Logging
+{
+```
 
 - 调用ClientEndpoint 的 onStart方法 异步向所有master注册,向master发送消息： RegisterApplication
  ```scala
