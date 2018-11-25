@@ -1,7 +1,6 @@
 # SparkContext 源码分析
 ## Youtub 视频分享
-    Youtub视频(Spark源理分析图解): https://youtu.be/euIuutjAB4I
-    Youtub视频(Spark源码分析): https://youtu.be/euIuutjAB4I
+    Youtub视频: https://youtu.be/euIuutjAB4I
 ## 文档说明
 ```shell
 Main entry point for Spark functionality. A SparkContext represents the connection to a Spark cluster, and can be used to create RDDs, accumulators and broadcast variables on that cluster. Only one SparkContext may be active per JVM. You must stop() the active SparkContext before creating a new one. This limitation may eventually be removed; see SPARK-2243 for more details.
@@ -18,6 +17,9 @@ Main entry point for Spark functionality. A SparkContext represents the connecti
 ## SparkContext原理图
 
 [![SparkContext原理图](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/SparkContext.png "SparkContext原理图")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/SparkContext.png "SparkContext原理图")
+
+### xmind文件下载
+https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/SparkContext.xmind
 
 ## 配置信息
 ### 可配置信息
