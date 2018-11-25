@@ -5,7 +5,11 @@
     
 ## 文档说明
 ```shell
-Main entry point for Spark functionality. A SparkContext represents the connection to a Spark cluster, and can be used to create RDDs, accumulators and broadcast variables on that cluster. Only one SparkContext may be active per JVM. You must stop() the active SparkContext before creating a new one. This limitation may eventually be removed; see SPARK-2243 for more details.
+Main entry point for Spark functionality.
+ A SparkContext represents the connection to a Spark cluster, 
+ and can be used to create RDDs, accumulators and broadcast variables on that cluster.
+  Only one SparkContext may be active per JVM. You must stop() the active SparkContext before creating a new one. 
+  This limitation may eventually be removed; see SPARK-2243 for more details.
 ```
 ## 翻译
 ```html
