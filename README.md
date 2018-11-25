@@ -12,7 +12,7 @@ spark-scala-maven
 
 ### SparkContext 分析
  - youtube 视频（SparkContext原理分析）: https://youtu.be/euIuutjAB4I
- - youtube 视频（SparkContext原码实现）: https://youtu.be/euIuutjAB4I
+ - Youtub  视频 (Spark源码分析详解):  https://youtu.be/tUH7QnCcwgg
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
 
 
