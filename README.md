@@ -11,7 +11,8 @@ spark-scala-maven
 - [HadoopRdd源码分析 本地文件读取源码分析 04](https://youtu.be/GcPi9b-iltE "HadoopRdd源码分析 本地文件读取源码分析 04")
 
 ### SparkContext 分析
- - youtube 视频: 
+ - youtube 视频（SparkContext原理分析）: https://youtu.be/euIuutjAB4I
+ - youtube 视频（SparkContext原码实现）: https://youtu.be/euIuutjAB4I
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
 
 
