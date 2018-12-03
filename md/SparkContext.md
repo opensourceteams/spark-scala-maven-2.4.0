@@ -86,6 +86,9 @@ object SchedulingMode extends Enumeration {
 }
 ```
 
+
+- spark.cores.max=2  设置executor占用cpu内核个数
+
 -  spark.executor.extraJavaOptions=   //设置executor启动执行的java参数
 - spark.executor.extraClassPath=   //设置 executor 执行的classpath
 - spark.executor.extraLibraryPath= //设置 executor LibraryPath
