@@ -20,6 +20,22 @@ spark-scala-maven
  - 详细说明文档： https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/spark-tong-xin-fa-jian-xiang-he-shou-jian-xiang
 
 
+### Spark Master启动源码分析
+ - Youtub  视频 (Spark通信原理分析):  https://youtu.be/74q1nddoaiY​
+ - Youtub  视频 (Spark worker向master注册源码分析Master资源调试):  https://youtu.be/74q1nddoaiY​
+ - 详细说明文档： https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/master-yuan-ma-fen-xi​
+
+
+### Spark Worker启动源码分析
+ - Youtub  视频 (Spark  Worker启动源码分析详情):   https://youtu.be/ll_Ae6rP7II​​
+ - 详细说明文档：  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/worker-yuan-ma-fen-xi​
+ 
+ 
+
+
+
+
+
 ### RDD依赖 Dependency
 
 #### NarrowDependency
