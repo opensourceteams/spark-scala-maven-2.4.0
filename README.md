@@ -32,8 +32,13 @@ spark-scala-maven
 
 
 ### Spark Worker启动源码分析
- - Youtub  视频 (Spark  Worker启动源码分析详情):   https://youtu.be/ll_Ae6rP7II​​
- - 详细说明文档：  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/worker-yuan-ma-fen-xi​
+ - Spark Worker 启动源码分析(Youtube视频):   https://youtu.be/ll_Ae6rP7II​​
+ - Spark Worker 启动源码分析(文档详解):  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/worker-yuan-ma-fen-xi​
+ 
+ 
+ ### Spark Executor启动源码分析
+  - Spark Executor启动源码分析(Youtube视频):   
+  - Spark Executor启动源码分析(文档详解)：  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/coarsegrainedexecutorbackend-qi-dong-yuan-ma-fen-xi
  
  
 
