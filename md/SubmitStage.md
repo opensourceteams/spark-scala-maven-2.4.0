@@ -1,6 +1,9 @@
 # Spark stage提交
 
 
+## Youtube 视频
+- Spark Stage提交(Youtube视频) : https://youtu.be/NI8-_X6mbl4
+
 ## 作业提交事件处理
 - DAGScheduler 处事作业提交事件
 - 用参数finalStage 调用 submitStage() 方法
