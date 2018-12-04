@@ -1,5 +1,8 @@
 # Spark DAG调度器事件循环处理器
 
+## Youtube 视频
+- Spark DAG调度器事件循环处理器(Youtube视频) : https://youtu.be/fT-dpf0KFOA
+
 ## DAGSchedulerEventProcessLoop.scala
 - DAGSchedulerEventProcessLoop(DAG调度器事件循环处理器)继承抽象类EventLoop(事件循环器)
 - 当调用 post方法增加事件时，实际上是往EventLoop中的列表阻塞队列eventQueue增加元素
