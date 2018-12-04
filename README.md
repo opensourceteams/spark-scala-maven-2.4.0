@@ -26,7 +26,7 @@ spark-scala-maven
 
 ### Spark Master启动源码分析
  - Youtub  视频 (Master启动源码分析):  https://youtu.be/74q1nddoaiY​
- - Master启动源码分析详细说明文档： https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/master-yuan-ma-fen-xi​
+ - Master启动源码分析详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartMaster.md
  
  - Spark Master资源调度--worker向master注册(Youtube视频):  https://youtu.be/74q1nddoaiY​
  - Spark Master资源调试--worker向master注册(文档详解)： https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/master-zi-yuan-tiao-du-worker-xiang-master-zhu-ce
