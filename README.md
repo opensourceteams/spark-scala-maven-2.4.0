@@ -55,7 +55,7 @@ spark-scala-maven
  
 ### Spark Stage提交
  - Spark Stage提交(Youtube视频) :  
- - Spark Stage提交(文档详解)：
+ - Spark Stage提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SubmitStage.md 
  
 
 
