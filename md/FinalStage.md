@@ -2,6 +2,7 @@
 
 ## 说明
 - 由于DAGScheduler进行stage提交传的参数为FinalStage,所以对FinalStage的构成进行分析
+- RDD依赖为shuffleDep的stage已经进行了缓存,(这个时候已经对Stage进行明显的划分，只是没有提交) shuffleToMapStage.get(shuffleDep.shuffleId) 
 
 ## DAGScheduler事件处理JobSubmitted
 - 调用newResultStage()方法
