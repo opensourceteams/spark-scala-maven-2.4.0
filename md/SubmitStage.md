@@ -52,6 +52,9 @@
 ##  submitStage 方法处理
 
 - 验证当前stage所在的job是活动的才继续(如Job取消了，再继续也没有意义)
+- 对waitingStages，runningStages，failedStages 进行验证(stage不能重复提交)
+- stage提交之前先验证当前stage的上级stage是否为空，只有为空的才可以提交
+- 当ShuffleMapStage的所有partition处理完成后，会设置isAvailable为真，也就是该stage已被处理完成，不需要再处理了，这时他的子Stage就可以提交了
 
 
 ```scala
@@ -79,6 +82,46 @@
   }
 ```
 
+
+
+- 查找上级Stage
+- 内部会递归一直找到祖先Stage
+- (在这里判断)当ShuffleMapStage的所有partition处理完成后，会设置isAvailable为真，也就是该stage已被处理完成，不需要再处理了，这时他的子Stage就可以提交了
+- getShuffleMapStage 跟 FinalStage的构建，那时的Stage划分一样，并且在FinalStage已对ShuffleDenpendency的Stage进行了缓存，这时直接根据ShuffleId匹配，直接用
+
+```scala
+private def getMissingParentStages(stage: Stage): List[Stage] = {
+    val missing = new HashSet[Stage]
+    val visited = new HashSet[RDD[_]]
+    // We are manually maintaining a stack here to prevent StackOverflowError
+    // caused by recursively visiting
+    val waitingForVisit = new Stack[RDD[_]]
+    def visit(rdd: RDD[_]) {
+      if (!visited(rdd)) {
+        visited += rdd
+        val rddHasUncachedPartitions = getCacheLocs(rdd).contains(Nil)
+        if (rddHasUncachedPartitions) {
+          for (dep <- rdd.dependencies) {
+            dep match {
+              case shufDep: ShuffleDependency[_, _, _] =>
+                val mapStage = getShuffleMapStage(shufDep, stage.firstJobId)
+                if (!mapStage.isAvailable) {
+                  missing += mapStage
+                }
+              case narrowDep: NarrowDependency[_] =>
+                waitingForVisit.push(narrowDep.rdd)
+            }
+          }
+        }
+      }
+    }
+    waitingForVisit.push(stage.rdd)
+    while (waitingForVisit.nonEmpty) {
+      visit(waitingForVisit.pop())
+    }
+    missing.toList
+  }
+```
 
 
 
