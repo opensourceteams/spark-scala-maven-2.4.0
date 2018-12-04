@@ -78,7 +78,7 @@ object WorldCount extends BaseScalaSparkContext{
 
 ## 源码分析
 ### worldCount.scala
-- 最后一个RDD变量为result,此时的RDD的依赖关系为
+- RDD之间的依赖关系为
 
 ```shell
 val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/a.txt")
@@ -98,7 +98,10 @@ MapPartitionsRDD[1]     ->      OneToOneDependency(NarrowDependency)		->   rdd1
 HadoopRDD[0]     ->      Nil		->   rdd0
 -----------------------------------------------------------------
 
+
 ```
+[![WorldCount中RDD之间的关系](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/WorldCount%E4%B8%ADRDD%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png "WorldCount中RDD之间的关系")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/WorldCount%E4%B8%ADRDD%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png "WorldCount中RDD之间的关系")
+
 
 
 
