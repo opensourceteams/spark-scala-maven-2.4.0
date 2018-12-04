@@ -42,12 +42,12 @@ spark-scala-maven
  
  
 ### Spark 触发Job提交
- - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/jobSubmitTrigger.md
  - Spark 触发Job提交(youtube视频) : https://youtu.be/X49RIqz2AjM
+ - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/jobSubmitTrigger.md
  
 ### Spark DAG调度器事件循环处理器
- - Spark DAG调度器事件循环处理器(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 
  - Spark DAG调度器事件循环处理器(Youtube视频) : https://youtu.be/fT-dpf0KFOA
+ - Spark DAG调度器事件循环处理器(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 
  
 ### Spark FinalStage处理
  - Spark FinalStage处理(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/FinalStage.md 
