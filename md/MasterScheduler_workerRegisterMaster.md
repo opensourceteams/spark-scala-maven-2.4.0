@@ -1,10 +1,10 @@
-# Master资源调度--Worker向Master注册
+# Spark Master资源调度--Worker向Master注册
 
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
 
 ## Youtube 视频
-- youtube (Master资源调度--Worker向Master注册)  https://youtu.be/SFqXaIKt-yI​
+- youtube (Spark Master资源调度--Worker向Master注册)  https://youtu.be/SFqXaIKt-yI​
 
 ## Worker向Master注册
 ### worker发送注册消息(RegisterWorker)

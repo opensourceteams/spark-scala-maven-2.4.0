@@ -1,10 +1,10 @@
-# Master资源调度--SparkContext向所有master注册
+# Spark Master资源调度--SparkContext向所有master注册
 
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
 
 ## Youtube视频分享
-- Master资源调度--SparkContext向所有master注册 : https://youtu.be/AXxCnCc5Mh0​
+- Spark Master资源调度--SparkContext向所有master注册 : https://youtu.be/AXxCnCc5Mh0​
 
 ## SparkContext启动向master发送消息
 - ClientEndpoint向master发送消息: RegisterApplication
