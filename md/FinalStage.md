@@ -123,3 +123,6 @@ private[scheduler] def handleJobSubmitted(jobId: Int,
 ```
 
 
+## 图解FinalStage
+
+[![FinalStage图解](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/FinalStage.png "FinalStage图解")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/FinalStage.png "FinalStage图解")
