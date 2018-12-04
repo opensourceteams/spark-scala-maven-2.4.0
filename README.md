@@ -2,6 +2,7 @@
 SPARK 1.6.0-cdh5.15.0
 Hadoop 2.6.0-cdh5.15.0
 spark-scala-maven 
+微信(技术交流) : thinktothings
 
 
 
