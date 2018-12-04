@@ -37,7 +37,7 @@ spark-scala-maven
 
 ### Spark Worker启动源码分析
  - Spark Worker 启动源码分析(Youtube视频):   https://youtu.be/ll_Ae6rP7II​​
- - Spark Worker 启动源码分析(文档详解):  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/worker-yuan-ma-fen-xi​
+ - Spark Worker 启动源码分析(文档详解):  https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartWorker.md
  
  
 ### Spark Executor启动源码分析
