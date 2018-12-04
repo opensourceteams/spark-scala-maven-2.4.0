@@ -42,7 +42,7 @@ spark-scala-maven
  
 ### Spark Executor启动源码分析
   - Spark Executor启动源码分析(Youtube视频):   https://youtu.be/1qg4UMPV3pQ
-  - Spark Executor启动源码分析(文档详解)：  https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/coarsegrainedexecutorbackend-qi-dong-yuan-ma-fen-xi
+  - Spark Executor启动源码分析(文档详解)：   https://github.com/opensourceteams/spark-scala-maven/blob/master/md/CoarseGrainedExecutorBackend_start.md
  
  
 ### Spark 触发Job提交
