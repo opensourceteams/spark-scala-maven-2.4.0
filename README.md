@@ -43,6 +43,7 @@ spark-scala-maven
  
 ### Spark 触发Job提交
  - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/jobSubmitTrigger.md
+ - Spark 触发Job提交(youtube视频) : https://youtu.be/X49RIqz2AjM
  
 ### Spark DAG调度器事件循环处理器
  - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 

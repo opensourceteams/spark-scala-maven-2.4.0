@@ -1,6 +1,7 @@
-# Spark 触发Job 提交
+# Spark 触发Job提交
 
-
+## youtube 视频说明
+- Spark 触发Job提交(youtube视频) : https://youtu.be/X49RIqz2AjM
 ## 客户端源码
 - github: https://github.com/opensourceteams/spark-scala-maven
 - BaseScalaSparkContext.scala
