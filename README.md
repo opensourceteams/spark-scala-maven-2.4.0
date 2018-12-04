@@ -21,7 +21,7 @@ spark-scala-maven
 
 ### Spark 通信原理分析
  - Youtub  视频 (Spark通信原理分析):  https://youtu.be/3vUVwbEGf1E
- - 详细说明文档： https://thinktothings.gitbook.io/spark/yuan-ma-fen-xi/spark-tong-xin-fa-jian-xiang-he-shou-jian-xiang
+ - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OutBoxAndInBox.md
 
 
 ### Spark Master启动源码分析
