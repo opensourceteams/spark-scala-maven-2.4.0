@@ -1,4 +1,6 @@
-# Spark FinalStage 处理
+# Spark FinalStage处理(Stage划分)
+## Youtube视频
+- Spark FinalStage处理(Stage划分)(Youtube视频) : https://youtu.be/yFJugOV0Fak
 
 ## 说明
 - 由于DAGScheduler进行stage提交传的参数为FinalStage,所以对FinalStage的构成进行分析
