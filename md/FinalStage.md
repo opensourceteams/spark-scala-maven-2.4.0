@@ -1,4 +1,9 @@
 # Spark FinalStage处理(Stage划分)
+
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
+
 ## Youtube视频
 - Spark FinalStage处理(Stage划分)(Youtube视频) : https://youtu.be/yFJugOV0Fak
 

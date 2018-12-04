@@ -1,5 +1,8 @@
 # Spark stage提交
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
 
 ## Youtube 视频
 - Spark Stage提交(Youtube视频) : https://youtu.be/NI8-_X6mbl4

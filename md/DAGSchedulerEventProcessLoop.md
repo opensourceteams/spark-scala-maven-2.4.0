@@ -1,5 +1,8 @@
 # Spark DAG调度器事件循环处理器
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
 ## Youtube 视频
 - Spark DAG调度器事件循环处理器(Youtube视频) : https://youtu.be/fT-dpf0KFOA
 
