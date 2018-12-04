@@ -240,3 +240,8 @@ private[spark] abstract class EventLoop[E](name: String) extends Logging {
 }
 
 ```
+
+
+## 图解
+
+[![DAG调度器事件循环处理器处事事件](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/Dag%E8%B0%83%E5%BA%A6%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%A4%84%E7%90%86%E5%99%A8.png "DAG调度器事件循环处理器处事事件")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/example/Dag%E8%B0%83%E5%BA%A6%E5%99%A8%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%A4%84%E7%90%86%E5%99%A8.png "DAG调度器事件循环处理器处事事件")
