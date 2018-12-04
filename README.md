@@ -46,6 +46,10 @@ spark-scala-maven
  
 ### Spark DAG调度器事件循环处理器
  - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 
+ 
+### Spark FinalStage处理
+ - Spark FinalStage处理(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/FinalStage.md 
+ 
 
 
 
