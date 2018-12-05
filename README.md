@@ -1,3 +1,4 @@
+
 # SPARK 源码分析技术分享 (带bilibili视频)
 【本站点正在持续更新中......】
 
@@ -29,22 +30,39 @@
 ### Spark 通信原理分析
  - Youtub  视频 (Spark通信原理分析):  https://youtu.be/3vUVwbEGf1E
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OutBoxAndInBox.md
+- bilibili : https://www.bilibili.com/video/av37442199/
+<iframe src="//player.bilibili.com/player.html?aid=37442199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ### Spark Master启动源码分析
- - Youtub  视频 (Master启动源码分析):  https://youtu.be/74q1nddoaiY​
+ - Spark Master启动源码分析(Youtube视频):  https://youtu.be/74q1nddoaiY​
+ - Spark Master启动源码分析(Bilibili视频):   https://www.bilibili.com/video/av37442271/
  - Master启动源码分析详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartMaster.md
+
+<iframe src="//player.bilibili.com/player.html?aid=37442271&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
  
  - Spark Master资源调度--worker向master注册(Youtube视频):  https://youtu.be/74q1nddoaiY​
+  - Spark Master资源调度--worker向master注册(Bilibili视频):   https://www.bilibili.com/video/av37442280/
  - Spark Master资源调试--worker向master注册(文档详解)： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/MasterScheduler_workerRegisterMaster.md
 
+<iframe src="//player.bilibili.com/player.html?aid=37442280&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
  - Spark Master资源调度--SparkContext向所有master注册(Youtube视频):  https://youtu.be/AXxCnCc5Mh0​ 
+  - Spark Master资源调度--SparkContext向所有master注册(Bilibili视频):  https://www.bilibili.com/video/av37442295/
  - Spark Master资源调度--SparkContext向所有master注册(文档详解): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/MasterScheduler_SparkContextRegisterMaster.md
+
+<iframe src="//player.bilibili.com/player.html?aid=37442295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 
 ### Spark Worker启动源码分析
  - Spark Worker 启动源码分析(Youtube视频):   https://youtu.be/ll_Ae6rP7II​​
+ - Spark Worker 启动源码分析(Bilibili视频):   https://www.bilibili.com/video/av37442247/
  - Spark Worker 启动源码分析(文档详解):  https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartWorker.md
+
+<iframe src="//player.bilibili.com/player.html?aid=37442247&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 ### Spark Executor启动源码分析
