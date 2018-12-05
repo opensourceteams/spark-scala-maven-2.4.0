@@ -6,6 +6,11 @@
 ## Youtube视频分析
 - Spark CoarseGrainedExecutorBackend启动源码分析(youtube视频) :  https://youtu.be/1qg4UMPV3pQ​
 
+## Bilibili视频分析
+- Spark CoarseGrainedExecutorBackend启动源码分析(bilibili视频) :  https://www.bilibili.com/video/av37442311/
+
+<iframe src="//player.bilibili.com/player.html?aid=37442311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## executor启动图解
 
 [![Executor启动](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/Executor%E5%90%AF%E5%8A%A8.png "Executor启动")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/Executor%E5%90%AF%E5%8A%A8.png "Executor启动")

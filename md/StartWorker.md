@@ -6,6 +6,11 @@
 ## Youtube视频分享
 - youtube: https://youtu.be/ll_Ae6rP7II​
 
+## Bilibili视频分享
+- bilibili:  https://www.bilibili.com/video/av37442247/
+
+<iframe src="//player.bilibili.com/player.html?aid=37442247&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## start-slave.sh启动脚本
 
 - worker启动脚本跟master一样，都调用spark-daemon.sh，只是启动类不一样 

@@ -4,8 +4,13 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 
 ## Youtube视频分享
-
 - youtube:https://youtu.be/3vUVwbEGf1E​
+
+## BiliBili视频分享
+- bilibili : https://www.bilibili.com/video/av37442199/
+
+<iframe src="//player.bilibili.com/player.html?aid=37442199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 ## Spark通信说明图
 [![Spark通信说明图解](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/Spark%E9%80%9A%E4%BF%A1(%E6%94%B6%E4%BB%B6%E7%AE%B1%E5%92%8C%E5%8F%91%E4%BB%B6%E7%AE%B1).png "Spark通信说明图解")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/Spark%E9%80%9A%E4%BF%A1(%E6%94%B6%E4%BB%B6%E7%AE%B1%E5%92%8C%E5%8F%91%E4%BB%B6%E7%AE%B1).png "Spark通信说明图解")

@@ -2,7 +2,14 @@
 ## Youtub 视频分享
 - Youtub视频（Spark原理分析图解）: https://youtu.be/euIuutjAB4I
 - Youtub视频(Spark源码分析详解):  https://youtu.be/tUH7QnCcwgg
-    
+
+## bilibili 视频分享
+- bilibili视频（Spark原理分析图解）: https://youtu.be/euIuutjAB4I
+- bilibili视频(Spark源码分析详解):  https://www.bilibili.com/video/av37442161/
+
+<iframe src="//player.bilibili.com/player.html?aid=37442161&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## 文档说明
 ```shell
 Main entry point for Spark functionality.

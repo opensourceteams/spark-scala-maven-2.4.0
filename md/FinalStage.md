@@ -7,6 +7,11 @@
 ## Youtube视频
 - Spark FinalStage处理(Stage划分)(Youtube视频) : https://youtu.be/yFJugOV0Fak
 
+## BiliBili视频
+- Spark FinalStage处理(Stage划分)(bilibili视频) : https://www.bilibili.com/video/av37445057/
+
+<iframe src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 说明
 - 由于DAGScheduler进行stage提交传的参数为FinalStage,所以对FinalStage的构成进行分析
 - RDD依赖为shuffleDep的stage已经进行了缓存,(这个时候已经对Stage进行明显的划分，只是没有提交) shuffleToMapStage.get(shuffleDep.shuffleId) 

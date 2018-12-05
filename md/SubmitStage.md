@@ -7,6 +7,11 @@
 ## Youtube 视频
 - Spark Stage提交(Youtube视频) : https://youtu.be/NI8-_X6mbl4
 
+## BiliBili 视频
+- Spark Stage提交(bilibili视频) : https://www.bilibili.com/video/av37445077/
+
+<iframe src="//player.bilibili.com/player.html?aid=37445077&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 作业提交事件处理
 - DAGScheduler 处事作业提交事件
 - 用参数finalStage 调用 submitStage() 方法

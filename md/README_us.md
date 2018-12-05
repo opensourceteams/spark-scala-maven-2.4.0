@@ -1,11 +1,12 @@
-# SPARK 源码分析技术分享 (带bilibili视频)
+# SPARK 源码分析技术分享 (带Youtube视频)
 【本站点正在持续更新中......】
 
 - SPARK 1.6.0-cdh5.15.0
 - Hadoop 2.6.0-cdh5.15.0
 - spark-scala-maven 
 - 微信(技术交流) : thinktothings
-- SPARK 源码分析技术分享 (带Youtube视频) :  https://github.com/opensourceteams/spark-scala-maven/blob/master/md/README_us.md
+
+
 
 
 ## Youtub 视频
@@ -18,7 +19,7 @@
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkRemoteDebug.md
 
 ### SparkContext 分析
- - bilibili 视频（SparkContext原理分析）: https://youtu.be/euIuutjAB4I
+ - youtube 视频（SparkContext原理分析）: https://youtu.be/euIuutjAB4I
  - Youtub  视频 (Spark源码分析详解):  https://youtu.be/tUH7QnCcwgg
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
 
@@ -72,21 +73,21 @@
 
 #### NarrowDependency
 - OneToOneDependency
-   - bilibili 视频:  https://youtu.be/Tohv00GJ5AQ
+   - youtube 视频:  https://youtu.be/Tohv00GJ5AQ
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
 - RangeDependency
-   - bilibili 视频:  https://youtu.be/_4DeWWPQubc
+   - youtube 视频:  https://youtu.be/_4DeWWPQubc
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
 - PruneDependency filter
-   - bilibili 视频:  https://youtu.be/5ZCNiEhO_Qg
+   - youtube 视频:  https://youtu.be/5ZCNiEhO_Qg
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
 - PruneDependency RangePartitioner
-   - bilibili 视频:  https://youtu.be/YRQ6OaOXmPY
+   - youtube 视频:  https://youtu.be/YRQ6OaOXmPY
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
 
 
 #### ShuffleDependency
-   - bilibili 视频:  https://youtu.be/8T6PyHuf_wQ
+   - youtube 视频:  https://youtu.be/8T6PyHuf_wQ
    - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
 
 

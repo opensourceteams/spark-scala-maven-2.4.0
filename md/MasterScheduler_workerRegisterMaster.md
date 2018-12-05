@@ -6,6 +6,12 @@
 ## Youtube 视频
 - youtube (Spark Master资源调度--Worker向Master注册)  https://youtu.be/SFqXaIKt-yI​
 
+## Bilibili 视频
+- bilibili (Spark Master资源调度--Worker向Master注册)  https://www.bilibili.com/video/av37442280/
+
+<iframe src="//player.bilibili.com/player.html?aid=37442280&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## Worker向Master注册
 ### worker发送注册消息(RegisterWorker)
 
