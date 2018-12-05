@@ -1,4 +1,5 @@
 
+
 # SPARK 源码分析技术分享 (带bilibili视频)
 【本站点正在持续更新中......2018-12-05......】
 
@@ -11,28 +12,42 @@
 - SPARK 源码分析技术分享 (github) :  https://github.com/opensourceteams/spark-scala-maven
 
 
-## Youtub 视频
-- [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 
-- [HadoopRDD源码分析-文件拆分partition划分-02](https://youtu.be/kesUJxGBWFA "HadoopRDD源码分析-文件拆分partition划分-02")
-- [HadoopRdd源码分析 本地文件读取源码分析 03](https://youtu.be/EuNaoJhK-x4 "HadoopRdd源码分析 本地文件读取源码分析 03")
-- [HadoopRdd源码分析 本地文件读取源码分析 04](https://youtu.be/GcPi9b-iltE "HadoopRdd源码分析 本地文件读取源码分析 04")
+### RDD依赖 Dependency
 
-### Spark 远程调试
- - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkRemoteDebug.md
+#### NarrowDependency
+- OneToOneDependency
+   - bilibili 视频:  https://youtu.be/Tohv00GJ5AQ
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
+- RangeDependency
+   - bilibili 视频:  https://youtu.be/_4DeWWPQubc
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
+- PruneDependency filter
+   - bilibili 视频:  https://youtu.be/5ZCNiEhO_Qg
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
+- PruneDependency RangePartitioner
+   - bilibili 视频:  https://youtu.be/YRQ6OaOXmPY
+   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
+
+
+#### ShuffleDependency
+   - bilibili 视频:  https://youtu.be/8T6PyHuf_wQ
+   - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
+   - 
 
 ### SparkContext 分析
- - bilibili 视频（SparkContext原理分析）: https://youtu.be/euIuutjAB4I
- - Youtub  视频 (Spark源码分析详解):  https://youtu.be/tUH7QnCcwgg
- - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
+ - SparkContext原理分析(Youtube视频): https://youtu.be/euIuutjAB4I
+ - SparkContext源码分析(Youtube视频):  https://youtu.be/tUH7QnCcwgg
+ - SparkContext源码分析(文档详解）： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
  
  <iframe src="//player.bilibili.com/player.html?aid=37442161&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 
 ### Spark 通信原理分析
- - Youtub  视频 (Spark通信原理分析):  https://youtu.be/3vUVwbEGf1E
- - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OutBoxAndInBox.md
+ - Spark通信原理分析(Youtube视频):  https://youtu.be/3vUVwbEGf1E
+ - Spark通信原理分析（文档详解）： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OutBoxAndInBox.md
 - bilibili : https://www.bilibili.com/video/av37442199/
+
 <iframe src="//player.bilibili.com/player.html?aid=37442199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
@@ -108,26 +123,20 @@
 
 
 
-### RDD依赖 Dependency
-
-#### NarrowDependency
-- OneToOneDependency
-   - bilibili 视频:  https://youtu.be/Tohv00GJ5AQ
-   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
-- RangeDependency
-   - bilibili 视频:  https://youtu.be/_4DeWWPQubc
-   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
-- PruneDependency filter
-   - bilibili 视频:  https://youtu.be/5ZCNiEhO_Qg
-   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
-- PruneDependency RangePartitioner
-   - bilibili 视频:  https://youtu.be/YRQ6OaOXmPY
-   - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
 
 
-#### ShuffleDependency
-   - bilibili 视频:  https://youtu.be/8T6PyHuf_wQ
-   - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
+
+======================================================================================
+
+
+## Youtub 视频
+- [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 
+- [HadoopRDD源码分析-文件拆分partition划分-02](https://youtu.be/kesUJxGBWFA "HadoopRDD源码分析-文件拆分partition划分-02")
+- [HadoopRdd源码分析 本地文件读取源码分析 03](https://youtu.be/EuNaoJhK-x4 "HadoopRdd源码分析 本地文件读取源码分析 03")
+- [HadoopRdd源码分析 本地文件读取源码分析 04](https://youtu.be/GcPi9b-iltE "HadoopRdd源码分析 本地文件读取源码分析 04")
+
+### Spark 远程调试
+ - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkRemoteDebug.md
 
 
 
