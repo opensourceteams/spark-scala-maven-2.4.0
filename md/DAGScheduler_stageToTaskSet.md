@@ -17,13 +17,14 @@
 
 - 得到 partitions(分区信息)
 
-	```scala
+
+```scala
 val partitionsToCompute: Seq[Int] = stage.findMissingPartitions()
 ```
 
 - 计算分区的首选位置信息
 
-	```scala
+```scala
  val taskIdToLocations: Map[Int, Seq[TaskLocation]] = try {
       stage match {
         case s: ShuffleMapStage =>
