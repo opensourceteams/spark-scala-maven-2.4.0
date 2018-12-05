@@ -2,6 +2,8 @@
 # Spark Master启动源码分析
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
 
 ## Youtube 视频
 - Spark master启动源码分析: https://youtu.be/74q1nddoaiY​

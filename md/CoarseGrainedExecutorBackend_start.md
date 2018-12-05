@@ -2,6 +2,7 @@
 
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 ## Youtube视频分析
 - Spark CoarseGrainedExecutorBackend启动源码分析(youtube视频) :  https://youtu.be/1qg4UMPV3pQ​

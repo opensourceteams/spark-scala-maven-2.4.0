@@ -6,6 +6,7 @@
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 ## youtub视频演示
   - https://youtu.be/5ZCNiEhO_Qg

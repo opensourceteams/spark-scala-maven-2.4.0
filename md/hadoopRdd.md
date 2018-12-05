@@ -2,7 +2,7 @@
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven
-
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 #### 视频
 - [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 

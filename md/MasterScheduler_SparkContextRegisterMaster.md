@@ -2,6 +2,7 @@
 
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 ## Youtube视频分享
 - Spark Master资源调度--SparkContext向所有master注册 : https://youtu.be/AXxCnCc5Mh0​

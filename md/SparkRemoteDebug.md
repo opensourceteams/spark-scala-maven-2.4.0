@@ -2,6 +2,8 @@
 
 ## 更多资源分享
 - github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
 
 ## IDEA 远程调试设置 Remote Applicate
 [![idea 远程 debug](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/idea_remote_debug.png "idea 远程 debug")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/idea_remote_debug.png "idea 远程 debug")
