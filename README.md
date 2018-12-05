@@ -16,21 +16,21 @@
 
 #### NarrowDependency
 - OneToOneDependency
-   - bilibili 视频:  https://youtu.be/Tohv00GJ5AQ
+   - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=1
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
 - RangeDependency
-   - bilibili 视频:  https://youtu.be/_4DeWWPQubc
+   - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=2 
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
 - PruneDependency filter
-   - bilibili 视频:  https://youtu.be/5ZCNiEhO_Qg
+   - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=3
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
 - PruneDependency RangePartitioner
-   - bilibili 视频:  https://youtu.be/YRQ6OaOXmPY
+   - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=4
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
 
 
 #### ShuffleDependency
-   - bilibili 视频:  https://youtu.be/8T6PyHuf_wQ
+   - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=5
    - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
    - 
 

@@ -1,4 +1,4 @@
-# OneToOneDependency 一对一依赖关系
+# Spark OneToOneDependency 一对一依赖关系
 
 -  Represents a one-to-one dependency between partitions of the parent and child RDDs.
 
@@ -9,9 +9,12 @@
 
 
 ## youtub视频演示
-  - https://youtu.be/Tohv00GJ5AQ
-  - 更多spark相关视频：
-  https://github.com/opensourceteams/spark-scala-maven
+  - https://youtu.be/Tohv00GJ5AQ(youtube视频)
+  - https://www.bilibili.com/video/av37442139/(bilibili视频)
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
   
 ## 输入数据
 

@@ -1,4 +1,4 @@
-# RangeDependency 区间依赖关系
+# Spark RangeDependency 区间依赖关系
 
 -  Represents a one-to-one dependency between ranges of partitions in the parent and child RDDs.
 
@@ -8,8 +8,11 @@
 
 
 ## youtub视频演示
-  - https://youtu.be/_4DeWWPQubc
+  - https://youtu.be/_4DeWWPQubc (youtube视频)
+  - https://www.bilibili.com/video/av37442139/?p=2(bilibili视频)
   - github: https://github.com/opensourceteams/spark-scala-maven
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822246&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
   
 ## 输入数据
 c.txt
