@@ -2,6 +2,11 @@
 
 -  Represents a one-to-one dependency between partitions of the parent and child RDDs.
 
+
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
+
 ## youtub视频演示
   - https://youtu.be/Tohv00GJ5AQ
   - 更多spark相关视频：

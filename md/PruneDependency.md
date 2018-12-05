@@ -3,6 +3,10 @@
 -   Represents a dependency between the PartitionPruningRDD and its parent. In this
   case, the child RDD contains a subset of partitions of the parents'.
 
+
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
 ## youtub视频演示
   - https://youtu.be/5ZCNiEhO_Qg
   - github: https://github.com/opensourceteams/spark-scala-maven

@@ -1,4 +1,9 @@
 ### hadoopRDD源码分析
+
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven
+
+
 #### 视频
 - [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 
 - [HadoopRDD源码分析-文件拆分partition划分-02](https://youtu.be/kesUJxGBWFA "HadoopRDD源码分析-文件拆分partition划分-02")
