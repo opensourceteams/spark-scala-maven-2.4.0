@@ -1,4 +1,4 @@
-# PruneDependency 依赖关系 RangePartitioner
+# Spark PruneDependency 依赖关系 RangePartitioner
 
 -   Represents a dependency between the PartitionPruningRDD and its parent. In this
   case, the child RDD contains a subset of partitions of the parents'.
@@ -9,8 +9,11 @@
 
 
 ## youtub视频演示
-  - https://youtu.be/YRQ6OaOXmPY
-  - github: https://github.com/opensourceteams/spark-scala-maven
+  - https://youtu.be/YRQ6OaOXmPY  (youtube视频)
+  - https://www.bilibili.com/video/av37442139/?p=4  (bilibile视频)
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65838008&page=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
   
 ## 输入数据
 

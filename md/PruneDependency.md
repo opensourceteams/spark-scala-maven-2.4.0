@@ -1,4 +1,4 @@
-# PruneDependency 依赖关系 Filter
+# Spark PruneDependency 依赖关系 Filter
 
 -   Represents a dependency between the PartitionPruningRDD and its parent. In this
   case, the child RDD contains a subset of partitions of the parents'.
@@ -9,8 +9,11 @@
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 ## youtub视频演示
-  - https://youtu.be/5ZCNiEhO_Qg
-  - github: https://github.com/opensourceteams/spark-scala-maven
+  - https://youtu.be/5ZCNiEhO_Qg (youtube视频)
+  - https://www.bilibili.com/video/av37442139/?p=3 (bilibili)
+  
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822402&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
   
 ## 输入数据
 

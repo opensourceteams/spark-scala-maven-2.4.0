@@ -1,4 +1,4 @@
-# ShuffleDependency Shuffle依赖关系
+# Spark ShuffleDependency Shuffle依赖关系
 
 -    Represents a dependency on the output of a shuffle stage. Note that in the case of shuffle,the RDD is transient since we don't need it on the executor side.
 
@@ -8,8 +8,11 @@
 
 
 ## youtub视频演示
-  - https://youtu.be/8T6PyHuf_wQ
+  - https://youtu.be/8T6PyHuf_wQ  (youtube视频)
+  - https://www.bilibili.com/video/av37442139/?p=5  (bilibili视频)
   - github: https://github.com/opensourceteams/spark-scala-maven
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822917&page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
   
 ## 输入数据
 
