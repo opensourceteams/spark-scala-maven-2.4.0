@@ -1,6 +1,6 @@
 
 
-# SPARK 源码分析技术分享 (带bilibili视频)
+# SPARK 源码分析技术分享汇总 (带bilibili视频)
 【本站点正在持续更新中......2018-12-05......】
 
 - SPARK 1.6.0-cdh5.15.0
@@ -18,21 +18,35 @@
 - OneToOneDependency
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=1
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
+   
+   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   
+   
 - RangeDependency
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=2 
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
+   
+   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   
 - PruneDependency filter
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=3
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
+   
+   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   
 - PruneDependency RangePartitioner
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=4
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
+   
+   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 #### ShuffleDependency
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=5
    - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
-   - 
+   
+   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   
 
 ### SparkContext 分析
  - SparkContext原理分析(Youtube视频): https://youtu.be/euIuutjAB4I
