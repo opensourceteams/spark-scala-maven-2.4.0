@@ -139,7 +139,10 @@
 
 
 ### Spark DAGScheduler把stage转换成TaskSet的过程
- - Spark DAGScheduler把stage转换成TaskSet的过程(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGScheduler_stageToTaskSet.md 
+ - Spark DAGScheduler把stage转换成TaskSet的过程(Bilibili视频) https://www.bilibili.com/video/av37442139/?p=18
+ - Spark DAGScheduler把stage转换成TaskSet的过程(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGScheduler_stageToTaskSet.md
+ 
+ <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65893099&page=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> 
 
 
 
