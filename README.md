@@ -6,6 +6,7 @@
 - Hadoop 2.6.0-cdh5.15.0
 - spark-scala-maven 
 - 微信(技术交流) : thinktothings
+- SPARK 源码分析技术分享(视频汇总套装视频): https://www.bilibili.com/video/av37442139/
 - SPARK 源码分析技术分享(视频汇总在线看):https://blog.csdn.net/thinktothings/article/details/84726769
 - SPARK 源码分析技术分享 (github) :  https://github.com/opensourceteams/spark-scala-maven
 
