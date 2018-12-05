@@ -1,6 +1,7 @@
 
 
-# SPARK 源码分析技术分享汇总 (带bilibili视频)
+
+# SPARK 源码分析技术分享 (带bilibili视频)
 【本站点正在持续更新中......2018-12-05......】
 
 - SPARK 1.6.0-cdh5.15.0
@@ -120,20 +121,25 @@
 <iframe src="//player.bilibili.com/player.html?aid=37445034&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
  
-### Spark FinalStage处理(Stage划分)
+### Spark DAGScheduler FinalStage处理(Stage划分)
  - Spark FinalStage处理(Stage划分)(Youtube视频) : https://youtu.be/yFJugOV0Fak
  - Spark FinalStage处理(Stage划分)(Bilibili视频) :  https://www.bilibili.com/video/av37445057/
  - Spark FinalStage处理(Stage划分)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/FinalStage.md 
 
 <iframe src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
-### Spark Stage提交
+### Spark DAGScheduler Stage提交
  - Spark Stage提交(Youtube视频) :  https://youtu.be/NI8-_X6mbl4
  - Spark Stage提交(Bilibili视频) :   https://www.bilibili.com/video/av37445077/
  - Spark Stage提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SubmitStage.md 
  
 
 <iframe src="//player.bilibili.com/player.html?aid=37445077&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+
+### Spark DAGScheduler把stage转换成TaskSet的过程
+ - Spark DAGScheduler把stage转换成TaskSet的过程(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGScheduler_stageToTaskSet.md 
 
 
 
