@@ -67,26 +67,42 @@
  
 ### Spark Executor启动源码分析
   - Spark Executor启动源码分析(Youtube视频):   https://youtu.be/1qg4UMPV3pQ
+  - Spark Executor启动源码分析(Bilibili视频):    https://www.bilibili.com/video/av37442311/
   - Spark Executor启动源码分析(文档详解)：   https://github.com/opensourceteams/spark-scala-maven/blob/master/md/CoarseGrainedExecutorBackend_start.md
+
+<iframe src="//player.bilibili.com/player.html?aid=37442311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 ### Spark 触发Job提交
  - Spark 触发Job提交(youtube视频) : https://youtu.be/X49RIqz2AjM
+ - Spark 触发Job提交(bilibili视频) :  https://www.bilibili.com/video/av37445008/
  - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/jobSubmitTrigger.md
+
+<iframe src="//player.bilibili.com/player.html?aid=37445008&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
  
 ### Spark DAG调度器事件循环处理器
  - Spark DAG调度器事件循环处理器(Youtube视频) : https://youtu.be/fT-dpf0KFOA
+ - Spark DAG调度器事件循环处理器(Bilibili视频) :  https://www.bilibili.com/video/av37445034/
  - Spark DAG调度器事件循环处理器(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 
+
+<iframe src="//player.bilibili.com/player.html?aid=37445034&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
  
 ### Spark FinalStage处理(Stage划分)
  - Spark FinalStage处理(Stage划分)(Youtube视频) : https://youtu.be/yFJugOV0Fak
+ - Spark FinalStage处理(Stage划分)(Bilibili视频) :  https://www.bilibili.com/video/av37445057/
  - Spark FinalStage处理(Stage划分)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/FinalStage.md 
+
+<iframe src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
 ### Spark Stage提交
  - Spark Stage提交(Youtube视频) :  https://youtu.be/NI8-_X6mbl4
+ - Spark Stage提交(Bilibili视频) :   https://www.bilibili.com/video/av37445077/
  - Spark Stage提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SubmitStage.md 
  
 
+<iframe src="//player.bilibili.com/player.html?aid=37445077&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
