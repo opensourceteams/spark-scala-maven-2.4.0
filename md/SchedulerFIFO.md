@@ -117,6 +117,31 @@ schedulableBuilder.addTaskSetManager(manager, manager.taskSet.properties)
   }
 ```
 
+### FIFO调度算法的实现
+- 默认的调度算法FIFO
+- 按作业id进行比较，id小的放在前，也就是先进来的作业先处理
+- 如果作业id相同，就按stageId比较，StageId小的放在前，也就是从第一个Stage依次开始排列
+
+```scala
+
+private[spark] class FIFOSchedulingAlgorithm extends SchedulingAlgorithm {
+  override def comparator(s1: Schedulable, s2: Schedulable): Boolean = {
+    val priority1 = s1.priority
+    val priority2 = s2.priority
+    var res = math.signum(priority1 - priority2)
+    if (res == 0) {
+      val stageId1 = s1.stageId
+      val stageId2 = s2.stageId
+      res = math.signum(stageId1 - stageId2)
+    }
+    if (res < 0) {
+      true
+    } else {
+      false
+    }
+  }
+}
+```
 
 
 
