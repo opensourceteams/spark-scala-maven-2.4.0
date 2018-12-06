@@ -1,7 +1,13 @@
 # Spark TaskSchedulerImpl TaskSet处理
 
 
+## 更多资源
+- SPARK 源码分析技术分享(bilibilid视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 图解
+[![任务集处理](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E4%B8%AD%E4%BB%BB%E5%8A%A1%E9%9B%86%E7%9A%84%E5%A4%84%E7%90%86%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png "任务集处理")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E4%B8%AD%E4%BB%BB%E5%8A%A1%E9%9B%86%E7%9A%84%E5%A4%84%E7%90%86%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png "任务集处理")
 
 ## TaskSchedulerImpl提交任务集
 
