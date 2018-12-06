@@ -1,4 +1,4 @@
-# Spark TaskSchedulerImpl把TaskSet拆分成TaskDescription数组
+# Spark TaskSchedulerImpl TaskSet处理
 
 
 

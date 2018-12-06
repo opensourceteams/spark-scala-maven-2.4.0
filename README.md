@@ -149,8 +149,8 @@
 - Spark TaskSchedulerImpl 任务调度方式(FIFO)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SchedulerFIFO.md
 
 
-### Spark TaskSchedulerImpl 任务集处理
-- Spark TaskSchedulerImpl 任务调度方式(FIFO)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/TaskSchedulerTaskSetDeal.md
+### Spark TaskSchedulerImpl TaskSet处理
+- Spark TaskSchedulerImpl TaskSet处理(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/TaskSchedulerTaskSetDeal.md
 
 
 ======================================================================================

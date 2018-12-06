@@ -6,6 +6,9 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 图解
+[![FIFO](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E5%99%A8FIFO%E7%AE%97%E6%B3%95.png "FIFO")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E5%99%A8FIFO%E7%AE%97%E6%B3%95.png "FIFO")
+
 ## TaskSchedulerImpl提交任务集
 
 - 在DAGScheduler.scal中件中的submitMissingTasks()方法中调用  taskScheduler.submitTasks
