@@ -6,6 +6,13 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 视频分享
+- Spark TaskSchedulerImpl 任务调度方式(FIFO)(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=19
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66005253&page=19" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+
 ## 图解
 [![FIFO](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E5%99%A8FIFO%E7%AE%97%E6%B3%95.png "FIFO")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E5%99%A8FIFO%E7%AE%97%E6%B3%95.png "FIFO")
 
