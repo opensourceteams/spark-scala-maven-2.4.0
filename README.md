@@ -145,7 +145,8 @@
  <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65893099&page=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> 
 
 
-
+### Spark TaskSchedulerImpl 任务调度方式(FIFO)
+- Spark TaskSchedulerImpl 任务调度方式(FIFO)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SchedulerFIFO.md
 
 
 
