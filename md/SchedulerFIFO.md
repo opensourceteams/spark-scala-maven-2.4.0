@@ -1,5 +1,11 @@
 # Spark TaskSchedulerImpl 任务调度方式(FIFO)
 
+
+## 更多资源
+- SPARK 源码分析技术分享(bilibilid视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
 ## TaskSchedulerImpl提交任务集
 
 - 在DAGScheduler.scal中件中的submitMissingTasks()方法中调用  taskScheduler.submitTasks
