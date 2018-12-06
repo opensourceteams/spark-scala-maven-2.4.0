@@ -6,6 +6,17 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 视频分享
+- Spark TaskSchedulerImpl TaskSet原理分析(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=20
+- Spark TaskSchedulerImpl TaskSet原码分析(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=21
+
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66006637&page=20" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=21" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+
 ## 图解
 [![任务集处理](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E4%B8%AD%E4%BB%BB%E5%8A%A1%E9%9B%86%E7%9A%84%E5%A4%84%E7%90%86%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png "任务集处理")](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E4%B8%AD%E4%BB%BB%E5%8A%A1%E9%9B%86%E7%9A%84%E5%A4%84%E7%90%86%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png "任务集处理")
 
