@@ -5,6 +5,17 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 视频分享:
+- Spark 源码分析之ShuffleMapTask处理原理分析图解 (bilibili视频): https://www.bilibili.com/video/av37442139/?p=22
+- Spark 源码分析之ShuffleMapTask处理源码分析 (bilibili视频): https://www.bilibili.com/video/av37442139/?p=23
+- Spark 源码分析之ShuffleMapTask处理原理分析图解 (youtube视频): https://youtu.be/datHorBipMc
+- Spark 源码分析之ShuffleMapTask处理源码分析 (youtube视频): https://youtu.be/cRW_MZ0k5Lw
+
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 图解
 
 [![](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
