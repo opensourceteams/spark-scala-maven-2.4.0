@@ -217,6 +217,167 @@ override def run(): Unit = {
     }
   }
 ```
+- 先调用抽象类Task.run()方法，访方法中调用实现类的 runTask()方法
+- 调用Task的实现类runTask()方法进行任务处理
+
+
+```scala
+ val (value, accumUpdates) = try {
+          val res = task.run(
+            taskAttemptId = taskId,
+            attemptNumber = attemptNumber,
+            metricsSystem = env.metricsSystem)
+          threwException = false
+          res
+        } 
+```
+
 
 ## ShuflleMapTask的处理进程
+
+- ShuffleMapTask.runTask()方法
+- 首先拿到参数
+- 参数（rdd,dep)  DAGScheduler对stage(ShhuffleMapStage)中引用的rdd和shuffleDep 进行了变量广播，所以这时可以直接取到，进行反序列化就可以用
+- SuffileManager没有配参数，所以取SparkEnv中配置的默认org.apache.spark.shuffle.sort.SortShuffleManager
+
+
+```scala
+override def runTask(context: TaskContext): MapStatus = {
+    // Deserialize the RDD using the broadcast variable.
+    val deserializeStartTime = System.currentTimeMillis()
+    val ser = SparkEnv.get.closureSerializer.newInstance()
+    val (rdd, dep) = ser.deserialize[(RDD[_], ShuffleDependency[_, _, _])](
+      ByteBuffer.wrap(taskBinary.value), Thread.currentThread.getContextClassLoader)
+    _executorDeserializeTime = System.currentTimeMillis() - deserializeStartTime
+
+    metrics = Some(context.taskMetrics)
+    var writer: ShuffleWriter[Any, Any] = null
+    try {
+      val manager = SparkEnv.get.shuffleManager
+      writer = manager.getWriter[Any, Any](dep.shuffleHandle, partitionId, context)
+      writer.write(rdd.iterator(partition, context).asInstanceOf[Iterator[_ <: Product2[Any, Any]]])
+      writer.stop(success = true).get
+    } catch {
+      case e: Exception =>
+        try {
+          if (writer != null) {
+            writer.stop(success = false)
+          }
+        } catch {
+          case e: Exception =>
+            log.debug("Could not stop writer", e)
+        }
+        throw e
+    }
+  }
+
+```
+
+
+- DAGScheduller.scal 对stage中的数据进行序列化，保存到参数taskBinary中
+
+```scala
+ // TODO: Maybe we can keep the taskBinary in Stage to avoid serializing it multiple times.
+    // Broadcasted binary for the task, used to dispatch tasks to executors. Note that we broadcast
+    // the serialized copy of the RDD and for each task we will deserialize it, which means each
+    // task gets a different copy of the RDD. This provides stronger isolation between tasks that
+    // might modify state of objects referenced in their closures. This is necessary in Hadoop
+    // where the JobConf/Configuration object is not thread-safe.
+    var taskBinary: Broadcast[Array[Byte]] = null
+    try {
+      // For ShuffleMapTask, serialize and broadcast (rdd, shuffleDep).
+      // For ResultTask, serialize and broadcast (rdd, func).
+      val taskBinaryBytes: Array[Byte] = stage match {
+        case stage: ShuffleMapStage =>
+          closureSerializer.serialize((stage.rdd, stage.shuffleDep): AnyRef).array()
+        case stage: ResultStage =>
+          closureSerializer.serialize((stage.rdd, stage.func): AnyRef).array()
+      }
+
+      taskBinary = sc.broadcast(taskBinaryBytes)
+```
+
+- taskBinary 序列化stage信息作为参数传输,由于是Broadcast 类型，所以在所有worker上会进行广播，这样就可以在执行task时，直接取
+
+```scala
+  val tasks: Seq[Task[_]] = try {
+      stage match {
+        case stage: ShuffleMapStage =>
+          stage.pendingPartitions.clear()
+          partitionsToCompute.map { id =>
+            val locs = taskIdToLocations(id)
+            val part = stage.rdd.partitions(id)
+            stage.pendingPartitions += id
+            new ShuffleMapTask(stage.id, stage.latestInfo.attemptId,
+              taskBinary, part, locs, stage.internalAccumulators)
+          }
+
+        case stage: ResultStage =>
+          val job = stage.activeJob.get
+          partitionsToCompute.map { id =>
+            val p: Int = stage.partitions(id)
+            val part = stage.rdd.partitions(p)
+            val locs = taskIdToLocations(id)
+            new ResultTask(stage.id, stage.latestInfo.attemptId,
+              taskBinary, part, locs, id, stage.internalAccumulators)
+          }
+      }
+```
+
+- SuffileManager没有配参数，所以取SparkEnv中配置的默认org.apache.spark.shuffle.sort.SortShuffleManager
+
+```scala
+// Let the user specify short names for shuffle managers
+   val shortShuffleMgrNames = Map(
+     "hash" -> "org.apache.spark.shuffle.hash.HashShuffleManager",
+     "sort" -> "org.apache.spark.shuffle.sort.SortShuffleManager",
+     "tungsten-sort" -> "org.apache.spark.shuffle.sort.SortShuffleManager")
+   val shuffleMgrName = conf.get("spark.shuffle.manager", "sort")
+   val shuffleMgrClass = shortShuffleMgrNames.getOrElse(shuffleMgrName.toLowerCase, shuffleMgrName)
+   val shuffleManager = instantiateClass[ShuffleManager](shuffleMgrClass)
+```
+
+- RDD中的某个partition的迭代器作为参数，进行写入操作(最终的输出文件是ShuffleMapTask的输出)
+
+```scala
+ writer.write(rdd.iterator(partition, context).asInstanceOf[Iterator[_ <: Product2[Any, Any]]])
+```
+
+- SortShuffleManager.write()方法
+- 首先判断依赖是否在map进行合并(mapSideCombine)，reduceByKey算子写死为true
+- 会实例化对象来存放数据(所以此时输出的数据是有序的)org.apache.spark.util.collection
+
+```scala
+ /** Write a bunch of records to this task's output */
+  override def write(records: Iterator[Product2[K, V]]): Unit = {
+    sorter = if (dep.mapSideCombine) {
+      require(dep.aggregator.isDefined, "Map-side combine without Aggregator specified!")
+      new ExternalSorter[K, V, C](
+        context, dep.aggregator, Some(dep.partitioner), dep.keyOrdering, dep.serializer)
+    } else {
+      // In this case we pass neither an aggregator nor an ordering to the sorter, because we don't
+      // care whether the keys get sorted in each partition; that will be done on the reduce side
+      // if the operation being run is sortByKey.
+      new ExternalSorter[K, V, V](
+        context, aggregator = None, Some(dep.partitioner), ordering = None, dep.serializer)
+    }
+    sorter.insertAll(records)
+
+    // Don't bother including the time to open the merged output file in the shuffle write time,
+    // because it just opens a single file, so is typically too fast to measure accurately
+    // (see SPARK-3570).
+    val output = shuffleBlockResolver.getDataFile(dep.shuffleId, mapId)
+    val tmp = Utils.tempFileWith(output)
+    try {
+      val blockId = ShuffleBlockId(dep.shuffleId, mapId, IndexShuffleBlockResolver.NOOP_REDUCE_ID)
+      val partitionLengths = sorter.writePartitionedFile(blockId, tmp)
+      shuffleBlockResolver.writeIndexFileAndCommit(dep.shuffleId, mapId, partitionLengths, tmp)
+      mapStatus = MapStatus(blockManager.shuffleServerId, partitionLengths)
+    } finally {
+      if (tmp.exists() && !tmp.delete()) {
+        logError(s"Error while deleting temp file ${tmp.getAbsolutePath}")
+      }
+    }
+  }
+```
 

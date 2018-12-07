@@ -1,6 +1,7 @@
 package com.opensource.bigdata.spark.standalone.wordcount
 
 import com.opensource.bigdata.spark.standalone.base.BaseScalaSparkContext
+import org.apache.spark.ShuffleDependency
 
 object WorldCount extends BaseScalaSparkContext{
 
@@ -20,6 +21,7 @@ object WorldCount extends BaseScalaSparkContext{
     println(distFile)
 
    val result = distFile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
+
     println(s"结果:${result.collect().mkString}")
 
     val threadName = Thread.currentThread().getId + Thread.currentThread().getName
