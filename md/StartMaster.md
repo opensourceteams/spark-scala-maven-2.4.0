@@ -12,7 +12,7 @@
 ## BiliBili 视频
 - Spark master启动源码分析: https://www.bilibili.com/video/av37442271/
 
-<iframe src="//player.bilibili.com/player.html?aid=37442271&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe   width="800" height="500" src="//player.bilibili.com/player.html?aid=37442271&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ## 启动 master

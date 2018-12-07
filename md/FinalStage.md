@@ -12,7 +12,7 @@
 ## BiliBili视频
 - Spark FinalStage处理(Stage划分)(bilibili视频) : https://www.bilibili.com/video/av37445057/
 
-<iframe src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe   width="800" height="500" src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 说明
 - 由于DAGScheduler进行stage提交传的参数为FinalStage,所以对FinalStage的构成进行分析

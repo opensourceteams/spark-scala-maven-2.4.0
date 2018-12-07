@@ -12,7 +12,7 @@
 ## bilibili 视频说明
 - Spark 触发Job提交(bilibili视频) : https://www.bilibili.com/video/av37445008/
 
-<iframe src="//player.bilibili.com/player.html?aid=37445008&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe   width="800" height="500" src="//player.bilibili.com/player.html?aid=37445008&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 

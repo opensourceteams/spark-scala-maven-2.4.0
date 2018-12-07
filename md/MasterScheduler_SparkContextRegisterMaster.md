@@ -11,7 +11,7 @@
 ## Bilibili视频分享
 - Spark Master资源调度--SparkContext向所有master注册 : https://www.bilibili.com/video/av37442295/
 
-<iframe src="//player.bilibili.com/player.html?aid=37442295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe   width="800" height="500" src="//player.bilibili.com/player.html?aid=37442295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## SparkContext启动向master发送消息
 - ClientEndpoint向master发送消息: RegisterApplication
