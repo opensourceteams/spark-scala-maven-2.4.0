@@ -9,6 +9,53 @@
 
 [![](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
+## 输入数据
+
+```shell
+a b k l j
+c a n m o
+
+```
+
+## 排序后的数据
+```shell
+((0,b),1)
+((0,j),1)
+((0,l),1)
+((0,n),1)
+
+---------
+((1,a),2)
+((1,c),1)
+((1,k),1)
+((1,m),1)
+((1,o),1)
+
+
+
+```
+
+## 输出数据
+
+```shell
+(b,1)
+(j,1)
+(l,1)
+(n,1)
+
+---------
+(a,2)
+(c,1)
+(k,1)
+(m,1)
+(o,1)
+
+
+
+```
+
+
+
 ## 粗粒度执行器处理LaunchTask消息
 - CoarseGrainedExecutorBackend的receive()方法收到任务调度器发送过来的启动任务的消息，并进行消息处理： LaunchTask()
 - 该方法中调用 Executor.launchTask()方法
