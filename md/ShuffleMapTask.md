@@ -1,5 +1,13 @@
 ### Spark 源码分析之ShuffleMapTask处理
 
+## 更多资源
+- SPARK 源码分析技术分享(bilibilid视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
+## 图解
+
+[![](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ShuffleMapTask%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B.png)
 
 ## 粗粒度执行器处理LaunchTask消息
 - CoarseGrainedExecutorBackend的receive()方法收到任务调度器发送过来的启动任务的消息，并进行消息处理： LaunchTask()
