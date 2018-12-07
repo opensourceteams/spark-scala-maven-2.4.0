@@ -163,6 +163,10 @@
 <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=21" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
+### Spark 源码分析之ShuffleMapTask处理
+- Spark 源码分析之ShuffleMapTask处理原理分析(bilibili视频):
+- Spark 源码分析之ShuffleMapTask处理源码调试(bilibili视频):
+- Spark 源码分析之ShuffleMapTask处理(文档详解): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleMapTask.md
 
 ======================================================================================
 
