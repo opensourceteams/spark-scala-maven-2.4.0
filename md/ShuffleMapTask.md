@@ -346,6 +346,9 @@ override def runTask(context: TaskContext): MapStatus = {
 - SortShuffleManager.write()方法
 - 首先判断依赖是否在map进行合并(mapSideCombine)，reduceByKey算子写死为true
 - 会实例化对象来存放数据(所以此时输出的数据是有序的)org.apache.spark.util.collection
+- 实例ExternalSorter来进行排序
+- 并把当前分区Iterator中的数据插入 ExternalSorter
+- 写入输出文件val partitionLengths = sorter.writePartitionedFile(blockId, tmp)
 
 ```scala
  /** Write a bunch of records to this task's output */
@@ -376,6 +379,129 @@ override def runTask(context: TaskContext): MapStatus = {
     } finally {
       if (tmp.exists() && !tmp.delete()) {
         logError(s"Error while deleting temp file ${tmp.getAbsolutePath}")
+      }
+    }
+  }
+```
+
+- ExternalSorter.insertAll
+- 将分区中的数据插入PartitionedAppendOnlyMap对象map中
+- reduceByKey()算子中 shouldCombine = true是写死的
+- map中元素的数据格式为 ( (partition,key) ,value ) = ((分区编号,key)，value)
+- 默认在map端进行合并，所以此时对相同的Key，会执行reduceByKey()自定义的函数，也就是对相同的key的数据进行合并操作
+- 如果当前分区的数据量太大，溢出部分数据到文件中
+
+```scala
+private var map = new PartitionedAppendOnlyMap[K, C]
+
+def insertAll(records: Iterator[Product2[K, V]]): Unit = {
+    // TODO: stop combining if we find that the reduction factor isn't high
+    val shouldCombine = aggregator.isDefined
+
+    if (shouldCombine) {
+      // Combine values in-memory first using our AppendOnlyMap
+      val mergeValue = aggregator.get.mergeValue
+      val createCombiner = aggregator.get.createCombiner
+      var kv: Product2[K, V] = null
+      val update = (hadValue: Boolean, oldValue: C) => {
+        if (hadValue) mergeValue(oldValue, kv._2) else createCombiner(kv._2)
+      }
+      while (records.hasNext) {
+        addElementsRead()
+        kv = records.next()
+        map.changeValue((getPartition(kv._1), kv._1), update)
+        maybeSpillCollection(usingMap = true)
+      }
+    } else {
+      // Stick values into our buffer
+      while (records.hasNext) {
+        addElementsRead()
+        val kv = records.next()
+        buffer.insert(getPartition(kv._1), kv._1, kv._2.asInstanceOf[C])
+        maybeSpillCollection(usingMap = false)
+      }
+    }
+  }
+```
+
+- ExternalSorter.writePartitionedFile()
+- 对 ExternalSorter中的数据进行排序,排序的规则为，(partition,key),先按partition进行升序排序，parition相等的再按key进行升序排序
+- 每个任务单独建一个输出数据文件和索引文件(数据是先按parition升序排序，再按Key升序排序)
+- 索引文件依次保存每个partition索引对应的文件长度
+
+
+```scala
+ /**
+   * Write all the data added into this ExternalSorter into a file in the disk store. This is
+   * called by the SortShuffleWriter.
+   *
+   * @param blockId block ID to write to. The index file will be blockId.name + ".index".
+   * @return array of lengths, in bytes, of each partition of the file (used by map output tracker)
+   */
+  def writePartitionedFile(
+      blockId: BlockId,
+      outputFile: File): Array[Long] = {
+
+    // Track location of each range in the output file
+    val lengths = new Array[Long](numPartitions)
+
+    if (spills.isEmpty) {
+      // Case where we only have in-memory data
+      val collection = if (aggregator.isDefined) map else buffer
+      val it = collection.destructiveSortedWritablePartitionedIterator(comparator)
+      while (it.hasNext) {
+        val writer = blockManager.getDiskWriter(blockId, outputFile, serInstance, fileBufferSize,
+          context.taskMetrics.shuffleWriteMetrics.get)
+        val partitionId = it.nextPartition()
+        while (it.hasNext && it.nextPartition() == partitionId) {
+          it.writeNext(writer)
+        }
+        writer.commitAndClose()
+        val segment = writer.fileSegment()
+        lengths(partitionId) = segment.length
+      }
+    } else {
+      // We must perform merge-sort; get an iterator by partition and write everything directly.
+      for ((id, elements) <- this.partitionedIterator) {
+        if (elements.hasNext) {
+          val writer = blockManager.getDiskWriter(blockId, outputFile, serInstance, fileBufferSize,
+            context.taskMetrics.shuffleWriteMetrics.get)
+          for (elem <- elements) {
+            writer.write(elem._1, elem._2)
+          }
+          writer.commitAndClose()
+          val segment = writer.fileSegment()
+          lengths(id) = segment.length
+        }
+      }
+    }
+
+    context.taskMetrics().incMemoryBytesSpilled(memoryBytesSpilled)
+    context.taskMetrics().incDiskBytesSpilled(diskBytesSpilled)
+    context.internalMetricsToAccumulators(
+      InternalAccumulator.PEAK_EXECUTION_MEMORY).add(peakMemoryUsedBytes)
+
+    lengths
+  }
+```
+
+- WritablePartitionedPairCollection.partitionKeyComparator.
+- 排序规则
+- 对 ExternalSorter中的数据进行排序,排序的规则为，(partition,key),先按partition进行升序排序，parition相等的再按key进行升序排序
+
+```scala
+  /**
+   * A comparator for (Int, K) pairs that orders them both by their partition ID and a key ordering.
+   */
+  def partitionKeyComparator[K](keyComparator: Comparator[K]): Comparator[(Int, K)] = {
+    new Comparator[(Int, K)] {
+      override def compare(a: (Int, K), b: (Int, K)): Int = {
+        val partitionDiff = a._1 - b._1
+        if (partitionDiff != 0) {
+          partitionDiff
+        } else {
+          keyComparator.compare(a._2, b._2)
+        }
       }
     }
   }
