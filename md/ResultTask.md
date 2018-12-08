@@ -5,6 +5,9 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## 概述
+- ResultTask 执行当前分区的计算，首先从ShuffleMapTask拿到当前分区的数据，会从所有的ShuffleMapTask都拿一遍当前的分区数据，然后调用reduceByKey自定义的函数进行计算
+- 最后合并所有的ResultTask输出结果，进行输出
 
 ## 图解
 [![](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ResultTask%E5%88%86%E6%9E%90.png)](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ResultTask%E5%88%86%E6%9E%90.png)
