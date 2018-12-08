@@ -1,7 +1,13 @@
 # Spark源码分析之ResultTask处理
 
+## 更多资源
+- SPARK 源码分析技术分享(bilibilid视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 
+## 图解
+[![](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ResultTask%E5%88%86%E6%9E%90.png)](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/images/spark/ResultTask%E5%88%86%E6%9E%90.png)
 
 ## ResultTask.scala 类
 
