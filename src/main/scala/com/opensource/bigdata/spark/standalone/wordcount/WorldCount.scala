@@ -3,10 +3,12 @@ package com.opensource.bigdata.spark.standalone.wordcount
 import com.opensource.bigdata.spark.standalone.base.BaseScalaSparkContext
 
 
+
 object WorldCount extends BaseScalaSparkContext{
 
 
   def main(args: Array[String]): Unit = {
+  //  val log = LoggerFactory.getLogger(WorldCount.getClass)
 
     val startTime = System.currentTimeMillis()
 
@@ -24,6 +26,7 @@ object WorldCount extends BaseScalaSparkContext{
 
     println(s"结果:${result.collect().mkString}")
 
+
     val threadName = Thread.currentThread().getId + Thread.currentThread().getName
 
     println(s"${threadName}===================结果:执行了毫秒:${System.currentTimeMillis() - startTime}")
@@ -33,3 +36,4 @@ object WorldCount extends BaseScalaSparkContext{
 
   }
 }
+

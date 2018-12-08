@@ -1,16 +1,18 @@
 package com.opensource.bigdata.spark.standalone.wordcount
 
 import com.opensource.bigdata.spark.standalone.base.BaseScalaSparkContext
+import org.apache.spark.Logging
 
 
-object WorldCountSaveHDFS extends BaseScalaSparkContext{
+object WorldCountLog extends BaseScalaSparkContext with Logging{
 
 
   def main(args: Array[String]): Unit = {
+  //  val log = LoggerFactory.getLogger(WorldCount.getClass)
 
     val startTime = System.currentTimeMillis()
 
-    appName = "HelloWorld-standalone"
+    appName = "HelloWorldLog-standalone"
     //master="spark://10.211.55.2:7077"
     val sc = sparkContext
 
@@ -21,9 +23,16 @@ object WorldCountSaveHDFS extends BaseScalaSparkContext{
     println(distFile)
 
    val result = distFile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
-    result.saveAsTextFile("hdfs://standalone.com:9000/opt/temp/output_b")
 
-    println(s"结果:${result.collect().mkString}")
+    //println(s"结果:${result.collect().mkString}")
+    result.foreach(
+      x => {
+        logInfo(s"value:${x}")
+
+      }
+
+
+    )
 
     val threadName = Thread.currentThread().getId + Thread.currentThread().getName
 
@@ -34,3 +43,4 @@ object WorldCountSaveHDFS extends BaseScalaSparkContext{
 
   }
 }
+
