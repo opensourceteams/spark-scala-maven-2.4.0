@@ -5,6 +5,19 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+
+## 视频
+- Spark 源码分析之ResultTask原理分析图解(bilibili视频):https://www.bilibili.com/video/av37442139/?p=24
+- Spark 源码分析之ResultTask处理(bilibili视频):https://www.bilibili.com/video/av37442139/?p=25
+- Spark 源码分析之ResultTask原理分析图解(youtube视频):https://youtu.be/8LwOIfxjNqU
+- Spark 源码分析之ResultTask处理(youtube视频):https://youtu.be/1r7hzIXO11Y
+
+
+<iframe width="800" height="500"  src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=24" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<iframe width="800" height="500"  src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## 概述
 - ResultTask 执行当前分区的计算，首先从ShuffleMapTask拿到当前分区的数据，会从所有的ShuffleMapTask都拿一遍当前的分区数据，然后调用reduceByKey自定义的函数进行计算
 - 最后合并所有的ResultTask输出结果，进行输出
