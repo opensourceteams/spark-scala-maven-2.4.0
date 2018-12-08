@@ -20,33 +20,33 @@
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=1
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OneToOneDenpendency.md
    
-   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
    
    
 - RangeDependency
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=2 
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/RangeDependency.md
    
-   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
    
 - PruneDependency filter
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=3
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependency.md
    
-   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
    
 - PruneDependency RangePartitioner
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=4
    - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/PruneDependencyRangePartitioner.md
    
-   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 #### ShuffleDependency
    - bilibili 视频:  https://www.bilibili.com/video/av37442139/?p=5
    - 详细说明文档：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleDependency.md
    
-   <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+   <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65822237&page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
    
 
 ### SparkContext 分析
@@ -54,7 +54,7 @@
  - SparkContext源码分析(Youtube视频):  https://youtu.be/tUH7QnCcwgg
  - SparkContext源码分析(文档详解）： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkContext.md
  
- <iframe src="//player.bilibili.com/player.html?aid=37442161&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+ <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442161&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 
@@ -63,7 +63,7 @@
  - Spark通信原理分析（文档详解）： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/OutBoxAndInBox.md
 - bilibili : https://www.bilibili.com/video/av37442199/
 
-<iframe src="//player.bilibili.com/player.html?aid=37442199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442199&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ### Spark Master启动源码分析
@@ -71,21 +71,21 @@
  - Spark Master启动源码分析(Bilibili视频):   https://www.bilibili.com/video/av37442271/
  - Master启动源码分析详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartMaster.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37442271&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442271&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
  
  - Spark Master资源调度--worker向master注册(Youtube视频):  https://youtu.be/74q1nddoaiY​
   - Spark Master资源调度--worker向master注册(Bilibili视频):   https://www.bilibili.com/video/av37442280/
  - Spark Master资源调试--worker向master注册(文档详解)： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/MasterScheduler_workerRegisterMaster.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37442280&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442280&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
  - Spark Master资源调度--SparkContext向所有master注册(Youtube视频):  https://youtu.be/AXxCnCc5Mh0​ 
   - Spark Master资源调度--SparkContext向所有master注册(Bilibili视频):  https://www.bilibili.com/video/av37442295/
  - Spark Master资源调度--SparkContext向所有master注册(文档详解): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/MasterScheduler_SparkContextRegisterMaster.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37442295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442295&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
@@ -94,7 +94,7 @@
  - Spark Worker 启动源码分析(Bilibili视频):   https://www.bilibili.com/video/av37442247/
  - Spark Worker 启动源码分析(文档详解):  https://github.com/opensourceteams/spark-scala-maven/blob/master/md/StartWorker.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37442247&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442247&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 ### Spark Executor启动源码分析
@@ -102,7 +102,7 @@
   - Spark Executor启动源码分析(Bilibili视频):    https://www.bilibili.com/video/av37442311/
   - Spark Executor启动源码分析(文档详解)：   https://github.com/opensourceteams/spark-scala-maven/blob/master/md/CoarseGrainedExecutorBackend_start.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37442311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442311&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
  
 ### Spark 触发Job提交
@@ -110,7 +110,7 @@
  - Spark 触发Job提交(bilibili视频) :  https://www.bilibili.com/video/av37445008/
  - Spark 触发Job提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/jobSubmitTrigger.md
 
-<iframe src="//player.bilibili.com/player.html?aid=37445008&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37445008&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
  
 ### Spark DAG调度器事件循环处理器
@@ -118,7 +118,7 @@
  - Spark DAG调度器事件循环处理器(Bilibili视频) :  https://www.bilibili.com/video/av37445034/
  - Spark DAG调度器事件循环处理器(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGSchedulerEventProcessLoop.md 
 
-<iframe src="//player.bilibili.com/player.html?aid=37445034&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37445034&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
  
 ### Spark DAGScheduler FinalStage处理(Stage划分)
@@ -126,7 +126,7 @@
  - Spark FinalStage处理(Stage划分)(Bilibili视频) :  https://www.bilibili.com/video/av37445057/
  - Spark FinalStage处理(Stage划分)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/FinalStage.md 
 
-<iframe src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37445057&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
  
 ### Spark DAGScheduler Stage提交
  - Spark Stage提交(Youtube视频) :  https://youtu.be/NI8-_X6mbl4
@@ -134,7 +134,7 @@
  - Spark Stage提交(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SubmitStage.md 
  
 
-<iframe src="//player.bilibili.com/player.html?aid=37445077&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37445077&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
@@ -142,14 +142,14 @@
  - Spark DAGScheduler把stage转换成TaskSet的过程(Bilibili视频) https://www.bilibili.com/video/av37442139/?p=18
  - Spark DAGScheduler把stage转换成TaskSet的过程(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/DAGScheduler_stageToTaskSet.md
  
- <iframe src="//player.bilibili.com/player.html?aid=37442139&cid=65893099&page=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> 
+ <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=65893099&page=18" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> 
 
 
 ### Spark TaskSchedulerImpl 任务调度方式(FIFO)
 - Spark TaskSchedulerImpl 任务调度方式(FIFO)(文档详解)：https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SchedulerFIFO.md
 - Spark TaskSchedulerImpl 任务调度方式(FIFO)(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=19
 
-<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66005253&page=19" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66005253&page=19" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ### Spark TaskSchedulerImpl TaskSet处理
@@ -158,9 +158,9 @@
 - Spark TaskSchedulerImpl TaskSet原码分析(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=21
 
 
-<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66006637&page=20" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66006637&page=20" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=21" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=21" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ### Spark 源码分析之ShuffleMapTask处理
@@ -171,9 +171,9 @@
 - Spark 源码分析之ShuffleMapTask处理源码分析 (youtube视频): https://youtu.be/cRW_MZ0k5Lw
 
 
-<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<iframe src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=23" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
