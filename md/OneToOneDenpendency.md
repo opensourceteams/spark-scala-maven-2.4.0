@@ -9,7 +9,7 @@
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
 
-## youtub视频演示
+## 视频演示
   - https://youtu.be/Tohv00GJ5AQ(youtube视频)
   - https://www.bilibili.com/video/av37442139/(bilibili视频)
 
