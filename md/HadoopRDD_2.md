@@ -1,9 +1,18 @@
-# Hadoop RDD 读取文件
+# Spark HadoopRDD读取HDFS文件
 
 ## 更多资源
 - SPARK 源码分析技术分享(bilibilid视频汇总套装视频): https://www.bilibili.com/video/av37442139/
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
+
+## bilibili 视频说明
+- Spark HadoopRDD读取HDFS文件(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=28
+
+
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66303785&page=28" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 
 ## 前置条件
 - Hadoop版本: Hadoop 2.6.0-cdh5.15.0

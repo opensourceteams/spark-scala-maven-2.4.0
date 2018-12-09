@@ -8,6 +8,16 @@
 - github: https://github.com/opensourceteams/spark-scala-maven
 - csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
 
+## bilibili 视频说明
+- HadoopRdd partition的开始位置计算图解(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=26
+- HadoopRdd partition的开始位置计算源码分析(bilibili视频) : https://www.bilibili.com/video/av37442139/?p=27
+
+
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66303785&page=26" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66303785&page=27" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## 前置条件
 - Hadoop版本: Hadoop 2.6.0-cdh5.15.0
 - Spark版本: SPARK 1.6.0-cdh5.15.0
