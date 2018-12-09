@@ -194,6 +194,7 @@ public LineRecordReader(Configuration job, FileSplit split,
       }
     } else {
       fileIn.seek(start);
+	  //读取文件，定位的文件偏移量为，当前partition预分区的开始位置
       in = new UncompressedSplitLineReader(
           fileIn, job, recordDelimiter, split.getLength());
       filePosition = fileIn;
@@ -202,6 +203,10 @@ public LineRecordReader(Configuration job, FileSplit split,
     // because we always (except the last split) read one extra line in
     // next() method.
     if (start != 0) {
+	//调用 in.readLine()方法,等于调用 UncompressedSplitLineReader.readLine(),
+	//注意此时传的maxLineLength参数为0
+	 //定位当前分区的开始位置，等于预分区的位置 + 读到的第一个换行符的长度
+	 //也就是从当前partition开始位置计算，到读到的第一次换行符，属于上一个partition,在向后位置偏移位置+1，就是当前分区的实时开始位置
       start += in.readLine(new Text(), 0, maxBytesToConsume(start));
     }
     this.pos = start;
@@ -264,10 +269,12 @@ public LineRecordReader(Configuration job, FileSplit split,
 - LineReader.readDefaultLine()方法
 - 具体计算partition的开始位置的方法
 - 注意，此时传过来的maxLineLength参数值为0，也就是先不实际读取数据放到(key,value)的value中
+- 调用 UncompressedSplitLineReader.fillBuffer()方法，实际读取HDFS上的文件
 
 ```scala
 /**
    * Read a line terminated by one of CR, LF, or CRLF.
+   * 当maxLineLength=0时，也就是partition不为0时，定位开始位置的时候，该方法会读取到
    */
   private int readDefaultLine(Text str, int maxLineLength, int maxBytesToConsume)
   throws IOException {
@@ -297,15 +304,25 @@ public LineRecordReader(Configuration job, FileSplit split,
       if (bufferPosn >= bufferLength) {
         startPosn = bufferPosn = 0;
         if (prevCharCR) {
+		//bytesConsumed：总计读取的数据长度(包括换行符)
           ++bytesConsumed; //account for CR from previous read
         }
+	    /**
+		 * 实际读取HDFS文件的方法
+		 * buffer:缓冲区
+		 * bufferLength : 这一次读到的数据长度
+		   
+		 */
         bufferLength = fillBuffer(in, buffer, prevCharCR);
         if (bufferLength <= 0) {
           break; // EOF
         }
       }
+	  //对读到的buffer数组数据进行遍历，找找第一个换行符
+	  // bufferPosn: 读到换行符时的位置(索引)，同一个分区中这个值是会保存的
       for (; bufferPosn < bufferLength; ++bufferPosn) { //search for newline
         if (buffer[bufferPosn] == LF) {
+		//调试时prevCharCR = false, 当找到换行符\n时，newlineLength=1
           newlineLength = (prevCharCR) ? 2 : 1;
           ++bufferPosn; // at next invocation proceed from following byte
           break;
@@ -314,27 +331,77 @@ public LineRecordReader(Configuration job, FileSplit split,
           newlineLength = 1;
           break;
         }
+		//在linux平台测试数据中没看到等于\r的，也就是调试prevCharCR一直等于false
         prevCharCR = (buffer[bufferPosn] == CR);
       }
-      int readLength = bufferPosn - startPosn;
+      int readLength = bufferPosn - startPosn;//这一次读取的数据长度(包括换行符)
       if (prevCharCR && newlineLength == 0) {
         --readLength; //CR at the end of the buffer
       }
+	  //总计读取的数据长度(包括换行符)
       bytesConsumed += readLength;
+	  //这一次读取的数据长度(不包括换行符)
       int appendLength = readLength - newlineLength;
       if (appendLength > maxLineLength - txtLength) {
+	  //如果读到的数据长度，大于最大长度限制，做个控制
+	  //如果maxLineLength=0， txtLength =0 时，此时是不需要读数据的，就给appendLength赋值为0
         appendLength = maxLineLength - txtLength;
       }
       if (appendLength > 0) {
+	     //如果计算appendLength >0 时，把值赋值给str,也就是我们读到的值
         str.append(buffer, startPosn, appendLength);
+		//txtLength变量累加每次实际读到的长度(不包括换行符)
         txtLength += appendLength;
       }
+	  //循环条件，是没有读到换行符，并且
     } while (newlineLength == 0 && bytesConsumed < maxBytesToConsume);
 
     if (bytesConsumed > Integer.MAX_VALUE) {
       throw new IOException("Too many bytes before newline: " + bytesConsumed);
     }
     return (int)bytesConsumed;
+  }
+```
+
+
+- UncompressedSplitLineReader.fillBuffer()方法
+
+```scala
+protected int fillBuffer(InputStream in, byte[] buffer, boolean inDelimiter)
+      throws IOException {
+    int maxBytesToRead = buffer.length; //缓冲的大小，默认为64KB
+	//splitLength 当前partition的预分区大小(长度)
+	// totalBytesRead 当前partitition总共读取了的数据长度
+    if (totalBytesRead < splitLength) {
+	   //说明当前partition预分区长度还没有读完，还需要继续读取剩下的长度
+      long leftBytesForSplit = splitLength - totalBytesRead;
+      // check if leftBytesForSplit exceed Integer.MAX_VALUE
+      if (leftBytesForSplit <= Integer.MAX_VALUE) {
+	    //做个比较，当前分区剩余的长度小于等于Integer.MAX_VALUE)，取64KB默认长度和实际长度的一个小的值
+        maxBytesToRead = Math.min(maxBytesToRead, (int)leftBytesForSplit);
+      }
+    }
+	//实际读取的数据长度
+    int bytesRead = in.read(buffer, 0, maxBytesToRead);
+
+    // If the split ended in the middle of a record delimiter then we need
+    // to read one additional record, as the consumer of the next split will
+    // not recognize the partial delimiter as a record.
+    // However if using the default delimiter and the next character is a
+    // linefeed then next split will treat it as a delimiter all by itself
+    // and the additional record read should not be performed.
+    if (totalBytesRead == splitLength && inDelimiter && bytesRead > 0) {
+      if (usingCRLF) {
+        needAdditionalRecord = (buffer[0] != '\n');
+      } else {
+        needAdditionalRecord = true;
+      }
+    }
+    if (bytesRead > 0) {
+	//读到了数据，当前partitition读到的总数据长度做个累加
+      totalBytesRead += bytesRead;
+    }
+    return bytesRead;
   }
 ```
 
