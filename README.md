@@ -187,20 +187,34 @@
 <iframe width="800" height="500"  src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
+### Hadoop RDD
+- Hadoop RDD partition划分(文档详情): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/HadoopRddPartitionDivide.md
+
+
+
+
+
+
+
+
+
 ======================================================================================
 
-
-## Youtub 视频
-- [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 
-- [HadoopRDD源码分析-文件拆分partition划分-02](https://youtu.be/kesUJxGBWFA "HadoopRDD源码分析-文件拆分partition划分-02")
-- [HadoopRdd源码分析 本地文件读取源码分析 03](https://youtu.be/EuNaoJhK-x4 "HadoopRdd源码分析 本地文件读取源码分析 03")
-- [HadoopRdd源码分析 本地文件读取源码分析 04](https://youtu.be/GcPi9b-iltE "HadoopRdd源码分析 本地文件读取源码分析 04")
 
 ### Spark 远程调试
  - 详细说明文档： https://github.com/opensourceteams/spark-scala-maven/blob/master/md/SparkRemoteDebug.md
 
 
 
-#### 相关链接
+
+## 相关链接
 
 - [HadoopRDD源码分析说明文档详细](https://github.com/opensourceteams/spark-scala-maven/blob/master/md/hadoopRdd.md "HadoopRDD源码分析说明文档")
+
+
+
+### Youtub 视频
+- [HadoopRdd源码分析-读取本地文件需求分析-01](https://youtu.be/PtNo5S3g3zc "HadoopRdd源码分析-读取本地文件需求分析-01") 
+- [HadoopRDD源码分析-文件拆分partition划分-02](https://youtu.be/kesUJxGBWFA "HadoopRDD源码分析-文件拆分partition划分-02")
+- [HadoopRdd源码分析 本地文件读取源码分析 03](https://youtu.be/EuNaoJhK-x4 "HadoopRdd源码分析 本地文件读取源码分析 03")
+- [HadoopRdd源码分析 本地文件读取源码分析 04](https://youtu.be/GcPi9b-iltE "HadoopRdd源码分析 本地文件读取源码分析 04")

@@ -27,18 +27,18 @@ c a n m o
 
 ## HadoopRDD partition划分原理
 - 由于需要考虑，每个partition谁先执行是不确定的，所以每个partition执行时，都需要可明确计算当前partition的数据范围
-- 由于直接按partition预划分方式，会把有的一行数据拆分，有些场景不适合
+- 由于直接按partition预划分方式，会把有的一行数据拆分，有些场景不适合(如钱金额，词组一般都不希望被拆分，所以一般按行拆分)
 - 所以需要按行做为最小的数据划分单元，来进行partition的数据范围划分
 - HadoopRDD是这样划分的partition,还是按partition预划分方式进行预先划分，不过在计算时会进行调整
 - 对于首个partition,也就是partition(0),分区数据范围的开始位置就是从0开始(0 + goalSize )
 - 对于非首个partition，的开始位置需要从新计算，从预划分的当前partition的开始位置开始找第一个换行符位置(indexNewLine),当前partition的开始位置为= indexNewLine + 1,长度还是goalSize
 - 对于首个partition一定能分到数据(只要HDFS文件有数据)
-- 非首个partition,有可能分不到数据的情况，分不到数据的情况，就是数据被上一个partition划分完了，而且只对partition数据是不跨行的，如果数据跨行，也是一定会被分到数据的
+- 非首个partition,有可能分不到数据的情况，分不到数据的情况，就是数据被上一个partition划分完了
 
-### partition分不到数据(以下情况同时满足)
+## partition分不到数据(以下情况同时满足)
 - 是非首个partition,也就是不是partition为索引为0
-- partition的数据没有跨行，也就是在同一行里
-- partition的预分区范围内的第一个换行符\n在该行的结尾
+- partition从预分区开始位置往后读到的第一个换行符大于等于预分区的结束位置
+  (或者该partition就没有一个换行符)
 
 
 ## 源码分析
