@@ -33,4 +33,11 @@ c a n m o
 - 对于首个partition,也就是partition(0),分区数据范围的开始位置就是从0开始(0 + goalSize )
 - 对于非首个partition，的开始位置需要从新计算，从预划分的当前partition的开始位置开始找第一个换行符位置(indexNewLine),当前partition的开始位置为= indexNewLine + 1,长度还是goalSize
 - 对于首个partition一定能分到数据(只要HDFS文件有数据)
-- 非首个partition,有可能分不到数据的情况，分不到数据的情况，就是数据被上一个partition划分完了，即当前partition的第一个换行符
+- 非首个partition,有可能分不到数据的情况，分不到数据的情况，就是数据被上一个partition划分完了，而且只对partition数据是不跨行的，如果数据跨行，也是一定会被分到数据的
+
+### partition分不到数据(以下情况同时满足)
+- 是非首个partition,也就是不是partition为索引为0
+- partition的数据没有跨行，也就是在同一行里
+- partition的预分区范围内的第一个换行符\n在该行的结尾
+
+
