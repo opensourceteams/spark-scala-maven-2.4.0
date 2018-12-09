@@ -18,7 +18,7 @@ class BaseScalaSparkContext {
 
     //conf.set("spark.scheduler.revive.interval","100000s")
     //executor debug,是在提交作的地方读取
-    //conf.set("spark.executor.extraJavaOptions","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=10002")
+    conf.set("spark.executor.extraJavaOptions","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=10002")
     conf.setJars(Array("/opt/n_001_workspaces/bigdata/spark-scala-maven/target/spark-scala-maven-1.0-SNAPSHOT.jar"))
 
     val sc = new SparkContext(conf)

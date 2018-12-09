@@ -1,4 +1,7 @@
-# Hadoop RDD partition划分图解
+# HadoopRdd partition的开始位置计算
+
+- Hadoop RDD partition数据范围计算
+
 
 ## HDFS数据文件
 

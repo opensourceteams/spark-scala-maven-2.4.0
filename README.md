@@ -188,7 +188,9 @@
 
 
 ### Hadoop RDD
-- Hadoop RDD partition划分(文档详情): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/HadoopRddPartitionDivide.md
+- HadoopRdd partition的开始位置计算(文档详情): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/HadoopRddPartitionDivide.md
+
+- Hadoop RDD 读取文件(文档详情): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/HadoopRDD_2.md
 
 
 
