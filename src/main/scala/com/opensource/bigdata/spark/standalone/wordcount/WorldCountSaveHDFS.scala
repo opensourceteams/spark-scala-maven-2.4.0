@@ -10,20 +10,20 @@ object WorldCountSaveHDFS extends BaseScalaSparkContext{
 
     val startTime = System.currentTimeMillis()
 
-    appName = "HelloWorld-standalone"
+    appName = "a"
     //master="spark://10.211.55.2:7077"
     val sc = sparkContext
 
     println("SparkContext加载完成")
 
 
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/b.txt")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/a.txt")
     println(distFile)
 
    val result = distFile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
-    result.saveAsTextFile("hdfs://standalone.com:9000/opt/temp/output_b")
+    result.saveAsTextFile("hdfs://standalone.com:9000/opt/temp/output_a")
 
-    println(s"结果:${result.collect().mkString}")
+    //println(s"结果:${result.collect().mkString}")
 
     val threadName = Thread.currentThread().getId + Thread.currentThread().getName
 
