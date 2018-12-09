@@ -1,4 +1,4 @@
-# HadoopRdd partition的开始位置计算
+# Spark HadoopRdd partition的开始位置计算
 
 - Hadoop RDD partition数据范围计算
 
