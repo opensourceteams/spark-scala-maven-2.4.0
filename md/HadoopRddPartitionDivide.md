@@ -12,6 +12,10 @@
 - Hadoop版本: Hadoop 2.6.0-cdh5.15.0
 - Spark版本: SPARK 1.6.0-cdh5.15.0
 
+## 概述
+- 源码分析Spark HadoopRDD是如何读取HDFS上的文件
+- 分析HadoopRDD预分区的计算方式，非首个分区的开始位置计算
+
 ## HDFS数据文件
 
 ```shell
