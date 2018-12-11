@@ -9,6 +9,7 @@
 - 通过BlockStoreShuffleReader.read()对Block数据进行读取
 - 通过 MapOutputTracker得到[(BlockManagerId,[(ShuffleBlockId,长度)])],相当于有多少台机器进行executor运算，就有多少个BlockManagerId(即有多少个BlockManager进行管理),每个BlockManager管理着多个数据分区(即多个ShuffleBlockId)
 - 通过 ShuffleBlockFetcherIterator()进行本地Block和远程Block数据进行处理，会得到一个 (BlockID, InputStream)这样元素的迭代器，然后进行flatMap()操作，返序列化流对象并转化为KeyValueIterator迭代器，通过两个迭代器就可以遍历当前分区的所有输入数据，由于Block数据块默认的大小是128m，也就是每个BlockID最大数据大小是128m，而且是一次只处理一个BlockID数据，所以此时是不会内存益处的
+- 然后对迭代器中的(key,value)元素进行遍历，并插入ExternalAppendOnlyMap对象，如果数据满足插入临时文件的条件，会把内存中的数据插入到临时文件，并保存DiskMapIterator对象到变量spilledMaps中，就是防止数据太大，内存溢出
 
 ## 本地Block
 - 本地Block是BlockManager负责拉取
