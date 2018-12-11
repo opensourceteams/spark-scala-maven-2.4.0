@@ -292,10 +292,13 @@ private[this] def splitLocalRemoteBlocks(): ArrayBuffer[FetchRequest] = {
 
     // Tracks total number of blocks (including zero sized blocks)
     var totalBlocks = 0
+    //blocksByAddress是mapOutputTracker.getMapSizesByExecutorId(handle.shuffleId, startPartition, endPartition)的返回值[(BlockManagerId,[(ShuffleBlockId,长度)])]
+    
     for ((address, blockInfos) <- blocksByAddress) {
       totalBlocks += blockInfos.size
       if (address.executorId == blockManager.blockManagerId.executorId) {
         // Filter out zero-sized blocks
+        //把本地Block,放到变量localBlocks   过滤，长度不为空的，就是有数据的Block,元素的表现为:   (ShuffleBlockId,长度)])
         localBlocks ++= blockInfos.filter(_._2 != 0).map(_._1)
         numBlocksToFetch += localBlocks.size
       } else {
@@ -323,6 +326,8 @@ private[this] def splitLocalRemoteBlocks(): ArrayBuffer[FetchRequest] = {
         }
         // Add in the final request
         if (curBlocks.nonEmpty) {
+         //把远程Block,放到变量remoteRequests
+          // var curBlocks = new ArrayBuffer[(BlockId, Long)]
           remoteRequests += new FetchRequest(address, curBlocks)
         }
       }
@@ -334,5 +339,152 @@ private[this] def splitLocalRemoteBlocks(): ArrayBuffer[FetchRequest] = {
 
 
 ```
+
+- ShuffleBlockFetcherIterator.fetchUpToMaxBytes
+
+```
+
+  private def fetchUpToMaxBytes(): Unit = {
+    // Send fetch requests up to maxBytesInFlight
+    while (fetchRequests.nonEmpty &&
+      (bytesInFlight == 0 || bytesInFlight + fetchRequests.front.size <= maxBytesInFlight)) {
+      //把fetchRequests.中的第一个元素，作为请求参数调用sendRequest()发送过去
+      sendRequest(fetchRequests.dequeue())
+    }
+  }
+
+
+```
+
+- ShuffleBlockFetcherIterator.sendRequest(),成功后调用方法onBlockFetchSuccess(),并把结果放到 results
+
+```
+
+private[this] def sendRequest(req: FetchRequest) {
+    logDebug("Sending request for %d blocks (%s) from %s".format(
+      req.blocks.size, Utils.bytesToString(req.size), req.address.hostPort))
+    bytesInFlight += req.size
+
+    // so we can look up the size of each blockID
+    val sizeMap = req.blocks.map { case (blockId, size) => (blockId.toString, size) }.toMap
+    val blockIds = req.blocks.map(_._1.toString)
+
+    val address = req.address
+    shuffleClient.fetchBlocks(address.host, address.port, address.executorId, blockIds.toArray,
+      new BlockFetchingListener {
+        override def onBlockFetchSuccess(blockId: String, buf: ManagedBuffer): Unit = {
+          // Only add the buffer to results queue if the iterator is not zombie,
+          // i.e. cleanup() has not been called yet.
+          if (!isZombie) {
+            // Increment the ref count because we need to pass this to a different thread.
+            // This needs to be released after use.
+            buf.retain()
+            results.put(new SuccessFetchResult(BlockId(blockId), address, sizeMap(blockId), buf))
+            shuffleMetrics.incRemoteBytesRead(buf.size)
+            shuffleMetrics.incRemoteBlocksFetched(1)
+          }
+          logTrace("Got remote block " + blockId + " after " + Utils.getUsedTimeMs(startTime))
+        }
+
+        override def onBlockFetchFailure(blockId: String, e: Throwable): Unit = {
+          logError(s"Failed to get block(s) from ${req.address.host}:${req.address.port}", e)
+          results.put(new FailureFetchResult(BlockId(blockId), address, e))
+        }
+      }
+    )
+  }
+
+```
+
+
+- ShuffleBlockFetcherIterator.next()方法,返回 (currentResult.blockId, new BufferReleasingInputStream(input, this))
+
+```
+
+ override def next(): (BlockId, InputStream) = {
+    numBlocksProcessed += 1
+
+    var result: FetchResult = null
+    var input: InputStream = null
+    // Take the next fetched result and try to decompress it to detect data corruption,
+    // then fetch it one more time if it's corrupt, throw FailureFetchResult if the second fetch
+    // is also corrupt, so the previous stage could be retried.
+    // For local shuffle block, throw FailureFetchResult for the first IOException.
+    while (result == null) {
+      val startFetchWait = System.currentTimeMillis()
+      result = results.take()
+      val stopFetchWait = System.currentTimeMillis()
+      shuffleMetrics.incFetchWaitTime(stopFetchWait - startFetchWait)
+
+      result match {
+        case r @ SuccessFetchResult(blockId, address, size, buf) =>
+          if (address != blockManager.blockManagerId) {
+            shuffleMetrics.incRemoteBytesRead(buf.size)
+            shuffleMetrics.incRemoteBlocksFetched(1)
+          }
+          bytesInFlight -= size
+
+          val in = try {
+            buf.createInputStream()
+          } catch {
+            // The exception could only be throwed by local shuffle block
+            case e: IOException =>
+              assert(buf.isInstanceOf[FileSegmentManagedBuffer])
+              logError("Failed to create input stream from local block", e)
+              buf.release()
+              throwFetchFailedException(blockId, address, e)
+          }
+
+          input = streamWrapper(blockId, in)
+          // Only copy the stream if it's wrapped by compression or encryption, also the size of
+          // block is small (the decompressed block is smaller than maxBytesInFlight)
+          if (detectCorrupt && !input.eq(in) && size < maxBytesInFlight / 3) {
+            val originalInput = input
+            val out = new ChunkedByteBufferOutputStream(64 * 1024, ByteBuffer.allocate)
+            try {
+              // Decompress the whole block at once to detect any corruption, which could increase
+              // the memory usage tne potential increase the chance of OOM.
+              // TODO: manage the memory used here, and spill it into disk in case of OOM.
+              Utils.copyStream(input, out)
+              out.close()
+              input = out.toChunkedByteBuffer.toInputStream(dispose = true)
+            } catch {
+              case e: IOException =>
+                buf.release()
+                if (buf.isInstanceOf[FileSegmentManagedBuffer]
+                  || corruptedBlocks.contains(blockId)) {
+                  throwFetchFailedException(blockId, address, e)
+                } else {
+                  logWarning(s"got an corrupted block $blockId from $address, fetch again", e)
+                  corruptedBlocks += blockId
+                  fetchRequests += FetchRequest(address, Array((blockId, size)))
+                  result = null
+                }
+            } finally {
+              // TODO: release the buf here to free memory earlier
+              originalInput.close()
+              in.close()
+            }
+          }
+
+        case FailureFetchResult(blockId, address, e) =>
+          throwFetchFailedException(blockId, address, e)
+      }
+
+      // Send fetch requests up to maxBytesInFlight
+      fetchUpToMaxBytes()
+    }
+
+    currentResult = result.asInstanceOf[SuccessFetchResult]
+    (currentResult.blockId, new BufferReleasingInputStream(input, this))
+  }
+
+
+
+```
+
+
+
+end
 
 end
