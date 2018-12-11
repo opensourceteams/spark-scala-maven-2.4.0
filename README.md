@@ -4,13 +4,19 @@
 # SPARK 源码分析技术分享 (带bilibili视频)
 【本站点正在持续更新中......2018-12-09......】
 
-- SPARK 1.6.0-cdh5.15.0
-- Hadoop 2.6.0-cdh5.15.0
-- spark-scala-maven 
+
+## 更多资源
 - 微信(技术交流) : thinktothings
 - SPARK 源码分析技术分享(视频汇总套装视频): https://www.bilibili.com/video/av37442139/
 - SPARK 源码分析技术分享(视频汇总在线看):https://blog.csdn.net/thinktothings/article/details/84726769
 - SPARK 源码分析技术分享 (github) :  https://github.com/opensourceteams/spark-scala-maven
+
+
+## 前置条件
+- Hadoop版本: Hadoop 2.6.0-cdh5.15.0
+- Spark版本: SPARK 1.6.0-cdh5.15.0
+- JDK.1.8.0_191
+- scala2.10.7
 
 
 ### RDD依赖 Dependency

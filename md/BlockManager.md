@@ -1,5 +1,21 @@
 # Spark BlockManager源码分析
 
+## 更多资源分享
+- SPARK 源码分析技术分享(视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
+
+## 前置条件
+- Hadoop版本: Hadoop 2.6.0-cdh5.15.0
+- Spark版本: SPARK 1.6.0-cdh5.15.0
+- JDK.1.8.0_191
+- scala2.10.7
+
+## 概述
+- Spark Block  折分local 和 remote blocks
+- local Block读取的数据是 FileSegmentManagedBuffer对象包含//(ShuffleBlockId,Block数据文件偏移量，长度，数据文件位置)
+- remote blocks 往变量results 放对象new SuccessFetchResult(BlockId(blockId), address, sizeMap(blockId), buf)
 
 ## 描述
 
@@ -349,6 +365,7 @@ private[this] def splitLocalRemoteBlocks(): ArrayBuffer[FetchRequest] = {
     while (fetchRequests.nonEmpty &&
       (bytesInFlight == 0 || bytesInFlight + fetchRequests.front.size <= maxBytesInFlight)) {
       //把fetchRequests.中的第一个元素，作为请求参数调用sendRequest()发送过去
+      //元素类型为FetchRequest(address, Array((blockId, size)))
       sendRequest(fetchRequests.dequeue())
     }
   }
