@@ -12,7 +12,7 @@
 - JDK.1.8.0_191
 - scala2.10.7
 
-## 概述
+## 技能标签
 - Spark Block  折分local 和 remote blocks
 - local Block读取的数据是 FileSegmentManagedBuffer对象包含//(ShuffleBlockId,Block数据文件偏移量，长度，数据文件位置)
 - remote blocks 往变量results 放对象new SuccessFetchResult(BlockId(blockId), address, sizeMap(blockId), buf)
