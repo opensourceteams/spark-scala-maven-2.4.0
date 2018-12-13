@@ -287,6 +287,7 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
 - 创建blockId : temp_shuffle_ + UUID
 - 溢出到磁盘临时文件: temp_shuffle_ + UUID
 - 遍历内存数据inMemoryIterator写入到磁盘临时文件spillFile
+- 遍历内存中的数据写入到临时文件，会记录每个临时文件中每个分区的(key,value)各有多少个，elementsPerPartition(partitionId) 如果说数据很大的话，会每默认每10000条数据进行Flush()一次数据到文件中，会记录每一次Flush的数据大小batchSizes入到ArrayBuffer中保存
 
 ```
 /**
@@ -374,10 +375,112 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
 
 ## 源码分析(内存数据Spill合并)
 
+### SortShuffleWriter.insertAll
+- 即内存中的数据，如果有溢出，写入到临时文件后，可能会有多个临时文件(看数据的大小)
+- 这时要开始从所有的临时文件中，shuffle出按给reduce输入数据(partition,Iterator),相当于要对多个临时文件进行合成一个文件，合成的结果按partition升序排序，再按Key升序排序
+
+
+- SortShuffleWriter.write
+- 得到合成文件shuffleBlockResolver.getDataFile : 格式如  "shuffle_" + shuffleId + "_" + mapId + "_" + reduceId + ".data" + "." + UUID,reduceId为默认的0
+- 调用关键方法ExternalSorter的sorter.writePartitionedFile，这才是真正合成文件的方法
+- 返回值partitionLengths，即为数据文件中对应索引文件按分区从0到最大分区，每个分区的数据大小的数组
 
 
 
+```
+ /** Write a bunch of records to this task's output */
+  override def write(records: Iterator[Product2[K, V]]): Unit = {
+    sorter = if (dep.mapSideCombine) {
+      require(dep.aggregator.isDefined, "Map-side combine without Aggregator specified!")
+      new ExternalSorter[K, V, C](
+        context, dep.aggregator, Some(dep.partitioner), dep.keyOrdering, dep.serializer)
+    } else {
+      // In this case we pass neither an aggregator nor an ordering to the sorter, because we don't
+      // care whether the keys get sorted in each partition; that will be done on the reduce side
+      // if the operation being run is sortByKey.
+      new ExternalSorter[K, V, V](
+        context, aggregator = None, Some(dep.partitioner), ordering = None, dep.serializer)
+    }
+    sorter.insertAll(records)
 
+    // Don't bother including the time to open the merged output file in the shuffle write time,
+    // because it just opens a single file, so is typically too fast to measure accurately
+    // (see SPARK-3570).
+    val output = shuffleBlockResolver.getDataFile(dep.shuffleId, mapId)
+    val tmp = Utils.tempFileWith(output)
+    try {
+      val blockId = ShuffleBlockId(dep.shuffleId, mapId, IndexShuffleBlockResolver.NOOP_REDUCE_ID)
+      val partitionLengths = sorter.writePartitionedFile(blockId, tmp)
+      shuffleBlockResolver.writeIndexFileAndCommit(dep.shuffleId, mapId, partitionLengths, tmp)
+      mapStatus = MapStatus(blockManager.shuffleServerId, partitionLengths)
+    } finally {
+      if (tmp.exists() && !tmp.delete()) {
+        logError(s"Error while deleting temp file ${tmp.getAbsolutePath}")
+      }
+    }
+  }
+
+```
+
+- ExternalSorter.writePartitionedFile
+- 按方法名直译，把数据写入已分区的文件中
+- 如果没有spill文件，直接按ExternalSorter在内存中排序，用的是Ti
+
+```
+/**
+   * Write all the data added into this ExternalSorter into a file in the disk store. This is
+   * called by the SortShuffleWriter.
+   *
+   * @param blockId block ID to write to. The index file will be blockId.name + ".index".
+   * @return array of lengths, in bytes, of each partition of the file (used by map output tracker)
+   */
+  def writePartitionedFile(
+      blockId: BlockId,
+      outputFile: File): Array[Long] = {
+
+    // Track location of each range in the output file
+    val lengths = new Array[Long](numPartitions)
+
+    if (spills.isEmpty) {
+      // Case where we only have in-memory data
+      val collection = if (aggregator.isDefined) map else buffer
+      val it = collection.destructiveSortedWritablePartitionedIterator(comparator)
+      while (it.hasNext) {
+        val writer = blockManager.getDiskWriter(blockId, outputFile, serInstance, fileBufferSize,
+          context.taskMetrics.shuffleWriteMetrics.get)
+        val partitionId = it.nextPartition()
+        while (it.hasNext && it.nextPartition() == partitionId) {
+          it.writeNext(writer)
+        }
+        writer.commitAndClose()
+        val segment = writer.fileSegment()
+        lengths(partitionId) = segment.length
+      }
+    } else {
+      // We must perform merge-sort; get an iterator by partition and write everything directly.
+      for ((id, elements) <- this.partitionedIterator) {
+        if (elements.hasNext) {
+          val writer = blockManager.getDiskWriter(blockId, outputFile, serInstance, fileBufferSize,
+            context.taskMetrics.shuffleWriteMetrics.get)
+          for (elem <- elements) {
+            writer.write(elem._1, elem._2)
+          }
+          writer.commitAndClose()
+          val segment = writer.fileSegment()
+          lengths(id) = segment.length
+        }
+      }
+    }
+
+    context.taskMetrics().incMemoryBytesSpilled(memoryBytesSpilled)
+    context.taskMetrics().incDiskBytesSpilled(diskBytesSpilled)
+    context.internalMetricsToAccumulators(
+      InternalAccumulator.PEAK_EXECUTION_MEMORY).add(peakMemoryUsedBytes)
+
+    lengths
+  }
+
+```
 
 
 
