@@ -118,10 +118,12 @@
 - 该方法会把迭代器records中的数据插入到外部排序对象中
 - ExternalSorter中的数据是不进行排序的，是以数组的形式存储的,健存的为(partition,key)，值为Shuffle之前的RDD链计算结果
   在内存中会对相同的key,进行合并操作，就是map端本地合并，合并的函数就是reduceByKey(_+_)这个算子中定义的函数
-- maybeSpillCollection方法会判断是否满足磁盘溢出到临时文件，满足条件，会把当前内存中的数据写到磁盘中,写到磁盘中的数据是按partition升序排序，再按key升序排序，就是(key,value)的临时文件，不带partition,但是会记录每个分区的数量elementsPerPartition(partitionId) ，记录每一次Flush的数据大小batchSizes入到ArrayBuffer中保存
-
+- maybeSpillCollection方法会判断是否满足磁盘溢出到临时文件，满足条件，会把当前内存中的数据写到磁盘中,写到磁盘中的数据是按partition升序排序，再按key升序排序，就是(key,value)的临时文件，不带partition,但是会记录每个分区的数量elementsPerPartition(partitionId- 记录每一次Flush的数据大小batchSizes入到ArrayBuffer中保存
+- 内存中的数据存在PartitionedAppendOnlyMap，记住这个对象，后面排序用到了这个里边的排序算法
 
 ```
+@volatile private var map = new PartitionedAppendOnlyMap[K, C]
+
 def insertAll(records: Iterator[Product2[K, V]]): Unit = {
     // TODO: stop combining if we find that the reduction factor isn't high
     val shouldCombine = aggregator.isDefined
@@ -153,8 +155,224 @@ def insertAll(records: Iterator[Product2[K, V]]): Unit = {
 
 ```
 
+- ExternalSorter.maybeSpillCollection
+- estimatedSize当前内存中数据预估占内存大小
+- maybeSpill满足Spill条件就把内存中的数据写入到临时文件中
+- 调用ExternalSorter.maybeSpill()
 
-## 源码分析(内存数据Spill和合并)
+```
+/**
+   * Spill the current in-memory collection to disk if needed.
+   *
+   * @param usingMap whether we're using a map or buffer as our current in-memory collection
+   */
+  private def maybeSpillCollection(usingMap: Boolean): Unit = {
+    var estimatedSize = 0L
+    if (usingMap) {
+      estimatedSize = map.estimateSize()
+      if (maybeSpill(map, estimatedSize)) {
+        map = new PartitionedAppendOnlyMap[K, C]
+      }
+    } else {
+      estimatedSize = buffer.estimateSize()
+      if (maybeSpill(buffer, estimatedSize)) {
+        buffer = new PartitionedPairBuffer[K, C]
+      }
+    }
+
+    if (estimatedSize > _peakMemoryUsedBytes) {
+      _peakMemoryUsedBytes = estimatedSize
+    }
+  }
+```
+
+- ExternalSorter.maybeSpill()
+- 对内存中的数据遍历时，每遍历32个元素，进行判断，当前内存是否大于5m，如果大于5m，再进行内存的计算，如果满足就把内存中的数据写到临时文件中
+- 如果满足条件，调用ExternalSorter.spill()方法，将内存中的数据写入临时文件
+
+```
+
+ /**
+   * Spills the current in-memory collection to disk if needed. Attempts to acquire more
+   * memory before spilling.
+   *
+   * @param collection collection to spill to disk
+   * @param currentMemory estimated size of the collection in bytes
+   * @return true if `collection` was spilled to disk; false otherwise
+   */
+  protected def maybeSpill(collection: C, currentMemory: Long): Boolean = {
+    var shouldSpill = false
+    if (elementsRead % 32 == 0 && currentMemory >= myMemoryThreshold) {
+      // Claim up to double our current memory from the shuffle memory pool
+      val amountToRequest = 2 * currentMemory - myMemoryThreshold
+      val granted = acquireOnHeapMemory(amountToRequest)
+      myMemoryThreshold += granted
+      // If we were granted too little memory to grow further (either tryToAcquire returned 0,
+      // or we already had more memory than myMemoryThreshold), spill the current collection
+      shouldSpill = currentMemory >= myMemoryThreshold
+    }
+    shouldSpill = shouldSpill || _elementsRead > numElementsForceSpillThreshold
+    // Actually spill
+    if (shouldSpill) {
+      _spillCount += 1
+      logSpillage(currentMemory)
+      spill(collection)
+      _elementsRead = 0
+      _memoryBytesSpilled += currentMemory
+      releaseMemory()
+    }
+    shouldSpill
+  }
+
+```
+
+- ExternalSorter.spill()
+- 调用方法collection.destructiveSortedWritablePartitionedIterator进行排序，即调用PartitionedAppendOnlyMap.destructiveSortedWritablePartitionedIterator进行排序()方法排序,最终会调用WritablePartitionedPairCollection.destructiveSortedWritablePartitionedIterator()排序，调用方法WritablePartitionedPairCollection.partitionedDestructiveSortedIterator()，没有实现，调用子类PartitionedAppendOnlyMap.partitionedDestructiveSortedIterator()方法
+- 调用方法ExternalSorter.spillMemoryIteratorToDisk() 将磁盘中的数据写入到spillFile临时文件中
+
+```
+  /**
+   * Spill our in-memory collection to a sorted file that we can merge later.
+   * We add this file into `spilledFiles` to find it later.
+   *
+   * @param collection whichever collection we're using (map or buffer)
+   */
+  override protected[this] def spill(collection: WritablePartitionedPairCollection[K, C]): Unit = {
+    val inMemoryIterator = collection.destructiveSortedWritablePartitionedIterator(comparator)
+    val spillFile = spillMemoryIteratorToDisk(inMemoryIterator)
+    spills.append(spillFile)
+  }
+```
+
+- PartitionedAppendOnlyMap.partitionedDestructiveSortedIterator()调用排序算法WritablePartitionedPairCollection.partitionKeyComparator
+- 即先按分区数的升序排序，再按key的升序排序
+```
+/**
+ * Implementation of WritablePartitionedPairCollection that wraps a map in which the keys are tuples
+ * of (partition ID, K)
+ */
+private[spark] class PartitionedAppendOnlyMap[K, V]
+  extends SizeTrackingAppendOnlyMap[(Int, K), V] with WritablePartitionedPairCollection[K, V] {
+
+  def partitionedDestructiveSortedIterator(keyComparator: Option[Comparator[K]])
+    : Iterator[((Int, K), V)] = {
+    val comparator = keyComparator.map(partitionKeyComparator).getOrElse(partitionComparator)
+    destructiveSortedIterator(comparator)
+  }
+
+  def insert(partition: Int, key: K, value: V): Unit = {
+    update((partition, key), value)
+  }
+}
+
+  /**
+   * A comparator for (Int, K) pairs that orders them both by their partition ID and a key ordering.
+   */
+  def partitionKeyComparator[K](keyComparator: Comparator[K]): Comparator[(Int, K)] = {
+    new Comparator[(Int, K)] {
+      override def compare(a: (Int, K), b: (Int, K)): Int = {
+        val partitionDiff = a._1 - b._1
+        if (partitionDiff != 0) {
+          partitionDiff
+        } else {
+          keyComparator.compare(a._2, b._2)
+        }
+      }
+    }
+  }
+}
+```
+
+- ExternalSorter.spillMemoryIteratorToDisk()
+- 创建blockId : temp_shuffle_ + UUID
+- 溢出到磁盘临时文件: temp_shuffle_ + UUID
+- 遍历内存数据inMemoryIterator写入到磁盘临时文件spillFile
+
+```
+/**
+   * Spill contents of in-memory iterator to a temporary file on disk.
+   */
+  private[this] def spillMemoryIteratorToDisk(inMemoryIterator: WritablePartitionedIterator)
+      : SpilledFile = {
+    // Because these files may be read during shuffle, their compression must be controlled by
+    // spark.shuffle.compress instead of spark.shuffle.spill.compress, so we need to use
+    // createTempShuffleBlock here; see SPARK-3426 for more context.
+    val (blockId, file) = diskBlockManager.createTempShuffleBlock()
+
+    // These variables are reset after each flush
+    var objectsWritten: Long = 0
+    var spillMetrics: ShuffleWriteMetrics = null
+    var writer: DiskBlockObjectWriter = null
+    def openWriter(): Unit = {
+      assert (writer == null && spillMetrics == null)
+      spillMetrics = new ShuffleWriteMetrics
+      writer = blockManager.getDiskWriter(blockId, file, serInstance, fileBufferSize, spillMetrics)
+    }
+    openWriter()
+
+    // List of batch sizes (bytes) in the order they are written to disk
+    val batchSizes = new ArrayBuffer[Long]
+
+    // How many elements we have in each partition
+    val elementsPerPartition = new Array[Long](numPartitions)
+
+    // Flush the disk writer's contents to disk, and update relevant variables.
+    // The writer is closed at the end of this process, and cannot be reused.
+    def flush(): Unit = {
+      val w = writer
+      writer = null
+      w.commitAndClose()
+      _diskBytesSpilled += spillMetrics.shuffleBytesWritten
+      batchSizes.append(spillMetrics.shuffleBytesWritten)
+      spillMetrics = null
+      objectsWritten = 0
+    }
+
+    var success = false
+    try {
+      while (inMemoryIterator.hasNext) {
+        val partitionId = inMemoryIterator.nextPartition()
+        require(partitionId >= 0 && partitionId < numPartitions,
+          s"partition Id: ${partitionId} should be in the range [0, ${numPartitions})")
+        inMemoryIterator.writeNext(writer)
+        elementsPerPartition(partitionId) += 1
+        objectsWritten += 1
+
+        if (objectsWritten == serializerBatchSize) {
+          flush()
+          openWriter()
+        }
+      }
+      if (objectsWritten > 0) {
+        flush()
+      } else if (writer != null) {
+        val w = writer
+        writer = null
+        w.revertPartialWritesAndClose()
+      }
+      success = true
+    } finally {
+      if (!success) {
+        // This code path only happens if an exception was thrown above before we set success;
+        // close our stuff and let the exception be thrown further
+        if (writer != null) {
+          writer.revertPartialWritesAndClose()
+        }
+        if (file.exists()) {
+          if (!file.delete()) {
+            logWarning(s"Error deleting ${file}")
+          }
+        }
+      }
+    }
+
+    SpilledFile(file, blockId, batchSizes.toArray, elementsPerPartition)
+  }
+
+
+```
+
+## 源码分析(内存数据Spill合并)
 
 
 
