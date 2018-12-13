@@ -523,12 +523,15 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
     }
   }
   
+```
+
 - ExternalSorter.merge()方法
 - 0 until numPartitions 从0到numPartitions(不包含)分区循环调用
 - IteratorForPartition(p, inMemBuffered),每次取内存中的p分区的数据
 - readers是每个分区是读所有的临时文件(因为每份临时文件，都有可能包含p分区的数据)，
 - readers.map(_.readNextPartition())该方法内部用的是每次调一个分区的数据，从0开始，刚好对应的是p分区的数据
 - readNextPartition方法即调用SpillReader.readNextPartition()方法
+- 对p分区的数据进行mergeWithAggregation合并后，再写入到合并文件中
 
 ```
  /**
@@ -567,9 +570,14 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
   
 
 - SpillReader.readNextPartition()
+- readNextItem()是真正读数临时文件的方法，
+- deserializeStream每次读取一个流大小，这个大小时在spill输出文件时写到batchSizes中的，某个是每个分区写一次流，如果分区中的数据很大，就按10000条数据进行一次流，这样每满10000次就再读一次流，这样就可以把当前分区里边的多少提交流全部读完
+- 一进来就执行nextBatchStream()方法，该方法是按数组batchSizes存储着每次写入流时的数据大小
+- val batchOffsets = spill.serializerBatchSizes.scanLeft(0L)(_ + _)这个其实取到的值，就刚好是每次流的一位置偏移量，后面的偏移量，刚好是前面所有偏移量之和
+- 当前分区的流读完时，就为空，就相当于当前分区的数据全部读完了
+- 当partitionId=numPartitions，finished= true说明所有分区的所有文件全部读完了
 
 ```
-
 def readNextPartition(): Iterator[Product2[K, C]] = new Iterator[Product2[K, C]] {
       val myPartition = nextPartitionToRead
       nextPartitionToRead += 1
@@ -599,7 +607,80 @@ def readNextPartition(): Iterator[Product2[K, C]] = new Iterator[Product2[K, C]]
 
 ```
 
+```
 
+ /**
+     * Return the next (K, C) pair from the deserialization stream and update partitionId,
+     * indexInPartition, indexInBatch and such to match its location.
+     *
+     * If the current batch is drained, construct a stream for the next batch and read from it.
+     * If no more pairs are left, return null.
+     */
+    private def readNextItem(): (K, C) = {
+      if (finished || deserializeStream == null) {
+        return null
+      }
+      val k = deserializeStream.readKey().asInstanceOf[K]
+      val c = deserializeStream.readValue().asInstanceOf[C]
+      lastPartitionId = partitionId
+      // Start reading the next batch if we're done with this one
+      indexInBatch += 1
+      if (indexInBatch == serializerBatchSize) {
+        indexInBatch = 0
+        deserializeStream = nextBatchStream()
+      }
+      // Update the partition location of the element we're reading
+      indexInPartition += 1
+      skipToNextPartition()
+      // If we've finished reading the last partition, remember that we're done
+      if (partitionId == numPartitions) {
+        finished = true
+        if (deserializeStream != null) {
+          deserializeStream.close()
+        }
+      }
+      (k, c)
+    }
+	
+```
+
+
+```
+ /** Construct a stream that only reads from the next batch */
+    def nextBatchStream(): DeserializationStream = {
+      // Note that batchOffsets.length = numBatches + 1 since we did a scan above; check whether
+      // we're still in a valid batch.
+      if (batchId < batchOffsets.length - 1) {
+        if (deserializeStream != null) {
+          deserializeStream.close()
+          fileStream.close()
+          deserializeStream = null
+          fileStream = null
+        }
+
+        val start = batchOffsets(batchId)
+        fileStream = new FileInputStream(spill.file)
+        fileStream.getChannel.position(start)
+        batchId += 1
+
+        val end = batchOffsets(batchId)
+
+        assert(end >= start, "start = " + start + ", end = " + end +
+          ", batchOffsets = " + batchOffsets.mkString("[", ", ", "]"))
+
+        val bufferedStream = new BufferedInputStream(ByteStreams.limit(fileStream, end - start))
+
+        val sparkConf = SparkEnv.get.conf
+        val stream = blockManager.wrapForCompression(spill.blockId,
+          CryptoStreamUtils.wrapForEncryption(bufferedStream, sparkConf))
+        serInstance.deserializeStream(stream)
+      } else {
+        // No more batches left
+        cleanup()
+        null
+      }
+    }
+```
 
 
 
