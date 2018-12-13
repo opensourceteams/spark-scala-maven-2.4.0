@@ -1,7 +1,24 @@
 # Spark 源码分析之ShuffleMapTask内存数据Spill和合并
 
+## 更多资源分享
+- SPARK 源码分析技术分享(视频汇总套装视频): https://www.bilibili.com/video/av37442139/
+- github: https://github.com/opensourceteams/spark-scala-maven
+- csdn(汇总视频在线看): https://blog.csdn.net/thinktothings/article/details/84726769
+
+
 ## 前置条件
+- Hadoop版本: Hadoop 2.6.0-cdh5.15.0
+- Spark版本: SPARK 1.6.0-cdh5.15.0
+- JDK.1.8.0_191
+- scala2.10.7
+
 ## 技能标签
+- Spark ShuffleMapTask 内存中的数据Spill到临时文件
+- 临时文件中的数据是如何定入的，如何按partition升序排序，再按Key升序排序写入(key,value)数据
+- 每个临时文件，都存入对应的每个分区有多少个(key,value)对，有多少次流提交数组，数组中保留每次流的大小
+- 如何把临时文件合成一个文件
+- 如何把内存中的数据和临时文件，进行分区，按key,排序后，再写入合并文件中
+
 ## 内存中数据Spill到磁盘
 
 - ShuffleMapTask进行当前分区的数据读取(此时读的是HDFS的当前分区,注意还有一个reduce分区，也就是ShuffleMapTask输出文件是已经按Reduce分区处理好的)
