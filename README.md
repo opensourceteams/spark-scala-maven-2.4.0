@@ -173,8 +173,7 @@
 - Spark 源码分析之ShuffleMapTask处理(文档详解): https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleMapTask.md
 - Spark 源码分析之ShuffleMapTask处理原理分析图解 (bilibili视频): https://www.bilibili.com/video/av37442139/?p=22
 - Spark 源码分析之ShuffleMapTask处理源码分析 (bilibili视频): https://www.bilibili.com/video/av37442139/?p=23
-- Spark 源码分析之ShuffleMapTask处理原理分析图解 (youtube视频): https://youtu.be/datHorBipMc
-- Spark 源码分析之ShuffleMapTask处理源码分析 (youtube视频): https://youtu.be/cRW_MZ0k5Lw
+- Spark 源码分析之ShuffleMapTask内存数据Spill和合并(文档详解):https://github.com/opensourceteams/spark-scala-maven/blob/master/md/ShuffleMapTaskSpillDiskFile.md
 
 
 <iframe  width="800" height="500" src="//player.bilibili.com/player.html?aid=37442139&cid=66008946&page=22" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
