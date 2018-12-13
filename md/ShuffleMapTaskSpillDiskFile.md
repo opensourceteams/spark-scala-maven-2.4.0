@@ -424,7 +424,9 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
 
 - ExternalSorter.writePartitionedFile
 - 按方法名直译，把数据写入已分区的文件中
-- 如果没有spill文件，直接按ExternalSorter在内存中排序，用的是Ti
+- 如果没有spill文件，直接按ExternalSorter在内存中排序，用的是TimSort排序算法排序，单独合出来讲，这里不详细讲
+- 如果有spill文件，是我们重点分析的，这个时候，调用this.partitionedIterator按回按[(partition,Iterator)],按分区升序排序，按(key,value)中key升序排序的数据,并键中方法this.partitionedIterator()
+- 写入合并文件中，并返回写入合并文件中每个分区的长度，放到lengths数组中，数组索引就是partition
 
 ```
 /**
@@ -482,6 +484,120 @@ private[spark] class PartitionedAppendOnlyMap[K, V]
 
 ```
 
+- this.partitionedIterator()
+- 直接调用ExternalSorter.merge()方法
+- 临时文件参数spills
+- 内存文件排序算法在这里调用collection.partitionedDestructiveSortedIterator(comparator)，实际调的是PartitionedAppendOnlyMap.partitionedDestructiveSortedIterator,定义了排序算法partitionKeyComparator，即按partition升序排序，再按key升序排序
+
+
+```
+/**
+   * Return an iterator over all the data written to this object, grouped by partition and
+   * aggregated by the requested aggregator. For each partition we then have an iterator over its
+   * contents, and these are expected to be accessed in order (you can't "skip ahead" to one
+   * partition without reading the previous one). Guaranteed to return a key-value pair for each
+   * partition, in order of partition ID.
+   *
+   * For now, we just merge all the spilled files in once pass, but this can be modified to
+   * support hierarchical merging.
+   * Exposed for testing.
+   */
+  def partitionedIterator: Iterator[(Int, Iterator[Product2[K, C]])] = {
+    val usingMap = aggregator.isDefined
+    val collection: WritablePartitionedPairCollection[K, C] = if (usingMap) map else buffer
+    if (spills.isEmpty) {
+      // Special case: if we have only in-memory data, we don't need to merge streams, and perhaps
+      // we don't even need to sort by anything other than partition ID
+      if (!ordering.isDefined) {
+        // The user hasn't requested sorted keys, so only sort by partition ID, not key
+        groupByPartition(destructiveIterator(collection.partitionedDestructiveSortedIterator(None)))
+      } else {
+        // We do need to sort by both partition ID and key
+        groupByPartition(destructiveIterator(
+          collection.partitionedDestructiveSortedIterator(Some(keyComparator))))
+      }
+    } else {
+      // Merge spilled and in-memory data
+      merge(spills, destructiveIterator(
+        collection.partitionedDestructiveSortedIterator(comparator)))
+    }
+  }
+  
+- ExternalSorter.merge()方法
+- 0 until numPartitions 从0到numPartitions(不包含)分区循环调用
+- IteratorForPartition(p, inMemBuffered),每次取内存中的p分区的数据
+- readers是每个分区是读所有的临时文件(因为每份临时文件，都有可能包含p分区的数据)，
+- readers.map(_.readNextPartition())该方法内部用的是每次调一个分区的数据，从0开始，刚好对应的是p分区的数据
+- readNextPartition方法即调用SpillReader.readNextPartition()方法
+
+```
+ /**
+   * Merge a sequence of sorted files, giving an iterator over partitions and then over elements
+   * inside each partition. This can be used to either write out a new file or return data to
+   * the user.
+   *
+   * Returns an iterator over all the data written to this object, grouped by partition. For each
+   * partition we then have an iterator over its contents, and these are expected to be accessed
+   * in order (you can't "skip ahead" to one partition without reading the previous one).
+   * Guaranteed to return a key-value pair for each partition, in order of partition ID.
+   */
+  private def merge(spills: Seq[SpilledFile], inMemory: Iterator[((Int, K), C)])
+      : Iterator[(Int, Iterator[Product2[K, C]])] = {
+    val readers = spills.map(new SpillReader(_))
+    val inMemBuffered = inMemory.buffered
+    (0 until numPartitions).iterator.map { p =>
+      val inMemIterator = new IteratorForPartition(p, inMemBuffered)
+      val iterators = readers.map(_.readNextPartition()) ++ Seq(inMemIterator)
+      if (aggregator.isDefined) {
+        // Perform partial aggregation across partitions
+        (p, mergeWithAggregation(
+          iterators, aggregator.get.mergeCombiners, keyComparator, ordering.isDefined))
+      } else if (ordering.isDefined) {
+        // No aggregator given, but we have an ordering (e.g. used by reduce tasks in sortByKey);
+        // sort the elements without trying to merge them
+        (p, mergeSort(iterators, ordering.get))
+      } else {
+        (p, iterators.iterator.flatten)
+      }
+    }
+  }
+
+
+```
+  
+
+- SpillReader.readNextPartition()
+
+```
+
+def readNextPartition(): Iterator[Product2[K, C]] = new Iterator[Product2[K, C]] {
+      val myPartition = nextPartitionToRead
+      nextPartitionToRead += 1
+
+      override def hasNext: Boolean = {
+        if (nextItem == null) {
+          nextItem = readNextItem()
+          if (nextItem == null) {
+            return false
+          }
+        }
+        assert(lastPartitionId >= myPartition)
+        // Check that we're still in the right partition; note that readNextItem will have returned
+        // null at EOF above so we would've returned false there
+        lastPartitionId == myPartition
+      }
+
+      override def next(): Product2[K, C] = {
+        if (!hasNext) {
+          throw new NoSuchElementException
+        }
+        val item = nextItem
+        nextItem = null
+        item
+      }
+    }
+
+```
 
 
 
