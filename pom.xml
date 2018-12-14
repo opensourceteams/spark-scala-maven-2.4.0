@@ -1,19 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.opensource</groupId>
-    <artifactId>spark-scala-maven</artifactId>
+    <artifactId>spark-scala-maven-2.4.0</artifactId>
     <version>1.0-SNAPSHOT</version>
     <inceptionYear>2008</inceptionYear>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- <scala.version>2.11.12</scala.version>-->
-        <!--<scala.version>2.10.7</scala.version>-->
-        <scala.version>2.10.7</scala.version>
+        <scala.version>2.11.12</scala.version>
         <java.version>1.8.191</java.version>
-        <cdh.spark.version>1.6.0-cdh5.15.0</cdh.spark.version>
-        <cdh.hadoop.version>2.6.0-cdh5.15.0</cdh.hadoop.version>
-        <spark.scala.version>2.10</spark.scala.version>
+        <spark.version>2.4.0</spark.version>
+        <hadoop.version>3.1.1</hadoop.version>
+        <spark.scala.version>2.11</spark.scala.version>
 
 
         <PermGen>64m</PermGen>
@@ -22,12 +20,6 @@
 
     </properties>
 
-    <repositories>
-        <repository>
-            <id>cloudera</id>
-            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
@@ -61,31 +53,32 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${spark.scala.version}</artifactId>
-            <version>${cdh.spark.version}</version>
+            <version>${spark.version}</version>
         </dependency>
         <!-- hadoop-client-->
-        <!--    <dependency>
-              <groupId>org.apache.hadoop</groupId>
-              <artifactId>hadoop-client</artifactId>
-              <version>2.6.0</version>
-            </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>${cdh.hadoop.version}</version>
+            <version>${hadoop.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-hdfs</artifactId>
-            <version>${cdh.hadoop.version}</version>
+            <version>${hadoop.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-yarn-client</artifactId>
-            <version>${cdh.hadoop.version}</version>
+            <version>${hadoop.version}</version>
         </dependency>
 
 
