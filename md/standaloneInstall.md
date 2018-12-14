@@ -188,6 +188,21 @@ stop-master.sh
  spark-shell
 ```
 
+### 启动history-server命令
+- history url: http://standalone.com:18080
+```
+ start-history-server.sh 
+```
+
+![](leanote://file/getImage?fileId=5c13e99f6e8a926629000004)
+
+
+### 停上history-server 命令
+```
+ stop-history-server.sh 
+```
+
+
 ## 管理控制台
 ### master控制台
 - http://standalone:8080

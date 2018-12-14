@@ -14,7 +14,7 @@ class BaseScalaSparkContext {
     conf.set("spark.eventLog.enabled","true")
    // conf.set("spark.ui.port","10002")
     conf.set("spark.history.fs.logDirectory","hdfs://standalone.com:9000/spark/log/historyEventLog")
-    conf.set("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/eventLog")
+    conf.set("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
 
     //conf.set("spark.scheduler.revive.interval","100000s")
     //executor debug,是在提交作的地方读取
