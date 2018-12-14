@@ -194,7 +194,7 @@ stop-master.sh
  start-history-server.sh 
 ```
 
-![](leanote://file/getImage?fileId=5c13e99f6e8a926629000004)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/history-server-webUI.png)
 
 
 ### 停上history-server 命令
