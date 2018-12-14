@@ -198,7 +198,7 @@ stop-master.sh
 ### spark-shell命令
 - 界面管理 : http://standalone:4040
 
-https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/spark-shell-webUI.png
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/spark-shell-webUI.png)
 
 
 - 终端交互界面
