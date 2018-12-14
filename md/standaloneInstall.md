@@ -193,18 +193,17 @@ stop-master.sh
 - http://standalone:8080
 
 
-![](leanote://file/getImage?fileId=5c13c9af6e8a926629000000)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/master-webUI.png)
 
 ### spark-shell命令
 - 界面管理 : http://standalone:4040
 
-![](leanote://file/getImage?fileId=5c13cc076e8a926629000002)
+https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/spark-shell-webUI.png
 
-![](leanote://file/getImage?fileId=5c13cc7c6e8a926629000003)
 
 - 终端交互界面
 
-![](leanote://file/getImage?fileId=5c13caad6e8a926629000001)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/spark-shell.png)
 
 
 
