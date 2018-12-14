@@ -1,5 +1,8 @@
 # Spark 2.4.0 standalone 模式安装
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
+
 ## 官网文档
 - https://spark.apache.org/docs/2.4.0/spark-standalone.html
 
