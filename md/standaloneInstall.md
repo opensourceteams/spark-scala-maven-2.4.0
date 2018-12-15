@@ -6,6 +6,15 @@
 ## 官网文档
 - https://spark.apache.org/docs/2.4.0/spark-standalone.html
 
+## 技能标签
+- 学会安装Spark 2.4.0 standalone模式环境安装
+- Spark 集群环境maste，worker,history server 启动停止命令 
+- Spark master,worker,history server 配置和管理界面查看
+- Spark shell 终端执行交互式命令，Spark shell 作业监控
+- WorldCount案例运行，界面查看
+- Spark master,worker,history,executor 日志查看
+- 官网: http://spark.apache.org/docs/latest/spark-standalone.html
+
 ## 前置条件
 - 已安装好java(选用的是java 1.8.0_191)
 - 已安装好scala(选用的是scala  2.11.121)
