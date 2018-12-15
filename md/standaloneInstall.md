@@ -255,6 +255,15 @@ stop-master.sh
  spark-shell
 ```
 
+### WorldCount 示例
+
+```aidl
+
+val rdd = sc.textFile("/home/liuwen/data/a.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
+rdd.saveAsTextFile("hdfs://standalone.com:9000/opt/temp/output_b_4")
+
+```
+
 ### 启动history-server命令
 - history url: http://standalone.com:18080
 ```
