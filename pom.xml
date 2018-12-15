@@ -21,6 +21,7 @@
     </properties>
 
 
+
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
@@ -49,12 +50,21 @@
 
 
 
-        <!-- spark-->
+        <!-- spark core-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${spark.scala.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
+
+
+        <!-- org.apache.spark/spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
         <!-- hadoop-client-->
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
         <dependency>
