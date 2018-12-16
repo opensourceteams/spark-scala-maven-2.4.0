@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_02_dataset_first
+package com.opensource.bigdata.spark.sql.dataset.action.n_05_dataset_count
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -14,7 +14,7 @@ object Run extends BaseSparkSession{
     val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
 
 
-    println(dataSet.first()) //first里边调用的是head()
+    println(dataSet.count())
 
 
 

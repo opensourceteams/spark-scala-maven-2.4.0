@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_07_dataset_foreach
+package com.opensource.bigdata.spark.sql.dataset.action.n_07_dataset_foreach
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 

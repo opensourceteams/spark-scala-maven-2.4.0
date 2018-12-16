@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_09_dataset_reduce
+package com.opensource.bigdata.spark.sql.dataset.action.n_12_dataset_show_n
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -14,13 +14,10 @@ object Run extends BaseSparkSession{
     val dataSet = spark.read.textFile("/home/liuwen/data/word.txt")
 
     /**
-      * 行中最多有几个单词
+      * 以表格的形式显示前20行数据,(默认是取前20行数据)
       */
-    import spark.implicits._
-    val lineWordLength = dataSet.map( line => line.split(" ").size)
 
-    val result = lineWordLength.reduce((a,b) => Math.max(a,b))
-
+    val result = dataSet.show(3)
     println(result)
 
 

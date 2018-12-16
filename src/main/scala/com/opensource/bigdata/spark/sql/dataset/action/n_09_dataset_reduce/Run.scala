@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_10_dataset_reduce_单词数量最多的行数据
+package com.opensource.bigdata.spark.sql.dataset.action.n_09_dataset_reduce
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -14,12 +14,11 @@ object Run extends BaseSparkSession{
     val dataSet = spark.read.textFile("/home/liuwen/data/word.txt")
 
     /**
-      * 单词个数最多的行
+      * 统计所有行单词个数
       */
-
-    val result = dataSet.reduce((a,b) => {
-      if(a.split(" ").size > b.split(" ").size) a  else b
-    })
+    import spark.implicits._
+    val lineWordLength = dataSet.map( line => line.split(" ").size)
+    val result = lineWordLength.reduce((a,b) => a + b)
 
     println(result)
 

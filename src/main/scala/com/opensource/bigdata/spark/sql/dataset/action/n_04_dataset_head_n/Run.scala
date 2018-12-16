@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_03_dataset_head
+package com.opensource.bigdata.spark.sql.dataset.action.n_04_dataset_head_n
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -14,7 +14,7 @@ object Run extends BaseSparkSession{
     val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
 
 
-    println(dataSet.head()) //first里边调用的是head()
+    println(dataSet.head(10).mkString("\n"))
 
 
 

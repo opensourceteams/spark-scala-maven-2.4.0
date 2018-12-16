@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.dataset.n_08_dataset_map
+package com.opensource.bigdata.spark.sql.dataset.action.n_01_dataset_base
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -12,10 +12,9 @@ object Run extends BaseSparkSession{
     val spark = sparkSession()
 
     val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
-    import spark.implicits._
-    val lineWordLength = dataSet.map( line => line.split(" ").size)
 
-    println(lineWordLength.collect().mkString("\n"))
+
+    println(dataSet)
 
 
 
