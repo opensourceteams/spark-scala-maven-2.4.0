@@ -4,8 +4,7 @@
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
 
 ## 文档
-- (官网文档): http://spark.apache.org/docs/2.4.0/quick-start.html
-- (英译中)(官网文档)Spark 2.4.0 编程指南(快速入门)(pdf): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/module/pdf/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%20-%20Spark%202.4.0%E6%96%87%E6%A1%A3.pdf
+- (官网文档): http://spark.apache.org/docs/2.4.0/sql-getting-started.html
 
 ## 前置条件
 - 已安装好java(选用的是java 1.8.0_191)
