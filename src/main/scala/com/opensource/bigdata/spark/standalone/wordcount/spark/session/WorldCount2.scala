@@ -26,6 +26,8 @@ object WorldCount2 extends BaseSparkSession{
     //方式三
     //val dataset = distFile.flatMap( line => line.split(" ")).groupByKey(identity ).count()
 
+    dataset.show()
+
 
 
 

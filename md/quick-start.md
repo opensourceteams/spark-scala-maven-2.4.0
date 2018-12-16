@@ -60,6 +60,7 @@
 
 - 统计所有行单词总个数
 
+
 ```
  import spark.implicits._
 val lineWordLength = dataSet.map( line => line.split(" ").size)
@@ -68,6 +69,7 @@ val result = lineWordLength.reduce((a,b) => a + b)
 ```
 
 - 计算行中最多有多少个单词
+
 
 ```
 import spark.implicits._
