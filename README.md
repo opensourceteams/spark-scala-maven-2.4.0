@@ -29,8 +29,8 @@
 - processing structured data with relational queries (newer API than RDDs)
 - 使用关系查询处理结构化数据（比RDD更新的API）
 
-####  Spark SQL 入门
-- Spark SQL 入门(文档说明): 
+####  Spark 2.4.0编程指南--spark sql入门
+- Spark 2.4.0编程指南--spark sql入门(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-Getting-Started.md
    
 
 

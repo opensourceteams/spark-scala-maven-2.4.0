@@ -1,4 +1,4 @@
-# Spark 2.4.0 编程指南--spark sql向导入门
+# Spark 2.4.0编程指南--spark sql入门
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
