@@ -15,7 +15,13 @@ object Run extends BaseSparkSession{
 
     Seq(1,2,3).toDS().show()
 
-
+//    +-----+
+//    |value|
+//    +-----+
+//    |    1|
+//    |    2|
+//    |    3|
+//    +-----+
 
 
     spark.stop()
