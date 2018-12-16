@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_01_getting_started.n_02_spark_sql_create_dataframe
+package com.opensource.bigdata.spark.sql.n_03_spark_sql_dataframe.n_01_dataframe_创建_json
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -11,6 +11,22 @@ object Run extends BaseSparkSession{
     //返回dataFrame
     val df = spark.read.json("file:///"+ getProjectPath +"/src/main/resource/data/json/people.json")
     df.show()
+
+//    +----+-------+
+//    | age|   name|
+//    +----+-------+
+//    |null|Michael|
+//    |  30|   Andy|
+//    |  19| Justin|
+//    |  30|  Think|
+//    +----+-------+
+
+
+
+
+
+
+
 
 
 

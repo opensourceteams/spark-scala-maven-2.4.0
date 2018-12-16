@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_01_getting_started.n_02_spark_sql_create_dataframe
+package com.opensource.bigdata.spark.sql.n_03_spark_sql_dataframe.n_03_dataframe_select_column
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -7,10 +7,26 @@ object Run extends BaseSparkSession{
   def main(args: Array[String]): Unit = {
 
     val spark = sparkSession(true)
-    //val df = spark.read.json("file:///opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/src/main/resource/people.json")
     //返回dataFrame
     val df = spark.read.json("file:///"+ getProjectPath +"/src/main/resource/data/json/people.json")
-    df.show()
+    df.select("name","age").show
+
+//    +-------+----+
+//    |   name| age|
+//    +-------+----+
+//    |Michael|null|
+//    |   Andy|  30|
+//    | Justin|  19|
+//    |  Think|  30|
+//    +-------+----+
+
+
+
+
+
+
+
+
 
 
 

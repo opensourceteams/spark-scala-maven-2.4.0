@@ -19,6 +19,19 @@ object Run extends BaseSparkSession{
     val sqlDF2 = spark.sql("select name,age from global_temp.people")
     val sqlDF3 = spark.sql("select name,(age + 1) as age from global_temp.people")
 
+
+
+    // Global temporary view is cross-session
+    spark.newSession().sql("SELECT * FROM global_temp.people").show()
+    // +----+-------+
+    // | age|   name|
+    // +----+-------+
+    // |null|Michael|
+    // |  30|   Andy|
+    // |  19| Justin|
+    // +----+-------+
+    // $example off:global_temp_view$
+
     sqlDF.show()
     sqlDF2.show()
     sqlDF3.show()

@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_01_getting_started.n_02_spark_sql_create_dataframe
+package com.opensource.bigdata.spark.sql.n_03_spark_sql_dataframe.n_02_dataframe_schema
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -10,7 +10,18 @@ object Run extends BaseSparkSession{
     //val df = spark.read.json("file:///opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/src/main/resource/people.json")
     //返回dataFrame
     val df = spark.read.json("file:///"+ getProjectPath +"/src/main/resource/data/json/people.json")
-    df.show()
+    df.printSchema()
+
+//    root
+//    |-- age: long (nullable = true)
+//    |-- name: string (nullable = true)
+
+
+
+
+
+
+
 
 
 

@@ -24,6 +24,9 @@ object Run extends BaseSparkSession{
     df.select("name", "age").show()
 
 
+    df.select($"name", $"age" + 1).show()
+
+
     //显示name列,age列的数据,支持对列的表达式处理,进行计算
     df.selectExpr("name", "age +1" ).show()
 
