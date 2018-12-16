@@ -29,7 +29,7 @@
 - processing structured data with relational queries (newer API than RDDs)
 - 使用关系查询处理结构化数据（比RDD更新的API）
 
-#### - Spark SQL 入门
+####  Spark SQL 入门
 - Spark SQL 入门(文档说明): 
    
 
