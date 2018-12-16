@@ -47,4 +47,11 @@ class BaseSparkSession {
     }
 
   }
+
+
+  /**
+    * 得到当前工程的路径
+    * @return
+    */
+  def getProjectPath:String=System.getProperty("user.dir")
 }
