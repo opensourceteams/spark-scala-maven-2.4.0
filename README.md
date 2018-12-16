@@ -18,7 +18,7 @@
 
 ## Spark 2.4.0 编程指南
 
-#### 快速入门(Quick Start)
+### 快速入门(Quick Start)
 - a quick introduction to the Spark API; start here!
 - 快速介绍Spark API;从这里开始
 
