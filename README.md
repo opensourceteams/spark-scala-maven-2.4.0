@@ -19,15 +19,15 @@
 ## Spark 2.4.0 编程指南
 
 ### 快速入门(Quick Start)
-        - a quick introduction to the Spark API; start here!
-        - 快速介绍Spark API;从这里开始
+- a quick introduction to the Spark API; start here!
+- 快速介绍Spark API;从这里开始
     
-    - Spark 2.4.0 编程指南--快速入门(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/quick-start.md
+- Spark 2.4.0 编程指南--快速入门(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/quick-start.md
 
 ### Spark SQL, Datasets, and DataFrames
-        - processing structured data with relational queries (newer API than RDDs)
-        - 使用关系查询处理结构化数据（比RDD更新的API）
-    - Spark SQL 入门
+- processing structured data with relational queries (newer API than RDDs)
+- 使用关系查询处理结构化数据（比RDD更新的API）
+- Spark SQL 入门(文档说明): 
    
 
 
