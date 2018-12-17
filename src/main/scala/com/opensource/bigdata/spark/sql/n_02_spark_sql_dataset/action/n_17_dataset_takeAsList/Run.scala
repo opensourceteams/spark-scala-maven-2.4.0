@@ -11,7 +11,7 @@ object Run extends BaseSparkSession{
 
     val spark = sparkSession()
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.txt")
+    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.text")
 
 
 

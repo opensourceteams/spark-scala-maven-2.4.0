@@ -6,7 +6,7 @@ object Run2 extends BaseScalaSparkContext{
 
   def main(args: Array[String]): Unit = {
     val sc = pre()
-    val rdd1 = sc.textFile("/opt/data/2/a.txt",2)
+    val rdd1 = sc.textFile("/opt/data/2/a.text",2)
 
     println(rdd1.collect().mkString("\n"))
 

@@ -14,7 +14,7 @@ object Run extends BaseSparkSession{
 
     import spark.implicits._
 
-    Seq(Person("Andy", 32) ,Person("Tom", 12)).toDS().show()
+    Seq(Person("Andy", 32) ,Person("Tom", 12)).toDS().foreach(people => println(s"name:${people.name},age:${people.age}"))
 
 //    +----+---+
 //    |name|age|

@@ -15,7 +15,7 @@ object LocalRunTextFile {
     conf.set("spark.network.timeout","10000ms")
     conf.set("spark.executor.heartbeat.maxFailures","10000")
     val sc = new SparkContext(conf)
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.txt")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.text")
     println("===================")
     println(distFile)
     println("结果:"+distFile.collect().mkString)

@@ -19,7 +19,7 @@ object WorldCount extends BaseScalaSparkContext{
     println("SparkContext加载完成")
 
 
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("/home/liuwen/data/a.txt")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("/home/liuwen/data/a.text")
     println(distFile)
 
    val result = distFile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)

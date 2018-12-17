@@ -13,8 +13,8 @@ object RunTextFileMkString2 {
 
 
     val sc = new SparkContext(conf)
-    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.txt")
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/root/data/a/a.txt")
+    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.text")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/root/data/a/a.text")
     println("===================")
     println(distFile)
     val array =distFile.collect()

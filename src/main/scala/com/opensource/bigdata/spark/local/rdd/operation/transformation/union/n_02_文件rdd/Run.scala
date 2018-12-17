@@ -7,8 +7,8 @@ object Run  extends BaseScalaSparkContext{
   def main(args: Array[String]): Unit = {
     val sc = pre()
 
-    val rdd1 = sc.textFile("/opt/data/a.txt",2)
-    val rdd2 = sc.textFile("/opt/data/b.txt",2)
+    val rdd1 = sc.textFile("/opt/data/a.text",2)
+    val rdd2 = sc.textFile("/opt/data/b.text",2)
 
     val rdd3 = rdd1.union(rdd2)
 

@@ -11,7 +11,7 @@ object Run extends BaseSparkSession{
 
     val spark = sparkSession()
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.cn.txt")
+    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.cn.text")
 
     /**
       * 以表格的形式显示前3行数据

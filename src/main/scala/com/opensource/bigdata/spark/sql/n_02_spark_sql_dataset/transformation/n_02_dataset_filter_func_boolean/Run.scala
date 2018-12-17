@@ -11,7 +11,7 @@ object Run extends BaseSparkSession{
 
     val spark = sparkSession()
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.cn.txt")
+    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.cn.text")
 
     val result = dataSet.filter(line => line.contains("spark"))
     println(result.collect().mkString("\n\n"))

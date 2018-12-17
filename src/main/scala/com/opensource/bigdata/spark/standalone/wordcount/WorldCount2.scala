@@ -20,11 +20,11 @@ object WorldCount2 extends BaseScalaSparkContext{
 
 
 
-    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.txt")
+    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.text")
     /**
       *  idea中远程提交时，/home/temp/a.txt文件需要在window中存在，并且是在项目文件所有磁盘上
       */
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/a.txt")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/a.text")
     println("===================")
     println(distFile)
 

@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_04_spark_sql_json.n_04_json_read_as_class_foreach_null
+package com.opensource.bigdata.spark.sql.n_05_spark_sql_json.n_04_json_read_as_class_foreach_null
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 

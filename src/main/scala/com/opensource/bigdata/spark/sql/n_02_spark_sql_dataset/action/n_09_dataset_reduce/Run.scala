@@ -11,7 +11,7 @@ object Run extends BaseSparkSession{
 
     val spark = sparkSession()
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/word.txt")
+    val dataSet = spark.read.textFile("/home/liuwen/data/word.text")
 
     /**
       * 统计所有行单词个数

@@ -3,13 +3,13 @@ package com.opensource.bigdata.spark.sql.n_02_spark_sql_dataset.action.n_07_data
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
 
-object Run extends BaseSparkSession{
+object Run1$Run extends BaseSparkSession{
 
 
   def main(args: Array[String]): Unit = {
 
 
-    val spark = sparkSession()
+    val spark = sparkSession(true)
 
     val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
 

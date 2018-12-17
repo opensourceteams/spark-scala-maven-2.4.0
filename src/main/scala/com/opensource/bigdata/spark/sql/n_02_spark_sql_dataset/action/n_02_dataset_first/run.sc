@@ -15,7 +15,7 @@ spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0
 
 
 
-val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
+val dataSet = spark.read.textFile("/home/liuwen/data/a.text")
 dataSet.first()
 
 

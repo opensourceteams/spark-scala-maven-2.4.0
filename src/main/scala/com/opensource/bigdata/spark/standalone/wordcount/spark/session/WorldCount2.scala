@@ -14,7 +14,7 @@ object WorldCount2 extends BaseSparkSession{
     val spark = sparkSession(true)
     import spark.implicits._
 
-    val distFile = spark.read.textFile("hdfs://standalone.com:9000/home/liuwen/data/word.txt")
+    val distFile = spark.read.textFile("hdfs://standalone.com:9000/home/liuwen/data/word.text")
 
     //方式一
     //val dataset = distFile.flatMap( line => line.split(" ")).groupByKey(x => x ).count()

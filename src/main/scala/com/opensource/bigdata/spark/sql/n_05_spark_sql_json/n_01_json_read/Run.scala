@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_04_spark_sql_json.n_01_json_read
+package com.opensource.bigdata.spark.sql.n_05_spark_sql_json.n_01_json_read
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 

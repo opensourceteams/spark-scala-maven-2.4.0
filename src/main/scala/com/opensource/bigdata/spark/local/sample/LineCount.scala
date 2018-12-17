@@ -21,11 +21,11 @@ object LineCount {
     conf.setJars(Array("D:\\workspaces\\bigdata\\spark-scala-maven\\target\\spark-scala-maven-1.0-SNAPSHOT.jar"))
 
     val sc = new SparkContext(conf)
-    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.txt")
+    //val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("e://temp//a//a.text")
     /**
       *  idea中远程提交时，/home/temp/a.txt文件需要在window中存在，并且是在项目文件所有磁盘上
       */
-    val r1:org.apache.spark.rdd.RDD[String] = sc.textFile("/home/data/input/lineData.txt")
+    val r1:org.apache.spark.rdd.RDD[String] = sc.textFile("/home/data/input/lineData.text")
     println("===================")
     println(r1)
     val r3 =  r1.map((_,1))

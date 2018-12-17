@@ -19,7 +19,7 @@ object WorldCountTheadOne extends BaseScalaSparkContext{
     println("SparkContext加载完成")
 
 
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/big_1g.txt",minPartitions)
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/opt/data/big_1g.text",minPartitions)
     println(distFile)
 
    val result = distFile.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_,minPartitions)

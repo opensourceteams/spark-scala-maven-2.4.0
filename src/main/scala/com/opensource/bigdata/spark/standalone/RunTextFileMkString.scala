@@ -16,7 +16,7 @@ object RunTextFileMkString {
     conf.set("spark.executor.heartbeat.maxFailures","100000")
     val sc = new SparkContext(conf)
     //只能用hdfs路径，本地路径，需要和服务器有同样的路径
-    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/root/data/a/a.txt")
+    val distFile:org.apache.spark.rdd.RDD[String] = sc.textFile("hdfs://standalone.com:9000/root/data/a/a.text")
     println("===================")
     println(distFile)
     val array =distFile.collect()
