@@ -10,12 +10,8 @@ object Run extends BaseSparkSession{
 
 
     val spark = sparkSession()
-
     val dataSet = spark.read.textFile("/home/liuwen/data/a.text")
-
-
     println(dataSet.head()) //first里边调用的是head()
-
 
 
 

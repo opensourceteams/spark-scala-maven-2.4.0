@@ -30,7 +30,7 @@ class BaseSparkSession {
         .master(master)
         .appName(appName)
         .getOrCreate()
-      spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
+      //spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
       //import spark.implicits._
       spark
     }else{
@@ -41,7 +41,7 @@ class BaseSparkSession {
         .config("spark.history.fs.logDirectory","hdfs://standalone.com:9000/spark/log/historyEventLog")
         .config("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
         .getOrCreate()
-      spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
+     // spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
       //import spark.implicits._
       spark
     }

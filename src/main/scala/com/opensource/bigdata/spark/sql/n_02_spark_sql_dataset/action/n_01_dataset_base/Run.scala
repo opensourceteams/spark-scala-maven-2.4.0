@@ -9,12 +9,12 @@ object Run extends BaseSparkSession{
   def main(args: Array[String]): Unit = {
 
 
-    val spark = sparkSession()
+    val spark = sparkSession(true)
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/a.text")
+    spark.read.textFile("/home/liuwen/data/a.txt").show
+    spark.read.textFile("file:///"+ getProjectPath +"/src/main/resource/data/text/people.txt").show
 
 
-    println(dataSet)
 
 
 

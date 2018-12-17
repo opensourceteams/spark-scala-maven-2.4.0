@@ -10,10 +10,7 @@ object Run1$Run extends BaseSparkSession{
 
 
     val spark = sparkSession(true)
-
     val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
-
-
     dataSet.foreach(println(_))
 
 

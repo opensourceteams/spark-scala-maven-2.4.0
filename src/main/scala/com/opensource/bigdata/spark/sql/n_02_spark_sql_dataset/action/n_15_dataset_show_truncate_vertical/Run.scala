@@ -9,9 +9,9 @@ object Run extends BaseSparkSession{
   def main(args: Array[String]): Unit = {
 
 
-    val spark = sparkSession()
+    val spark = sparkSession(true)
 
-    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.text")
+    val dataSet = spark.read.textFile("/home/liuwen/data/word.big.txt")
 
     /**
       * 以表格的形式显示前10行数据
@@ -22,7 +22,7 @@ object Run extends BaseSparkSession{
       * @param vertical If set to true, prints output rows vertically (one line per column value).
       */
 
-    val result = dataSet.show(10,10,false)
+    val result = dataSet.show(10,100,false)
     println(result)
 
 

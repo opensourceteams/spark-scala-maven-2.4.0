@@ -17,12 +17,6 @@ object Run1 extends BaseSparkSession{
       .map(line => Person(line.split(",")(0),line.split(" ")(1).trim.toLong))
         .foreach( person => println(s"name:${person.name}\t age:${person.age}"))
 
-
-
-
-
-
-
     spark.stop()
 
 
