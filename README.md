@@ -31,7 +31,8 @@
 
 ####  Spark 2.4.0编程指南--spark sql入门
 - Spark 2.4.0编程指南--spark sql入门(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-Getting-Started.md
-   
+- Spark 2.4.0编程指南--spark dataSet action(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-dataSet-action.md
+     
 
 
 ## Spark 2.4.0 源码分析(建设中)
