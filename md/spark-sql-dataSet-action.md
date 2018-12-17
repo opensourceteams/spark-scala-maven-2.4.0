@@ -1,4 +1,4 @@
-# Spark 2.4.0编程指南--spark dataSet
+# Spark 2.4.0编程指南--spark dataSet action
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
