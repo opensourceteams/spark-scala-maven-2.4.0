@@ -31,6 +31,10 @@
 
 ####  Spark 2.4.0编程指南--spark sql入门
 - Spark 2.4.0编程指南--spark dataSet action(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-dataSet-action.md
+
+####  Spark 2.4.0编程指南--Spark SQL UDF和UDAF
+- Spark 2.4.0编程指南--Spark SQL UDF和UDAF(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-UDF-UDAF.md
+    
      
 
 

@@ -2,6 +2,12 @@ package com.opensource.bigdata.spark.standalone.base
 
 import org.apache.spark.sql.SparkSession
 
+/**
+  * 得到SparkSession
+  * 首先 extends BaseSparkSession
+  * 本地: val spark = sparkSession(true)
+  * 集群:  val spark = sparkSession()
+  */
 class BaseSparkSession {
 
   var appName = "sparkSession"
