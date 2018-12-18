@@ -24,6 +24,9 @@
 
 #### Spark 2.4.0 编程指南--快速入门    
 - Spark 2.4.0 编程指南--快速入门(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/quick-start.md
+- Spark 2.4.0 编程指南--快速入门(bilibili视频) : https://www.bilibili.com/video/av38193405/?p=2
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=67137841&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ### Spark SQL, Datasets, and DataFrames
 - processing structured data with relational queries (newer API than RDDs)
@@ -31,6 +34,10 @@
 
 ####  Spark 2.4.0编程指南--spark sql入门
 - Spark 2.4.0编程指南--spark dataSet action(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-dataSet-action.md
+- Spark 2.4.0编程指南--spark dataSet action(bilibili视频) : https://www.bilibili.com/video/av38193405/?p=3
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=67137841&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 ####  Spark 2.4.0编程指南--Spark SQL UDF和UDAF
 - Spark 2.4.0编程指南--Spark SQL UDF和UDAF(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-UDF-UDAF.md

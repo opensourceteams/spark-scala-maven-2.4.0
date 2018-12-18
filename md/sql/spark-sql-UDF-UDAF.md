@@ -211,6 +211,7 @@ object Run extends BaseSparkSession{
 - 统计一共有多少行数据
 
 ```
+
 package com.opensource.bigdata.spark.sql.n_08_spark_udaf.n_01_spark_udaf_count
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
@@ -225,7 +226,7 @@ import org.apache.spark.sql.types._
   * ).merge() 把每个分区，缓冲对象进行合并
   * ).evaluate()计算结果表达式，把缓冲对象中的数据进行最终计算
   */
-object Run extends BaseSparkSession{
+object Run2 extends BaseSparkSession{
 
 
 
@@ -233,16 +234,16 @@ object Run extends BaseSparkSession{
 
     //聚合函数的输入参数数据类型
     def inputSchema: StructType = {
-      StructType(StructField("inputColumn",LongType) :: Nil)
+      StructType(StructField("inputColumn",StringType) :: Nil)
     }
 
     //中间缓存的数据类型
     def bufferSchema: StructType = {
-      StructType(StructField("sum",LongType) :: StructField("count",LongType) :: Nil)
+      StructType(StructField("sum",LongType)  :: Nil)
     }
 
     //最终输出结果的数据类型
-    def dataType: DataType = DoubleType
+    def dataType: DataType = LongType
 
     def deterministic: Boolean = true
 
@@ -274,7 +275,7 @@ object Run extends BaseSparkSession{
 
 
     //计算最终的结果
-    def evaluate(buffer: Row): Double = buffer.getLong(0)
+    def evaluate(buffer: Row): Long = buffer.getLong(0)
 
 
   }
@@ -287,7 +288,7 @@ object Run extends BaseSparkSession{
 
     val df = spark.read.json("hdfs://standalone.com:9000/home/liuwen/data/employees.json")
     df.createOrReplaceTempView("employees")
-    val sqlDF = spark.sql("select customerCount(salary)  as average_salary from employees  ")
+    val sqlDF = spark.sql("select customerCount(name)  as average_salary from employees  ")
 
     df.show()
 //    +-------+------+

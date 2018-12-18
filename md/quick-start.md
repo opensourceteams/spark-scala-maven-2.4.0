@@ -3,6 +3,12 @@
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
 
+## 视频
+- Spark 2.4.0 编程指南--快速入门(bilibili视频) : https://www.bilibili.com/video/av38193405/?p=2
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=67137841&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## 文档
 - (官网文档): http://spark.apache.org/docs/2.4.0/quick-start.html
 - (英译中)(官网文档)Spark 2.4.0 编程指南(快速入门)(pdf): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/module/pdf/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%20-%20Spark%202.4.0%E6%96%87%E6%A1%A3.pdf

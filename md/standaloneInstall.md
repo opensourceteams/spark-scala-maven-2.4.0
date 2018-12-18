@@ -3,6 +3,11 @@
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
 
+## 视频
+- Spark 2.4.0 standalone 模式安装(bilibili视频) : https://www.bilibili.com/video/av38193405/?p=1
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=67137841&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 官网文档
 - https://spark.apache.org/docs/2.4.0/spark-standalone.html
 
