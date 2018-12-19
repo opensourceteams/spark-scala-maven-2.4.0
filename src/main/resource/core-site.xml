@@ -4,13 +4,16 @@
 <configuration>
 	 <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://standalone.com:9000</value>
+        <value>hdfs://standalone.com:9000/</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/opt/module/bigdata/hadoop-2.9.2/data/namenode</value>
     </property>
 
-<!--    <property>
-        <name>fs.hdfs.impl</name>
-        <value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
-        <description>The FileSystem for hdfs: uris.</description>
-    </property>-->
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/opt/module/bigdata/hadoop-2.9.2/data/datanode</value>
+    </property>
 
 </configuration>

@@ -1,6 +1,5 @@
 package com.opensource.bigdata.spark.local.worldcount
 
-import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner
 import org.apache.spark.{SparkConf, SparkContext}
 
 //import org.apache.spark.{SparkConf, SparkContext}

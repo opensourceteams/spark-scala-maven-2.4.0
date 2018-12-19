@@ -17,6 +17,10 @@ object WriteRun extends BaseSparkSession{
     //|  19| Justin|
 
     sqlDF.write.bucketBy(42, "name").sortBy("age").saveAsTable("people_bucketed")
+
+    val sqlDF2 = spark.sql("select * from people_bucketed")
+    sqlDF2.show
+
     spark.stop()
   }
 }

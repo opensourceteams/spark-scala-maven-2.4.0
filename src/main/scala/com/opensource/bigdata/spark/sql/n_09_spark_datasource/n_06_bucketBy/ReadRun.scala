@@ -5,7 +5,7 @@ import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 object ReadRun extends BaseSparkSession{
 
   def main(args: Array[String]): Unit = {
-    val spark = sparkSession(true)
+    val spark = sparkSession(false)
 
     val sqlDF = spark.sql("select * from people_bucketed")
     sqlDF.show

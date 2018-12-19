@@ -5,8 +5,8 @@
 
 
 ## 前置条件
-- Hadoop版本: Hadoop 3.1.1
-- Spark版本: SPARK 2.4.0
+- Hadoop版本: hadoop-2.9.2
+- Spark版本: spark-2.4.0-bin-hadoop2.7
 - JDK.1.8.0_191
 - scala2.11.12
 
@@ -41,7 +41,10 @@
 
 ####  Spark 2.4.0编程指南--Spark SQL UDF和UDAF
 - Spark 2.4.0编程指南--Spark SQL UDF和UDAF(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-UDF-UDAF.md
-    
+
+####  Spark 2.4.0 集成Hive 1.2.1
+- Spark 2.4.0 集成Hive 1.2.1(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkAndHive.md
+        
      
 
 
