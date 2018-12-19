@@ -1,15 +1,15 @@
-# Spark 2.4.0 集成Hive 1.2.1
+# Spark 2.4.0 集成Hive 2.3.4
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
-- apache-hive-1.2.1-bin 安装: https://github.com/opensourceteams/apache-hive-1.2.1-bin
+- apache-hive-2.3.4-bin 安装: https://github.com/opensourceteams/apache-hive-2.3.4-bin
 
 
 ## 官网文档
 - https://spark.apache.org/docs/2.4.0/spark-standalone.html
 
 ## 技能标签
-- spark-2.4.0-bin-hadoop2.7.tgz 集成Hive 1.2.1
+- spark-2.4.0-bin-hadoop2.7.tgz 集成Hive 1.2.1,支持Hive-2.3.4
 - 学会安装Spark 2.4.0 standalone模式环境安装
 - Spark 集群环境maste，worker,history server 启动停止命令 
 - Spark master,worker,history server 配置和管理界面查看
@@ -23,6 +23,7 @@
 - 已安装好scala(选用的是scala  2.11.121)
 - 已安装好hadoop(选用的是Hadoop-2.9.2)
 - hadoop,hive 版本选择，根据spark默认捆绑hive1.2.1版本，不支持hadoop 3.0 以上的版本，所以选的 Hadoop 是3.0以下的版本，这样不需要重新编译Spark,当然，可以手动编译Spark,这样就可以对Hive,Hadoop,自行选择
+- spark和hive通信用的是thrift协议通信，跟hive版本应该是没关系，在maven写客户端程序时，对hadoop版本要求小于3.0
 
 ## 安装
 - 下载安装包 : spark-2.4.0-bin-hadoop2.7.tgz
