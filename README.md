@@ -43,8 +43,8 @@
 ####  Spark 2.4.0编程指南--Spark SQL UDF和UDAF
 - Spark 2.4.0编程指南--Spark SQL UDF和UDAF(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/spark-sql-UDF-UDAF.md
 
-####  Spark 2.4.0 集成Hive 1.2.1
-- Spark 2.4.0 集成Hive 1.2.1(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkAndHive.md
+####  Spark 2.4.0 集成Hive 2.3.4
+- Spark 2.4.0 集成Hive 2.3.4(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkAndHive.md
         
      
 
