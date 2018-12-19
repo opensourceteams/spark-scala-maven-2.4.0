@@ -38,6 +38,7 @@ class BaseSparkSession {
       master = "local"
       var builder = SparkSession.builder
         .master(master)
+        .appName(appName)
         .config("spark.sql.warehouse.dir",warehouseLocation)
 
       if(isHiveSupport){
@@ -54,6 +55,7 @@ class BaseSparkSession {
 
       var builder = SparkSession.builder
         .master(master)
+        .appName(appName)
         .config("spark.sql.warehouse.dir",warehouseLocation)
 
         .config("spark.eventLog.enabled","true")
