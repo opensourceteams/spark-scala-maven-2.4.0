@@ -8,6 +8,7 @@
 ## 前置条件
 - Hadoop版本: hadoop-2.9.2
 - Spark版本: spark-2.4.0-bin-hadoop2.7
+- Hive版本: apache-hive-3.1.1-bin
 - JDK.1.8.0_191
 - scala2.11.12
 
