@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_10_spark_hive.n_06_create_table
+package com.opensource.bigdata.spark.sql.n_10_spark_hive.n_01_create_database
 
 import java.io.File
 
@@ -12,8 +12,8 @@ object Run extends BaseSparkSession{
 
     val spark = SparkSession
       .builder()
-      .master("local")
-     // .master("spark://standalone.com:7077")
+      //.master("local")
+      .master("spark://standalone.com:7077")
       .appName("Spark Hive Example")
       .config("spark.sql.warehouse.dir", warehouseLocation)
       .enableHiveSupport()
@@ -21,15 +21,9 @@ object Run extends BaseSparkSession{
 
     import spark.sql
 
-    sql("use test")
+    sql("create database test")
 
-    //sql("CREATE TABLE IF NOT EXISTS src (key INT, value STRING) USING hive")
-    sql("CREATE TABLE IF NOT EXISTS src (key INT, value STRING)")
 
-    //sql("LOAD DATA LOCAL INPATH 'spark-scala-maven-2.4.0/src/main/resource/data/text/kv1.txt' INTO TABLE src")
-
-    // Queries are expressed in HiveQL
-    sql("SELECT * FROM src").show()
     spark.stop()
   }
 
