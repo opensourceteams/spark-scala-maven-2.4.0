@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.sql.n_09_spark_datasource.n_06_bucketBy
+package com.opensource.bigdata.spark.sql.n_09_spark_datasource.n_06_saveAsTable
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 
@@ -16,10 +16,9 @@ object WriteRun extends BaseSparkSession{
     //|  30|   Andy|
     //|  19| Justin|
 
-    sqlDF.write.bucketBy(42, "name").sortBy("salary")
-      .saveAsTable("people_bucketed3")
+    sqlDF.write.saveAsTable("people_bucketed")
 
-    val sqlDF2 = spark.sql("select * from people_bucketed3")
+    val sqlDF2 = spark.sql("select * from people_bucketed")
     sqlDF2.show
 
     spark.stop()

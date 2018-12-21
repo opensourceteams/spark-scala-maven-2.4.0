@@ -17,12 +17,12 @@ object WriteRun  extends BaseSparkSession{
     connectionProperties.put("user","admin")
     connectionProperties.put("password","000000")
 
-    val jdbcDF = spark.read.jdbc("jdbc:mysql://mysql.com:3306/test","test.test",connectionProperties)
+    val jdbcDF = spark.read.jdbc("jdbc:mysql://macbookmysql.com:3306/test","test.test",connectionProperties)
 
     jdbcDF.show()
 
 
-    jdbcDF.write.mode(SaveMode.Overwrite).jdbc("jdbc:mysql://mysql.com:3306/test","test.test3",connectionProperties)
+    jdbcDF.write.mode(SaveMode.Overwrite).jdbc("jdbc:mysql://macbookmysql.com:3306/test","test.test3",connectionProperties)
 
     spark.stop()
   }

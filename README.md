@@ -46,7 +46,9 @@
 ####  Spark 2.4.0 集成Hive 2.3.4
 - Spark 2.4.0 集成Hive 2.3.4(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkAndHive.md
         
-     
+####  Spark 2.4.0编程指南--Spark DataSources
+-  Spark 2.4.0编程指南--Spark DataSources(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/spark-data-source.md
+   
 
 
 ## Spark 2.4.0 源码分析(建设中)
