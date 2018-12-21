@@ -1,4 +1,4 @@
-# Spark 2.4.0 集成Hive 2.3.4
+# Spark 2.4.0 集成Hive(1.2.1,2.3.4，3.1.1 同样的配置这些版本都支持)
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
@@ -10,6 +10,7 @@
 
 ## 技能标签
 - spark-2.4.0-bin-hadoop2.7.tgz 集成Hive 1.2.1,支持Hive-2.3.4
+- spark-2.4.0-bin-hadoop2.7.tgz 集成Hive(1.2.1,2.3.4，3.1.1Hive的这些版本都支持)
 - 学会安装Spark 2.4.0 standalone模式环境安装
 - Spark 集群环境maste，worker,history server 启动停止命令 
 - Spark master,worker,history server 配置和管理界面查看
