@@ -62,12 +62,17 @@ class BaseSparkSession {
         .config("spark.history.fs.logDirectory","hdfs://standalone.com:9000/spark/log/historyEventLog")
         .config("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
 
+
       if(isHiveSupport){
         builder = builder.enableHiveSupport()
         //.config("spark.sql.hive.metastore.version","2.3.3")
       }
 
       val spark = builder.getOrCreate()
+      //需要有jar才可以在远程执行
+      spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
+
+
 
       spark
     }
