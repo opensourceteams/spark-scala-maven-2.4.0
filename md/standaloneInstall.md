@@ -23,7 +23,14 @@
 ## 前置条件
 - 已安装好java(选用的是java 1.8.0_191)
 - 已安装好scala(选用的是scala  2.11.121)
-- 已安装好hadoop(选用的是Hadoop 3.1.1)
+- 已安装好hadoop(选用的是Hadoop Hadoop 2.9.2)
+
+## 注意
+- Spark 2.4.0 不支持Hadoop 3.0以上
+- Spark官方说明:
+  - https://issues.apache.org/jira/browse/SPARK-23534
+  - https://issues.apache.org/jira/browse/SPARK-26421?filter=-2
+  - (Spsark 维护人员回复): Apache Spark officially doesn't support Hadoop 3.
 
 ## 安装
 - 下载安装包 : spark-2.4.0-bin-without-hadoop.tgz
