@@ -59,6 +59,7 @@ class BaseSparkSession {
         .config("spark.sql.warehouse.dir",warehouseLocation)
 
         .config("spark.eventLog.enabled","true")
+        .config("spark.eventLog.compress","true")
         .config("spark.history.fs.logDirectory","hdfs://standalone.com:9000/spark/log/historyEventLog")
         .config("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
 
