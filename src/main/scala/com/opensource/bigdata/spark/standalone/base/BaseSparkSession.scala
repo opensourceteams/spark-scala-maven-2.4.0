@@ -30,7 +30,7 @@ class BaseSparkSession {
   }
 
 
-  def sparkSession(isLocal:Boolean = false,isHiveSupport:Boolean = false,debug:Boolean=false): SparkSession = {
+  def sparkSession(isLocal:Boolean = false, isHiveSupport:Boolean = false, remoteDebug:Boolean=false): SparkSession = {
 
     val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 
@@ -64,7 +64,7 @@ class BaseSparkSession {
         .config("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
 
        //executor debug,是在提交作的地方读取
-        if(debug){
+        if(remoteDebug){
           builder.config("spark.executor.extraJavaOptions","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=10002")
         }
 
