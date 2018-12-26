@@ -5,7 +5,7 @@
 
 
 ## 时序图
-!(https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/SparkEnv%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/SparkEnv%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)
 
 ## 前置条件
 - Hadoop版本: hadoop-2.9.2
