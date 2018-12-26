@@ -3,6 +3,11 @@
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
+## 视频
+- Spark 2.4.0编程指南--Spark DataSources(bilibili视频): https://www.bilibili.com/video/av38193405/?p=5
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=68636905&page=5" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 ## 前置条件
 - 已安装好java(选用的是java 1.8.0_191)
