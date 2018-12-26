@@ -1,4 +1,4 @@
-# 开发工具介绍
+# 大数据开发工具介绍
 
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
@@ -57,9 +57,6 @@ StarUML是一款开放源码的UML开发工具，是由韩国公司主导开发�
 
 ### xmind
 - 思维导图工具
-
-### 虚拟机工具
-- Parallels Desktop
 
 ### DBeaver
 - mysql 开源的数据库连接工具，功能很强大，可以连几乎主流的所有数据库,支持window,mac版本

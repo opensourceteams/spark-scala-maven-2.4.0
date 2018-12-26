@@ -17,8 +17,8 @@
 
 ## Spark 环境配置
 
-### 开发工具介绍
-   - 开发工具介绍(文档说明):  https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/tool.md
+### 大数据开发工具介绍
+   - 大数据开发工具介绍(文档说明):  https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/tool.md
 
 #### Spark 2.4.0 standalone 模式安装
    - Spark 2.4.0 standalone 模式安装（详细说明文档)： https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/standaloneInstall.md
