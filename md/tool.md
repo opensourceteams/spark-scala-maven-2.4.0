@@ -1,5 +1,9 @@
 # 开发工具介绍
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
+
+
 ## 操作系统
 - 服务器  centos 7
 - 本地  mac 系统
