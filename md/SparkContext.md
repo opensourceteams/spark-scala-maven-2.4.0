@@ -1,5 +1,35 @@
 # Spark2.4.0 SparkContext 源码分析
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
+
+
+
+
+## 时序图
+
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/SparkContext%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)
+
+## 前置条件
+- Hadoop版本: hadoop-2.9.2
+- Spark版本: spark-2.4.0-bin-hadoop2.7
+- JDK.1.8.0_191
+- scala2.11.12
+
+## 主要内容描述
+- createSparkEnv
+- Started SparkUI
+- 注册端点HeartbeatReceiver
+- createTaskScheduler
+- 启动任务调度器，指定默认任务调度模式FIFO,构建调度池
+- new  DAGScheduler
+- 注册DriverEndpoint端点:CoarseGrainedScheduler
+- new StandaloneAppClient
+- 注册端点:AppClient, ClientEndpoint
+- 回调ClientEndpoint.onStart()方法,该方法向所有master注册
+- 发送消息:RegisterApplication
+- ClientEndpoint.receive()函数接收master回复的消息： RegisteredApplication
+
 
 ## SparkContext
 
