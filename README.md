@@ -70,3 +70,6 @@
 
 #### Spark2.4.0 SparkContext 源码分析
 - Spark2.4.0 SparkContext 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkContext.md
+
+#### Spark2.4.0 SparkSession 源码分析
+- Spark2.4.0 SparkSession 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/SparkSession.md
