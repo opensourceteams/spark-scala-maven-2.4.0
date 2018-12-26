@@ -14,6 +14,9 @@
 - Dataset 如何转成RDD触发作业运行
 - Dataset head 是如何读到HDFS上文件前n行数据
 
+## 图解
+[https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/Dataset%20head%E8%A7%A6%E5%8F%91%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/Dataset%20head%E8%A7%A6%E5%8F%91%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)
+
 ## 源码分析
 
 ### 输入数据
