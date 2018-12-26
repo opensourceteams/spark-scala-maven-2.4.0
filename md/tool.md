@@ -1,8 +1,12 @@
-## 开发工具介绍
+# 开发工具介绍
 
-### 操作系统
+## 操作系统
 - 服务器  centos 7
 - 本地  mac 系统
+
+## 软件下载
+- mac 系统软件下载地址(基本所有软件都有，还是破解版本的): https://xclient.info
+
 
 ### IntelliJ IDEA
 -  Java,Scala开发工具,支持 window,mac
