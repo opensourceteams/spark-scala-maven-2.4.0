@@ -8,8 +8,7 @@
 - mac 系统软件下载地址(基本所有软件都有，还是破解版本的): https://xclient.info
 - 百度网盘下载开发工具: https://pan.baidu.com/s/1Ph5Xr0T7cQXNQd2DSlmDHQ
 
-[https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/tool/baiduwangpan.png](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/tool/baiduwangpan.png)
-
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/tool/baiduwangpan.png)
 ### IntelliJ IDEA
 -  Java,Scala开发工具,支持 window,mac
 - 下载地址: http://www.jetbrains.com/idea/
