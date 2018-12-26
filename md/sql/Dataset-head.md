@@ -3,6 +3,12 @@
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
 
+## 视频
+- Spark2.4.0 Dataset head 原理分析(bilibili视频): https://www.bilibili.com/video/av38193405/?p=6
+- Spark2.4.0 Dataset head 源码分析(bilibili视频): https://www.bilibili.com/video/av38193405/?p=7
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=68636905&page=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=68636905&page=7" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 前置条件
 - Hadoop版本: hadoop-2.9.2
