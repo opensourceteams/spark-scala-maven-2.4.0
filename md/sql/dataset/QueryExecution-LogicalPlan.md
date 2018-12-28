@@ -8,6 +8,9 @@
 ###   LogicalPlan 源码分析
 
 #### 图解
+- https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/sql/dataset/QueryExecution-logical.jpg
+
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/sql/dataset/QueryExecution-logical.jpg)
 
 #### 程序入口
 - 调用DataFrameReader.textFile()函数
