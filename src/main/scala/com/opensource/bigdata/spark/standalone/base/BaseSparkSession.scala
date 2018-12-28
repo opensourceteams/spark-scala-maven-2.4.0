@@ -35,7 +35,7 @@ class BaseSparkSession {
     val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 
     if(isLocal){
-      master = "local"
+      master = "local[1]"
       var builder = SparkSession.builder
         .master(master)
         .appName(appName)
