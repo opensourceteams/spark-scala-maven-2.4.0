@@ -76,6 +76,9 @@
 
 
 #### Spark2.4.0 QueryExecution 源码分析
+- LogicalPlan => analyzed => optimizedPlan => sparkPlan => executedPlan
+
 - Spark2.4.0 QueryExecution(LogicalPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-LogicalPlan.md
 - Spark2.4.0 QueryExecution(OptimizedPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-OptimizedPlan.md
+- Spark2.4.0 QueryExecution(SparkPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-SparkPlan.md
 - Spark2.4.0 QueryExecution(ExecutedPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-ExecutedPlan.md
