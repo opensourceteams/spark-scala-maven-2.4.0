@@ -23173,7 +23173,7 @@
 											"top": 96,
 											"width": 201,
 											"height": 55,
-											"text": "extends DataSourceScanExec\nextends LeafExecNode\nextends SparkPlan"
+											"text": "DataSourceScanExec\nextends LeafExecNode\nextends SparkPlan"
 										},
 										{
 											"_type": "UMLNoteView",
@@ -25950,6 +25950,19 @@
 											"width": 921,
 											"height": 57,
 											"text": "              LogicalPlan   =>  analyzed     =>    optimizedPlan     =>    sparkPlan   =>    executedPlan "
+										},
+										{
+											"_type": "UMLTextView",
+											"_id": "AAAAAAFn873xtlQq6i4=",
+											"_parent": {
+												"$ref": "AAAAAAFn8pLSCE3uCJA="
+											},
+											"font": "Arial;13;0",
+											"left": 1072,
+											"top": 120,
+											"width": 217,
+											"height": 51,
+											"text": "HadoopFSRelation 继 承BaseRelation"
 										}
 									]
 								}

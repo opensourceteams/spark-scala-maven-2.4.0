@@ -2,6 +2,16 @@
 
 ## 各执行计划关系
  -  LogicalPlan   =>  analyzed     =>    optimizedPlan     =>    sparkPlan   =>    executedPlan 
+ - 关系
+ 
+ ```aidl
+dataset.queryExecution.logical        ->  child  -> LogicalRelation ->  relation(HadoopFsRelation)
+
+dataset.queryExecution.optimizedPlan:LogicalRelation ->  relation(HadoopFsRelation) 
+dataset.queryExecution.sparkPlan:FileSourceScanExec
+dataset.queryExecution.executedPlan:WholeStageCodegenExec
+
+```
 
 ## 源码分析
 # Spark2.4.0 QueryExecution(OptimizedPlan) 源码分析
