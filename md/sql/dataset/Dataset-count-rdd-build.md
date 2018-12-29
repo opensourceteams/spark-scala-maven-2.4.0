@@ -9,6 +9,8 @@
 
 ![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/sql/dataset/count.rdd.build.jpg)
 
+## Spark2.4.0源码分析时序图
+- (starUML): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/module/mdj/Spark2.4.0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E6%97%B6%E5%BA%8F%E5%9B%BE.mdj
 
 
 
