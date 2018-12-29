@@ -39,7 +39,7 @@ HashAggregateExec.child=FileSourceScanExec
 FileScanRdd[0]
 MapPartitionsRDD[1]
 MapPartitionsRDD[2]
-MapPartitionsRDD[3]
+ShuffleRowRDD[3]
 MapPartitionsRDD[4]
 MapPartitionsRDD[5]
 
@@ -493,7 +493,7 @@ HashAggregateExec.child=FileSourceScanExec
 FileScanRdd[0]
 MapPartitionsRDD[1]
 MapPartitionsRDD[2]
-MapPartitionsRDD[3]
+ShuffleRowRDD[3]
 MapPartitionsRDD[4]
 MapPartitionsRDD[5]
 
