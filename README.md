@@ -1,11 +1,14 @@
 
 # SPARK 2.4.0 学习笔记分享
-- 【本站点正在持续更新中......2018-12-26......】
+- 【本站点正在持续更新中......2018-12-28......】
 - 微博: https://weibo.com/thinktothings
 - SPARK 2.4.0 学习笔记分享(bilibili整套视频): https://www.bilibili.com/video/av38193405/
 
 ## 更多资源
 - SPARK 1.6.0-cdh5.15.0 源码分析: https://github.com/opensourceteams/spark-scala-maven
+
+## Spark2.4.0源码分析时序图
+- (starUML): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/module/mdj/Spark2.4.0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E6%97%B6%E5%BA%8F%E5%9B%BE.mdj
 
 ## 前置条件
 - Hadoop版本: hadoop-2.9.2
