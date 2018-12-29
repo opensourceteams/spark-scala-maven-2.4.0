@@ -1,5 +1,9 @@
 # Spark2.4.0 QueryExecution(ExecutedPlan) 源码分析
 
+## 更多资源
+- github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
+
+
 ## 各执行计划关系
  -  LogicalPlan   =>  analyzed     =>    optimizedPlan     =>    sparkPlan   =>    executedPlan 
  - 关系

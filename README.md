@@ -85,3 +85,7 @@
 - Spark2.4.0 QueryExecution(OptimizedPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-OptimizedPlan.md
 - Spark2.4.0 QueryExecution(SparkPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-SparkPlan.md
 - Spark2.4.0 QueryExecution(ExecutedPlan) 源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/QueryExecution-ExecutedPlan.md
+
+
+#### Spark2.4.0 Spark2.4.0源码分析之 Dataset.count
+- Spark2.4.0 Spark2.4.0源码分析之 Dataset.count RDD构建(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/Dataset-count-rdd-build.md
