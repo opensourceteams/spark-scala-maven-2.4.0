@@ -1,5 +1,6 @@
 # Spark2.4.0源码分析之Dataset.count 作业处理源码分析
 ## 图解
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/Dataset-count-job-handler.md)
 
 ## 前置
 - Spark2.4.0 Spark2.4.0源码分析之 Dataset.count FinalRDD构建(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/Dataset-count-rdd-build.md
