@@ -5,14 +5,14 @@ import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 object Run_dataset_count extends BaseSparkSession{
 
 
-  appName = "Dataset textFile count"
+  appName = "Dataset textFile count partitions"
 
   def main(args: Array[String]): Unit = {
 
-    val spark = sparkSession(true,false,false)
+    val spark = sparkSession(false,false,true,-1)
     //读取HDFS上文件
-    val df = spark.read.textFile("data/text/line.txt")
-    val count = df.count
+    val rs = spark.read.textFile("data/text/line.txt")
+    val count = rs.count()
     println(s"结果:${count}")
 
 

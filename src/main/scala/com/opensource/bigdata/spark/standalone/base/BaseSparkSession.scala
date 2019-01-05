@@ -29,8 +29,16 @@ class BaseSparkSession {
     spark
   }
 
+  /**
+    *
+    * @param isLocal
+    * @param isHiveSupport
+    * @param remoteDebug
+    * @param maxPartitionBytes  -1 不设置，否则设置分片大小
+    * @return
+    */
 
-  def sparkSession(isLocal:Boolean = false, isHiveSupport:Boolean = false, remoteDebug:Boolean=false): SparkSession = {
+  def sparkSession(isLocal:Boolean = false, isHiveSupport:Boolean = false, remoteDebug:Boolean=false,maxPartitionBytes:Int = -1): SparkSession = {
 
     val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 
@@ -62,6 +70,16 @@ class BaseSparkSession {
         .config("spark.eventLog.compress","true")
         .config("spark.history.fs.logDirectory","hdfs://standalone.com:9000/spark/log/historyEventLog")
         .config("spark.eventLog.dir","hdfs://standalone.com:9000/spark/log/historyEventLog")
+
+
+        //调置分区大小(分区文件块大小)
+        if(maxPartitionBytes != -1){
+          builder.config("spark.sql.files.maxPartitionBytes",maxPartitionBytes) //32
+        }
+
+
+
+       // .config("spark.sql.shuffle.partitions",2)
 
        //executor debug,是在提交作的地方读取
         if(remoteDebug){

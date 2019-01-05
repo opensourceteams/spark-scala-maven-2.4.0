@@ -16,4 +16,5 @@
         <value>/opt/module/bigdata/hadoop-2.9.2/data/datanode</value>
     </property>
 
+
 </configuration>
