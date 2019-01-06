@@ -3,6 +3,12 @@
 ## 更多资源
 - github: https://github.com/opensourceteams/spark-scala-maven-2.4.0
 
+## 视频
+- (bilibili视频): https://www.bilibili.com/video/av38193405/?p=13
+
+<iframe width="800" height="500" src="//player.bilibili.com/player.html?aid=38193405&cid=70318307&page=13" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 ## 图解
 - https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/spark/sql/dataset/rdd.job.submit.jpg
 
