@@ -10,7 +10,7 @@ object Run extends BaseSparkSession{
 
 
     val spark = sparkSession()
-    val dataSet = spark.read.textFile("/home/liuwen/data/a.txt")
+    val dataSet = spark.read.textFile("/home/liuwen/data/line.txt")
     println(dataSet.collect().mkString("\n"))
 
 

@@ -11,7 +11,7 @@ object Run extends BaseSparkSession{
 
     val spark = sparkSession(true)
 
-    //spark.read.textFile("/home/liuwen/data/a.txt").show
+    //spark.read.textFile("/home/liuwen/data/line.txt").show
     spark.read.textFile("file:///"+ getProjectPath +"/src/main/resource/data/text/people.txt").show
 
 

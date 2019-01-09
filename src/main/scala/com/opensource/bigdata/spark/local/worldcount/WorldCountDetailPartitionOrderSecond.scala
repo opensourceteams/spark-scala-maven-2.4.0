@@ -12,7 +12,7 @@ object WorldCountDetailPartitionOrderSecond {
   var master = "local[2]" //本地模式:local  local[2]    standalone:spark://master:7077
 
   def main(args: Array[String]): Unit = {
-    var startTime = System.currentTimeMillis()
+    val startTime = System.currentTimeMillis()
     val conf = new SparkConf().setAppName(appName).setMaster(master)
     conf.set("spark.eventLog.enabled","true")
     conf.set("spark.history.fs.logDirectory","/opt/bigdata/spark-1.6.0-cdh5.15.0/rundata/historyEventLog")

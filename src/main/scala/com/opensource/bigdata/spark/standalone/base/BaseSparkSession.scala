@@ -54,6 +54,12 @@ class BaseSparkSession {
           //.config("spark.sql.hive.metastore.version","2.3.3")
       }
 
+      //调置分区大小(分区文件块大小)
+      if(maxPartitionBytes != -1){
+        builder.config("spark.sql.files.maxPartitionBytes",maxPartitionBytes) //32
+      }
+
+
       val spark = builder.getOrCreate()
 
       //spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")

@@ -1,4 +1,4 @@
-package com.opensource.bigdata.spark.local.sql.dataset.n_01_textFile_head
+package com.opensource.bigdata.spark.local.sql.dataset.n_01_textFile.head
 
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
 

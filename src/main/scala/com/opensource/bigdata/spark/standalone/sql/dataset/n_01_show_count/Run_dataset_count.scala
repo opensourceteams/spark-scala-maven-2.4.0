@@ -9,7 +9,7 @@ object Run_dataset_count extends BaseSparkSession{
 
   def main(args: Array[String]): Unit = {
 
-    val spark = sparkSession(false,false,true,-1)
+    val spark = sparkSession(true,false,false,-1)
     //读取HDFS上文件
     val rs = spark.read.textFile("data/text/line.txt")
     val count = rs.count()
