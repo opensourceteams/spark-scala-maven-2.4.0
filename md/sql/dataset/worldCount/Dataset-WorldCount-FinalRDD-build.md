@@ -202,7 +202,8 @@ object WorldCount extends BaseSparkSession{
 ```
 
 ## 时序图
-![](leanote://file/getImage?fileId=5c356ffcf8392e6468000002)
+- 
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/worldcount.rdd.build.jpg)
 
 ## 源码分析
 
