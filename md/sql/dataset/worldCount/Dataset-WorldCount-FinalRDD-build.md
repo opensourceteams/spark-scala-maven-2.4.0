@@ -29,6 +29,11 @@ MapPartitionsRDD [9]
 
 ![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/dagVisualization/stage-1.png)
 
+## 时序图
+- https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/worldcount.rdd.build.jpg
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/worldcount.rdd.build.jpg)
+
+
 ## 输入数据
 
 ```
@@ -201,9 +206,6 @@ object WorldCount extends BaseSparkSession{
 
 ```
 
-## 时序图
-- 
-![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/worldcount.rdd.build.jpg)
 
 ## 源码分析
 
