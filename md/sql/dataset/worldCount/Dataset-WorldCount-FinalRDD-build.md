@@ -1,9 +1,10 @@
-# Spark2.4.0源码分析之WorldCount FinalRdd构建(一)
+# Spark2.4.0源码分析之WorldCount FinalRDD构建(一)
 
 ## 主要内容描述
-- Spark dataSet执行计算转成FinalRdd
+- Spark dataSet执行计算转成FinalRDD
 - FinalRdd是如何从第一个RDD到最到一个RDD的转化
 - RDD之间的依赖引用关系
+- ShuffleRowRDD默认分区器为HashPartitioning,实际new Partitioner,分区个数为200
 
 ## FinalRDD 层级
 ```
@@ -21,9 +22,9 @@ MapPartitionsRDD [9]
 ```
 
 ## FinalRDD DAG Visualization
-![](leanote://file/getImage?fileId=5c356e2df8392e6468000000)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/dagVisualization/stage-0.png)
 
-![](leanote://file/getImage?fileId=5c356e99f8392e6468000001)
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/dagVisualization/stage-1.png)
 
 ## 输入数据
 

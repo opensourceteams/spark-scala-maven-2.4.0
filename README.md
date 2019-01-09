@@ -90,3 +90,7 @@
 #### Spark2.4.0 Spark2.4.0源码分析之 Dataset.count
 - Spark2.4.0 Spark2.4.0源码分析之 Dataset.count FinalRDD构建(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/Dataset-count-rdd-build.md
 -  Spark2.4.0源码分析之Dataset.count 作业提交源码分析(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/Dataset-count-job-handler.md
+
+
+### Spark2.4.0 WorldCount 源码分析
+- Spark2.4.0源码分析之WorldCount FinalRdd构建(一)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-FinalRDD-build.md
