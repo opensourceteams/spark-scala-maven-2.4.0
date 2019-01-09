@@ -11,6 +11,11 @@
 ## 主要内容描述
 - 理解FinalStage的转化(即Stage的划分)
 
+## Stage 图解
+- https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/dagVisualization/worldCount-stage.png
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/dagVisualization/worldCount-stage.png)
+
+
 
 ## 源码分析
 
