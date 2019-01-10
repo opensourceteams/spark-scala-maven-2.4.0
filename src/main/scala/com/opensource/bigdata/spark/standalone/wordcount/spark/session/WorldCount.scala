@@ -1,8 +1,6 @@
 package com.opensource.bigdata.spark.standalone.wordcount.spark.session
 
-
 import com.opensource.bigdata.spark.standalone.base.BaseSparkSession
-
 
 
 object WorldCount extends BaseSparkSession{
@@ -14,20 +12,12 @@ object WorldCount extends BaseSparkSession{
 
     val spark = sparkSession(false,false,false,7)
     import spark.implicits._
-
     val distFile = spark.read.textFile("data/text/worldCount.txt")
-
     val dataset = distFile.flatMap( line => line.split(" ")).groupByKey(x => x ).count()
-
-
 
     println(s"${dataset.collect().mkString("\n\n")}")
 
-
-
-
     spark.stop()
-
 
   }
 }
