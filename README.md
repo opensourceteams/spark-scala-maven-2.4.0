@@ -97,3 +97,4 @@
 - Spark2.4.0源码分析之WorldCount 触发作业提交(二)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-trigger-job-submit.md
 - Spark2.4.0源码分析之WorldCount 事件循环处理器(三)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/DAGSchedulerEventProcessLoop.md
 - Spark2.4.0源码分析之WorldCount Stage划分(四)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-FinalStage.md
+- Spark2.4.0源码分析之WorldCount Stage提交顺序(五)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-stage-submit-order.md
