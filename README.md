@@ -2,6 +2,7 @@
 # SPARK 2.4.0 学习笔记分享
 - 【本站点正在持续更新中......2019-01-09......】
 - 微博: https://weibo.com/thinktothings
+- 微信服务号: opensourceteam
 - SPARK 2.4.0 学习笔记分享(bilibili整套视频): https://www.bilibili.com/video/av38193405/
 
 ## 更多资源
