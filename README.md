@@ -101,3 +101,4 @@
 - Spark2.4.0源码分析之WorldCount Stage提交顺序(DAGScheduler)(五)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-stage-submit-order.md
 - Spark2.4.0源码分析之WorldCount Stage提交(DAGScheduler)(六)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-stage-submit.md
 - Spark2.4.0源码分析之WorldCount 任务调度器(七)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/Dataset-WorldCount-TaskScheduler.md
+- Spark2.4.0源码分析之WorldCount ShuffleMapTask处理(八)(文档说明): https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/sql/dataset/worldCount/n_08_Dataset-WorldCount-ShuffleMapTask.md
