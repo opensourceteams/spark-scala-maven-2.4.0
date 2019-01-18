@@ -16,6 +16,9 @@
 - https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/n_08/stage-0.png
 ![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/n_08/stage-0.png)
 
+## ShuffleMapTask原理图解 
+- https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/n_08/ShuffleMapTask%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png
+![](https://github.com/opensourceteams/spark-scala-maven-2.4.0/blob/master/md/image/example/spark-sql-dataset/worldCount/n_08/ShuffleMapTask%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90.png)
  
 ## 主要内容描述
 - 理解Executor中是如何调用Task的过程
