@@ -38,7 +38,7 @@ class BaseSparkSession {
     * @return
     */
 
-  def sparkSession(isLocal:Boolean = false, isHiveSupport:Boolean = false, remoteDebug:Boolean=false,maxPartitionBytes:Int = -1): SparkSession = {
+  def sparkSession(isLocal:Boolean = false, isHiveSupport:Boolean = false, remoteDebug:Boolean=false,maxPartitionBytes:Int = -1,numPartitions:Int =200): SparkSession = {
 
     val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 
@@ -57,6 +57,11 @@ class BaseSparkSession {
       //调置分区大小(分区文件块大小)
       if(maxPartitionBytes != -1){
         builder.config("spark.sql.files.maxPartitionBytes",maxPartitionBytes) //32
+      }
+
+     //The default number of partitions to use when shuffling data for joins or aggregations.
+      if(numPartitions != 200){
+        builder.config("spark.sql.shuffle.partitions",numPartitions)
       }
 
       builder.config("spark.executor.heartbeatInterval","10000s") //心跳间隔，超时设置
@@ -106,9 +111,14 @@ class BaseSparkSession {
         //.config("spark.sql.hive.metastore.version","2.3.3")
       }
 
+      //The default number of partitions to use when shuffling data for joins or aggregations.
+      if(numPartitions != 200){
+        builder.config("spark.sql.shuffle.partitions",numPartitions)
+      }
       val spark = builder.getOrCreate()
       //需要有jar才可以在远程执行
       spark.sparkContext.addJar("/opt/n_001_workspaces/bigdata/spark-scala-maven-2.4.0/target/spark-scala-maven-2.4.0-1.0-SNAPSHOT.jar")
+
 
 
 
