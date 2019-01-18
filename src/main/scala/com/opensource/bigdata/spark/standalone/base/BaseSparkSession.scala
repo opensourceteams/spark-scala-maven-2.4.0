@@ -59,6 +59,9 @@ class BaseSparkSession {
         builder.config("spark.sql.files.maxPartitionBytes",maxPartitionBytes) //32
       }
 
+      builder.config("spark.executor.heartbeatInterval","10000s") //心跳间隔，超时设置
+      builder.config("spark.network.timeout","100000s") //网络间隔，超时设置
+
 
       val spark = builder.getOrCreate()
 
@@ -89,7 +92,11 @@ class BaseSparkSession {
 
        //executor debug,是在提交作的地方读取
         if(remoteDebug){
+
           builder.config("spark.executor.extraJavaOptions","-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=10002")
+
+          builder.config("spark.executor.heartbeatInterval","10000s") //心跳间隔，超时设置
+          builder.config("spark.network.timeout","100000s") //网络间隔，超时设置
         }
 
 
