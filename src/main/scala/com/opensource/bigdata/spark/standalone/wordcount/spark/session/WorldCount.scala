@@ -7,10 +7,10 @@ object WorldCount extends BaseSparkSession{
 
 
   def main(args: Array[String]): Unit = {
-    appName = "WorldCount"
+    appName = "WorldCountDebug-1"
 
 
-    val spark = sparkSession(false,false,false,-1)
+    val spark = sparkSession(false,false,true,-1)
     import spark.implicits._
     val distFile = spark.read.textFile("data/text/worldCount.txt")
     val dataset = distFile.flatMap( line => line.split(" ")).groupByKey(x => x ).count()
