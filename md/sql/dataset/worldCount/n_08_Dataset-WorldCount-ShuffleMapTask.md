@@ -16,6 +16,9 @@
  
 ## 主要内容描述
 - 理解Executor中是如何调用Task的过程
+- 理解ShuffleMapTask是处理过程
+
+
 ## 输入数据
 
 ```
